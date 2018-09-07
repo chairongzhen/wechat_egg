@@ -16,4 +16,5 @@ module.exports = app => {
   router.get('/wechat',wechat);
   router.post('/wechat',wechat);
   router.get('/smartconfig',controller.setup.smartConfig);
+  router.get('/scan',controller.setup.scanMachine);
 };

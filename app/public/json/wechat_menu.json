@@ -6,6 +6,10 @@
            "url": "http://crz.natapp1.cc/smartconfig"
       },{
           "type": "view",
+          "name": "扫码匹配",
+          "url": "http://crz.natapp1.cc/scan"
+      },{
+          "type": "view",
           "name": "远程控制",
           "url": "http://crz.natapp1.cc"
       }]

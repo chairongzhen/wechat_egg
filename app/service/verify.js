@@ -16,7 +16,6 @@ class VerifySerive extends Service {
             signature = sha1('jsapi_ticket=' + jsapi_ticket + "&noncestr=" + noncestr + "&timestamp=" + timestamp + "&url=" + url);
         } else {
             let grantUrl = this.config.wechat.accessTokenUrl + '?grant_type=' + this.config.wechat.grant_type + '&appid=' + this.config.wechat.appid + '&secret=' + this.config.wechat.secret;
-            console.log('the grant url is: ', grantUrl);
             const tokenMap = await getUrlcontent(grantUrl);
             let ticketUrl = this.config.wechat.ticketUrl + "?access_token=" + tokenMap.access_token + "&type=jsapi";
             const ticketMap = await getUrlcontent(ticketUrl);
