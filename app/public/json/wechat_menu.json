@@ -1,0 +1,12 @@
+{
+    "button":[
+     {
+          "type": "view",
+          "name":"一键上网",
+           "url": "http://crz.natapp1.cc/smartconfig"
+      },{
+          "type": "view",
+          "name": "远程控制",
+          "url": "http://crz.natapp1.cc"
+      }]
+}

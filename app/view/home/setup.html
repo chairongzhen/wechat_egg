@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>一键配置</title>
+        <link rel='stylesheet' type="text/css" href="/public/css/index.css" />        
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let signature = '{{ signature }}';
+            let nonceStr = '{{ noncestr }}';
+            let timestamp = '{{ timestamp }}';
+            let appId = '{{ appId }}';
+            let jsapi_ticket = '{{ jsapi_ticket }}';
+        </script>
+        <script src="/public/js/smartconfig.js"></script>
+        <div>
+            <p>开始扫描附件智能设备</p>
+        </div>
+    </body>
+</html>
