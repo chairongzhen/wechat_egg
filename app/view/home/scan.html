@@ -23,8 +23,8 @@
                     <th>微信名</th>
                 </tr>
                 <tr>
-                    <td>{{ userinfo.openid }}</td>
-                    <td>{{ userinfo.nickname }}</td>
+                    <td><span id="spopenid">{{ userinfo.openid }}</span></td>
+                    <td><span id="spnickname">{{ userinfo.nickname }}</span></td>
                 </tr>
             </table>
             <p>匹配设备</p>
@@ -35,7 +35,21 @@
                     <th>设备地址</th>
                 </tr>
             </table>
-            <table id="tbContent"></table>
+            <table id="tbContent">
+                <!-- <tr>
+                    <td class="mid">test</td>
+                    <td class="mac">00000000</td>
+                </tr>
+                <tr>
+                    <td class="mid">nice</td>
+                    <td class="mac">22222222</td>
+                </tr> -->
+            </table>
+            <hr/>
+            <div>
+                <input type="button" id="btnScan" value="扫描设备" />
+                <input type="button" id="btnBind" value="确定绑定" />
+            </div>
         </div>
     </body>
 </html>

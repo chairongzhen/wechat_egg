@@ -28,6 +28,17 @@ class SetupController extends Controller {
         }
         await ctx.render('home/scan.html',result);
     }
+
+    async bind() {
+        const ctx = this.ctx;
+        console.log(ctx.request.body);
+        let bindmachine = ctx.request.body;
+        let result = {
+            data: "nice guy",
+        }
+        ctx.body = { result };
+        ctx.status = 201;
+    }
 }
 
 module.exports = SetupController;

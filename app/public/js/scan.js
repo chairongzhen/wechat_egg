@@ -8,24 +8,57 @@ wx.config({
 });
 
 wx.ready(function(){
-    let temp = wx.scanQRCode({
-        needResult: 1,
-        desc: 'scanQRCode desc',
-        success: function(res) {
-            let tempres = res.resultStr;
-            tempres = tempres.replace('}',"").replace("{","");
-            let tmparr = tempres.split(',');
-            let machineinfo = {
-                mid: tmparr[0].split(':')[1],
-                mac: tmparr[1].split(':')[1]
+    $("#btnScan").click(()=>{
+        let temp = wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function(res) {
+                let tempres = res.resultStr;
+                tempres = tempres.replace('}',"").replace("{","");
+                let tmparr = tempres.split(',');
+                let machineinfo = {
+                    mid: tmparr[0].split(':')[1],
+                    mac: tmparr[1].split(':')[1]
+                }
+                let html = "<tr><td><span class='mid'>";
+                html += machineinfo.mid;
+                html += "</span></td><td><span class='mac'>";
+                html += machineinfo.mac;
+                html += "</span></td></tr>";
+                $("#tbContent").append(html);
             }
-            let html = "<tr><td>";
-            html += machineinfo.mid;
-            html += "</td><td>";
-            html += machineinfo.mac;
-            html += "</td></tr>";
-            $("#tbContent").append(html);
+        });
+    });
+
+    $("#btnBind").click(()=>{
+        let openid = $("#spopenid").html();
+        let mc =[];
+        $(".mid").each((i,val)=>{
+            let machine = {
+                id: i,
+                mname: $(val).html(),
+                openid: openid
+            }
+            mc.push(machine);
+        });
+        
+        for(let ta of mc) {
+            $(".mac").each((i,val)=>{
+                if(ta.id == i) {
+                    ta.mac = $(val).html();
+                }
+            });
         }
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/bind",
+            data: JSON.stringify(mc),
+            dataType: 'json',
+            success: (res)=>{
+                alert("aaaa");
+            }
+        });
     });
 });
 
