@@ -7,15 +7,26 @@
     </head>
     <body>
         <script type="text/javascript">
-            let signature = '{{ signature }}';
-            let nonceStr = '{{ noncestr }}';
-            let timestamp = '{{ timestamp }}';
-            let appId = '{{ appId }}';
-            let jsapi_ticket = '{{ jsapi_ticket }}';
+            let signature = '{{ machineinfo.signature }}';
+            let nonceStr = '{{ machineinfo.noncestr }}';
+            let timestamp = '{{ machineinfo.timestamp }}';
+            let appId = '{{ machineinfo.appId }}';
+            let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
         </script>
         <script src="/public/js/scan.js"></script>
         <div>
-            <span id="sptest"></span>
+            <p>用户信息</p>
+            <hr />
+            <table>
+                <tr>
+                    <th>openid</th>
+                    <th>微信名</th>
+                </tr>
+                <tr>
+                    <td>{{ userinfo.openid }}</td>
+                    <td>{{ userinfo.nickname }}</td>
+                </tr>
+            </table>
             <p>匹配设备</p>
             <hr/>
             <table>

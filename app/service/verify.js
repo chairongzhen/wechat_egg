@@ -5,8 +5,8 @@ const sha1 = require('sha1');
 
 
 class VerifySerive extends Service {
-    async verify(orignalurl) {
-        let url = orignalurl;
+    async verify(originalurl) {
+        let url = originalurl;
         let noncestr = this.config.wechat.noncestr,
             timestamp = Math.floor(Date.now() / 1000),
             jsapi_ticket, signature;
@@ -31,6 +31,16 @@ class VerifySerive extends Service {
             signature: signature
         }
         return result;
+    }
+
+    async getwechatuser(code) {
+        let authurl = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${this.config.wechat.appid}&secret=${this.config.wechat.secret}&code=${code}&grant_type=authorization_code`;
+        const authres = await getUrlcontent(authurl);
+        let reauthurl = `https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=${this.config.wechat.appid}&grant_type=refresh_token&refresh_token=${authres.refresh_token}`;
+        const reauthres = await getUrlcontent(reauthurl);
+        let userinfourl = `https://api.weixin.qq.com/sns/userinfo?access_token=${reauthres.access_token}&openid=${reauthres.openid}&lang=zh_CN`;
+        const userinfores = await getUrlcontent(userinfourl);
+        return userinfores;
     }
 }
 
