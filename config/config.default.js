@@ -33,5 +33,33 @@ module.exports = appInfo => {
     }
   }
 
+  config.mqtt = {
+    url: "tcp://m12.cloudmqtt.com:16610",
+    username: 'cqyjmitd',
+    password: 'SXLMuaorn881',
+    clientid: 'wechatserver-1536282709723'
+  }
+
+  config.mysql = {
+      // 单数据库信息配置
+      client: {
+        // host
+        host: '192.168.8.103',
+        //host: '192.168.31.127',
+        // 端口号
+        port: '3306',
+        // 用户名
+        user: 'root',
+        // 密码
+        password: '111111',
+        // 数据库名
+        database: 'Lights',
+      },
+      // 是否加载到 app 上，默认开启
+      app: true,
+      // 是否加载到 agent 上，默认关闭
+      agent: false,
+  }
+
   return config;
 };

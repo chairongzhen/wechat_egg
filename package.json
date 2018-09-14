@@ -6,12 +6,15 @@
   "dependencies": {
     "co-wechat": "^2.3.0",
     "egg": "^2.2.1",
+    "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.5.0",
     "egg-view-nunjucks": "^2.2.0",
+    "ip": "^1.1.5",
     "koa": "^2.5.2",
     "memory-cache": "^0.2.0",
     "mqtt": "^2.18.8",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",

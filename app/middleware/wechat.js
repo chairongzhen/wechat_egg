@@ -5,24 +5,19 @@ module.exports = (options,app) =>{
         let { MsgType, Content } = message;
         if(MsgType == "text") {
             let reply;
-            switch(Content) {
-                case "你好":
-                    reply = "hello";
-                    break;
-                case "操":
-                    reply = "fuck";
-                    break;
-                default:
-                    const msgs = [
-                        "test default 1",
-                        "test default 2"
-                    ];
-                    let rand = Math.floor(Math.random() * msgs.length);
-                    reply = msgs[rand];
+            if(Content.toLowerCase().substring(0,3) == "esp") {
+                if(Content.length <4) {
+                    reply = "请输入设备号";
+                } else {
+                    const res = await ctx.service.account.getmacip(Content.toLowerCase());
+                    reply = "IP: " + res ;
+                }
+            } else {
+                reply = "未知指令";
             }
             return reply;
-        } else {
-            return "Welcome";
+        }else {
+            return "Welcome to the ESP";
         }
     });
 };

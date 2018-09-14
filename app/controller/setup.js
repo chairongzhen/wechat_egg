@@ -9,13 +9,6 @@ class SetupController extends Controller {
         await ctx.render('home/setup.html',result);
     }
 
-    async scanMachine() {
-        const ctx = this.ctx;
-        let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
-        const result = await ctx.service.verify.verify(url);
-        await ctx.render('home/scan.html',result);
-    }
-
     async scan() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
@@ -38,6 +31,17 @@ class SetupController extends Controller {
         }
         ctx.body = { result };
         ctx.status = 201;
+    }
+
+    async checktime() {
+        const ctx = this.ctx;
+        let timestamp = await ctx.service.setup.checktime();   
+        ctx.body = {
+            error_code : 0,
+            err_msg: null,
+            data: timestamp
+        }
+        
     }
 }
 
