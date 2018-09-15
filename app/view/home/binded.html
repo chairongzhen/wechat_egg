@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>扫码匹配</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link rel='stylesheet' type="text/css" href="/public/css/index.css" />
+        <link href="/public/css/sideslip.css" rel="stylesheet" />
+
+	</head>
+	<body ontouchstart>
+        <script type="text/javascript">
+            let signature = '{{ machineinfo.signature }}';
+            let nonceStr = '{{ machineinfo.noncestr }}';
+            let timestamp = '{{ machineinfo.timestamp }}';
+            let appId = '{{ machineinfo.appId }}';
+            let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
+        </script>
+        <script src="/public/js/scan.js"></script>
+        <div style="height: 1rem;"><h4 style=" margin-left:10px">已绑定设备</h4></div>
+		
+		<div id="scrollWrap">
+			<!--Begin-->
+			<div class="listContext" id="listContext">
+                {% for item in binddata %}
+                <div class="list">
+					<div class="sideslipBody">
+						<!--主题内容Begin-->
+						<div class="viewCon" style="border: 0px #0f0 solid;display: flex;padding-left: 12px;align-items: center;">
+							 <div style="border: 0px #f00 solid;width: 80px;height: 45px;">
+								<img src="/public/png/lm.png" width="100%" height="100%"/>
+							</div>
+							<div style="margin-left: 10px;">
+								<p style="margin: 0;">{{item.mid}}</p>
+								<p style="color: #8f8f94;margin: 0;">{{item.ip}}</p>
+							</div>
+						</div>					
+						<!--主题内容End-->
+					</div>
+					<div class="sideslipTitle right">
+						<a class="subRight delete" onclick="unbind('{{userinfo.openid}}','{{item.mid}}')">解绑</a>
+					</div>
+                </div>
+                {% endfor %}
+			<!--End-->
+		</div>
+		
+	</body>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+	<!--针对移动端-->
+	<script type="text/javascript" src="/public/js/sideslipMob.min.js"></script>
+	<script type="text/javascript">
+		function unbind(openid,mid) {
+			let machineinfo = {
+				mid: mid
+			}
+			let unbindinfo = {
+				openid: openid,
+				mc: machineinfo
+			}
+			$.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/unbind",
+                    data: JSON.stringify(unbindinfo),
+                    dataType: 'json',
+                    success: (res)=>{
+                        alert(res);                     
+                    }
+                });
+		}
+
+	</script>
+</html>

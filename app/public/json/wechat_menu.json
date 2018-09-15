@@ -7,8 +7,19 @@
         }, 
         {
             "type": "view", 
-            "name": "扫码匹配", 
-            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/scan&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+            "name": "设备管理",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "我的设备",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                },{
+                    "type": "view",
+                    "name": "添加设备",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/scan&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                }
+            ] 
+            
         }, 
         {
             "type": "view", 

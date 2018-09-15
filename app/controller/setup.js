@@ -14,21 +14,75 @@ class SetupController extends Controller {
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
         let code = ctx.query.code;
         const userinfores = await ctx.service.verify.getwechatuser(code);
+        
+        let userinfo = {
+            openid: userinfores.openid,
+            nickname: userinfores.nickname,
+            gender: userinfores.sex,
+            province: userinfores.province,
+            city: userinfores.city,
+            country: userinfores.country,
+            headimgurl: userinfores.headimgurl
+        }
+        await this.service.account.checkaccount(userinfo);
+        const bindedres = await this.service.account.getusermachine(userinfores.openid);
         const machineinfo = await ctx.service.verify.verify(url);
+
         let result = {
             userinfo: userinfores,
-            machineinfo: machineinfo
+            machineinfo: machineinfo,
+            binddata: bindedres
         }
         await ctx.render('home/scan.html',result);
     }
 
+    async binded() {
+        const ctx = this.ctx;
+        let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
+        let code = ctx.query.code;
+        const userinfores = await ctx.service.verify.getwechatuser(code);
+        
+        let userinfo = {
+            openid: userinfores.openid,
+            nickname: userinfores.nickname,
+            gender: userinfores.sex,
+            province: userinfores.province,
+            city: userinfores.city,
+            country: userinfores.country,
+            headimgurl: userinfores.headimgurl
+        }
+        await this.service.account.checkaccount(userinfo);
+        const bindedres = await this.service.account.getusermachine(userinfores.openid);
+        const machineinfo = await ctx.service.verify.verify(url);
+
+        let result = {
+            userinfo: userinfores,
+            machineinfo: machineinfo,
+            binddata: bindedres
+        }
+        await ctx.render('home/binded.html',result);
+    }
+
     async bind() {
         const ctx = this.ctx;
-        console.log(ctx.request.body);
-        let bindmachine = ctx.request.body;
-        let result = {
-            data: "nice guy",
+        let openid = ctx.request.body.openid;
+        let userinfo = {
+            openid: openid
         }
+        let mc = ctx.request.body.mc;        
+        const result = await this.service.account.bingmachine(userinfo,mc);  
+        ctx.body = { result };
+        ctx.status = 201;
+    }
+
+    async unbind() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let userinfo = {
+            openid: openid
+        }
+        let machineinfo = ctx.request.body.mc;    
+        const result = await this.service.account.unbindmachine(userinfo,machineinfo);
         ctx.body = { result };
         ctx.status = 201;
     }

@@ -18,6 +18,7 @@ module.exports = app => {
   router.get('/smartconfig',controller.setup.smartConfig);
   router.get('/scan',controller.setup.scan);
   router.post('/bind',controller.setup.bind);
+  router.post('/unbind',controller.setup.unbind);
   router.get('/checktime',controller.setup.checktime);
   router.get("/checkaccount",controller.account.checkaccount);
   router.get("/checkmachine",controller.account.checkmachine);
@@ -31,5 +32,6 @@ module.exports = app => {
   router.get("/updatelightdetail",controller.pinopr.updatelightdetail);
   router.get("/getbindmachine",controller.pinopr.getbindmachine);
   router.get("/updatefixlight",controller.pinopr.updatefixlight);
+  router.get("/binded",controller.setup.binded);
 
 };

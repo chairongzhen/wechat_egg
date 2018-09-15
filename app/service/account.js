@@ -43,16 +43,14 @@ class AccountSerive extends Service {
                     FROM
                         machines
                     WHERE
-                        mid = '${machineinfo.mid}'
-                    AND mac = '${machineinfo.mac}'`;
-        console.log('xxxxxxxxxxxxxxxxxxxxxx',existsql);
+                        mid = '${machineinfo.mid}'`;
         const existres = await this.app.mysql.query(existsql);
         const unbindsql = `SELECT
                         count(*) existcount
                     FROM
                         usermachines
                     WHERE
-                        openid = '${userinfo.openid}'
+                    1=1
                     AND mid = '${machineinfo.mid}'`;
         const unbindres = await this.app.mysql.query(unbindsql);
         let result = "";
@@ -73,7 +71,7 @@ class AccountSerive extends Service {
         let unbindmachine = [];
         let result = {};
         for(let mar of machineinfos) {
-            let res = await this.checkmachine(userinfo,mar); 
+            let res = await this.checkmachine(userinfo,mar);
             if(res == "available") {
                 let insertsql = `INSERT INTO usermachines (openid, mid, binddate)
                         VALUES
@@ -142,6 +140,12 @@ class AccountSerive extends Service {
             const res = await this.app.mysql.query(getsql);
             result = res[0].ip;
         }        
+        return result;
+    }
+
+    async getusermachine(openid) {
+        let getsql = `select mid,ip from usermachines where openid = '${openid}'`;
+        const result = await this.app.mysql.query(getsql);
         return result;
     }
 }

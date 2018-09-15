@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>扫码匹配</title>
+        <link rel='stylesheet' type="text/css" href="/public/css/index.css" />        
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <link rel="stylesheet" type="text/ccss" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css"/>
+        <link href="/public/css/sideslip.css" rel="stylesheet" />
+    </head>
+    <body ontouchstart>
+        <script type="text/javascript">
+            let signature = '{{ machineinfo.signature }}';
+            let nonceStr = '{{ machineinfo.noncestr }}';
+            let timestamp = '{{ machineinfo.timestamp }}';
+            let appId = '{{ machineinfo.appId }}';
+            let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
+        </script>
+        <script src="/public/js/scan.js"></script>
+        <div>
+            <p>用户信息</p>
+            <hr />
+            <table>
+                <tr>
+                    <th>openid</th>
+                    <th>微信名</th>
+                </tr>
+                <tr>
+                    <td><span id="spopenid">{{ userinfo.openid }}</span></td>
+                    <td><span id="spnickname">{{ userinfo.nickname }}</span></td>
+                </tr>
+            </table>
+            <p>匹配设备</p>
+            <hr/>
+            <table>
+                <tr>
+                    <th>设备名</th>
+                    <th>设备地址</th>
+                </tr>
+            </table>
+            <table id="tbContent">
+                {% for item in binddata %}
+                <tr>
+                    <td><span class='mid'>{{item.mid}}</span></td>
+                    <td><span class='mac'>{{item.ip}}</span></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <hr/>
+            <div>
+                <input type="button" class="weui_btn weui_btn_primary" id="btnScan" value="扫描设备" />
+                <input type="button" class="weui_btn weui_btn_primary" id="btnBind" value="确定绑定" />
+            </div>
+            <div><span style="color:red" id="spresult"></span></div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    </body>
+</html>

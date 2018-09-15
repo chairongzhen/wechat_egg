@@ -8,10 +8,12 @@ wx.config({
 });
 
 wx.ready(function(){
-    let temp = wx.scanQRCode({
-        needResult: 1,
-        desc: 'scanQRCode desc',
-        success: function(res) {
+    
+    $("#btnScan").click(()=>{
+        let temp = wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function(res) {
                 let tempres = res.resultStr;
                 tempres = tempres.replace('}',"").replace("{","");
                 let tmparr = tempres.split(',');
@@ -19,6 +21,12 @@ wx.ready(function(){
                     mid: tmparr[0].split(':')[1],
                     mac: tmparr[1].split(':')[1]
                 }
+                // let html = "<tr><td><span class='mid'>";
+                // html += machineinfo.mid;
+                // html += "</span></td><td><span class='mac'>";
+                // html += machineinfo.mac;
+                // html += "</span></td></tr>";
+                // $("#tbContent").append(html);
                 let bindinfo = {
                     openid: $("#hidopenid").val(),
                     mc: [{
@@ -42,19 +50,12 @@ wx.ready(function(){
                             }
                         }
                         $("#spresult").html(errormessage);
-                        if(errormessage.length == 0) {
-                            $("#spflag").html("绑定成功");
-                            $("#iicon").attr("class","weui_icon_success weui_icon_msg");
-                        } else {
-                            $("#spflag").html("绑定失败");
-                            $("#iicon").attr("class","weui_icon_msg weui_icon_warn");
-                            $("#spresult").attr("style","color:red");
-                        }                        
                     }
                 });
 
             }
         });
+    });
 
     $("#btnBind").click(()=>{
 
@@ -98,10 +99,6 @@ wx.ready(function(){
                 $("#spresult").html(errormessage);
             }
         });
-    });
-
-    $("#btnBinded").click(()=>{
-        window.location.href("www.baidu.com");
     });
 });
 

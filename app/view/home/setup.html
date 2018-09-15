@@ -1,11 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
         <title>一键配置</title>
         <link rel='stylesheet' type="text/css" href="/public/css/index.css" />        
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-        <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/ccss" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css"/>
     </head>
-    <body>
+    <body ontouchstart>
         <script type="text/javascript">
             let signature = '{{ signature }}';
             let nonceStr = '{{ noncestr }}';
@@ -14,8 +17,13 @@
             let jsapi_ticket = '{{ jsapi_ticket }}';
         </script>
         <script src="/public/js/smartconfig.js"></script>
-        <div>
-            <span id="spresult"></span>
+        <div class="weui_msg">
+            <div class="weui_icon_area"><i id="iicon" class="weui_icon_success weui_icon_msg"></i></div>
+            <div class="weui_text_area">
+                <h2 class="weui_msg_title"><span id="spflag">操作成功</span></h2>
+                <span id="spresult"></span>
+            </div>
         </div>
+        <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     </body>
 </html>

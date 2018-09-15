@@ -6,8 +6,9 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.body = "hello wechat";
+    await this.ctx.render('home/sliderdemo.html');
   }
+  
 }
 
 module.exports = HomeController;

@@ -19,12 +19,14 @@ wx.ready(function(){
   wx.invoke("configWXDeviceWiFi",{},res=>{
     if(res.err_msg == "configWXDeviceWiFi:ok") {
       $("#spresult").html("配网成功");
+      $("#spflag").html("操作成功");
       $("#spresult").attr("style","color:#00CD00");
-      alert("配网成功");
+      $("#iicon").attr("class","weui_icon_success weui_icon_msg");
     } else {
       $("#spresult").html("配网失败,请重启设备后重试");
+      $("#spflag").html("操作失败");
       $("#spresult").attr("style","color:red");
-      alert("配网失败");
+      $("#iicon").attr("class","weui_icon_msg weui_icon_warn");
     }
   });
 });

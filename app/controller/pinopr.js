@@ -46,8 +46,6 @@ class PinoprController extends Controller {
         this.ctx.body = result;
     }
 
-
-
     async updatefixlight(openid,lid,tagvalue) {
         let result = false;
         let lightinfo = {
