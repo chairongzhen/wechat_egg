@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/public/css/weui.css" />
+    <link rel="stylesheet" href="/public/css/weui2.css" />
+    <link rel="stylesheet" href="/public/css/slider.css" />
+    <script src="/public/js/zepto.min.js"></script>
+    <script src="/public/js/picker.js"></script>
+    <script src="/public/js/RangeSlider.js"></script>
+    
+    <script>
+        $(function () {
+            $("#selectshowtype").picker({
+                title: "选择循环模式",
+                toolbarCloseText: '确定',
+                cols: [
+                    {
+                        textAlign: 'center',
+                        values: ["固定", "循环"],
+                        displayValues: ['固定', '循环'],
+                    }
+                ]
+            });
+
+            $("#selecttestmode").picker({
+                title: "选择测试模式",
+                toolbarCloseText: '确定',
+                cols: [
+                    {
+                        textAlign: 'center',
+                        values: ["产品", "测试"],
+                        displayValues: ['产品', '测试'],
+                    }
+                ]
+            });
+        });
+
+    </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            基本设置
+        </h1>
+        <p class="page-hd-desc">在此可设备固定模式时的亮度</p>
+    </div>
+    <form id="form">
+        <div class="weui_cells weui_cells_form ">
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">循环模式:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='selectshowtype' />
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">是否测试:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='selecttestmode' />
+                </div>
+            </div>
+            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第一排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                        <input type="range" name="points" min="0" max="100" step="any" id="rangerl1" />
+                        <input type="number" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第二排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl2" />
+                            <input type="number" id="txtl2" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第三排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl3" />
+                            <input type="number" id="txtl3" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第四排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl4" />
+                            <input type="number" id="txtl4" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第五排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl5" />
+                            <input type="number" id="txtl5" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第六排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl6" />
+                            <input type="number" id="txtl6" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+            <div class="weui_cell">
+                    <div class="weui_cell_hd"><label for="" class="weui_label">第七排:</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                            <input type="range" name="points" min="0" max="100" step="any" id="rangerl7" />
+                            <input type="number" id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    </div>
+            </div>
+        </div>
+
+        <div class="weui_btn_area">
+            <a id="reset" href="javascript:" class="weui_btn weui_btn_primary" onclick="document.getElementById('form').reset();">保存</a>
+        </div>
+    </form>
+    <script>
+       $.fn.RangeSlider = function (cfg) {
+            this.sliderCfg = {
+                min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
+                max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+                step: cfg && Number(cfg.step) ? cfg.step : 1,
+                callback: cfg && cfg.callback ? cfg.callback : null
+            };
+
+            var $input = $(this);
+            var min = this.sliderCfg.min;
+            var max = this.sliderCfg.max;
+            var step = this.sliderCfg.step;
+            var callback = this.sliderCfg.callback;
+
+            $input.attr('min', min)
+                .attr('max', max)
+                .attr('step', step);
+
+            $input.bind("input", function (e) {
+                $input.attr('value', this.value);
+                $input.css('background-size', this.value * 100.0 / max + '% 100%');
+
+                if ($.isFunction(callback)) {
+                    callback(this);
+                }
+            });
+        };
+
+        var change1 = function ($input) {
+            $("#txtl1").val($input.value);
+        }
+        var change2 = function ($input) {
+            $("#txtl2").val($input.value);
+        }
+        var change3 = function ($input) {
+            $("#txtl3").val($input.value);
+        }
+        var change4 = function ($input) {
+            $("#txtl4").val($input.value);
+        }
+        var change5 = function ($input) {
+            $("#txtl5").val($input.value);
+        }
+        var change6 = function ($input) {
+            $("#txtl6").val($input.value);
+        }
+        var change7 = function ($input) {
+            $("#txtl7").val($input.value);
+        }
+        $('#rangerl1').RangeSlider({ min: 0, max: 255, step: 1, callback: change1 });
+        $('#rangerl2').RangeSlider({ min: 0, max: 255, step: 1, callback: change2 });
+        $('#rangerl3').RangeSlider({ min: 0, max: 255, step: 1, callback: change3 });
+        $('#rangerl4').RangeSlider({ min: 0, max: 255, step: 1, callback: change4 });
+        $('#rangerl5').RangeSlider({ min: 0, max: 255, step: 1, callback: change5 });
+        $('#rangerl6').RangeSlider({ min: 0, max: 255, step: 1, callback: change6 });
+        $('#rangerl7').RangeSlider({ min: 0, max: 255, step: 1, callback: change7 });
+    </script>
+</body>
+
+</html>

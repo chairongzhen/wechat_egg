@@ -33,5 +33,6 @@ module.exports = app => {
   router.get("/getbindmachine",controller.pinopr.getbindmachine);
   router.get("/updatefixlight",controller.pinopr.updatefixlight);
   router.get("/binded",controller.setup.binded);
+  router.get("/basic",controller.pinopr.basic);
 
 };

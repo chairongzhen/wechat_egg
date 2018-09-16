@@ -63,6 +63,33 @@ class PinoprController extends Controller {
         }
         this.ctx.body = result;
     }
+
+    async basic() {
+        const ctx = this.ctx;
+        let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
+        let code = ctx.query.code;
+        const userinfores = await ctx.service.verify.getwechatuser(code);
+        
+        let userinfo = {
+            openid: userinfores.openid,
+            nickname: userinfores.nickname,
+            gender: userinfores.sex,
+            province: userinfores.province,
+            city: userinfores.city,
+            country: userinfores.country,
+            headimgurl: userinfores.headimgurl
+        }
+        await this.service.account.checkaccount(userinfo);
+        const bindedres = await this.service.account.getusermachine(userinfores.openid);
+        const machineinfo = await ctx.service.verify.verify(url);
+
+        let result = {
+            userinfo: userinfores,
+            machineinfo: machineinfo,
+            binddata: bindedres
+        }
+        await ctx.render('home/basic.html',result);
+    }
 }
 
 module.exports = PinoprController;

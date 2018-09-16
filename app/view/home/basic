@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>一键配置</title>
+        <link rel='stylesheet' type="text/css" href="/public/css/index.css" />        
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <link rel="stylesheet" type="text/ccss" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css"/>
+    </head>
+    <body ontouchstart>
+        <script type="text/javascript">
+            let signature = '{{ signature }}';
+            let nonceStr = '{{ noncestr }}';
+            let timestamp = '{{ timestamp }}';
+            let appId = '{{ appId }}';
+            let jsapi_ticket = '{{ jsapi_ticket }}';
+        </script>
+		<div class="weui_cells_title">基本设置</div>
+
+
+        <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+		
+	</body>
+</html>

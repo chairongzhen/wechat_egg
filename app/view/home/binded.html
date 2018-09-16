@@ -23,7 +23,7 @@
 			<!--Begin-->
 			<div class="listContext" id="listContext">
                 {% for item in binddata %}
-                <div class="list">
+                <div class="list" id="div{{item.mid}}">
 					<div class="sideslipBody">
 						<!--主题内容Begin-->
 						<div class="viewCon" style="border: 0px #0f0 solid;display: flex;padding-left: 12px;align-items: center;">
@@ -66,7 +66,7 @@
                     data: JSON.stringify(unbindinfo),
                     dataType: 'json',
                     success: (res)=>{
-                        alert(res);                     
+                        $("#div"+mid).remove();                    
                     }
                 });
 		}

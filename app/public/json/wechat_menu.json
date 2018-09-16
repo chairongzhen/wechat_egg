@@ -24,7 +24,15 @@
         {
             "type": "view", 
             "name": "远程控制", 
-            "url": "http://crz.natapp1.cc"
+            "sub_button":[{
+                "type": "view",
+                "name": "基本设置",
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/basic&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+            },{
+                "type": "view",
+                "name": "循环设置",
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+            }]            
         }
     ]
 }
