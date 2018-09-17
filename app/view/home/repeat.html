@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>循环设置</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/public/css/weui.css" />
+    <link rel="stylesheet" href="/public/css/weui2.css" />
+    <script src="/public/js/zepto.min.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/series-label.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+    <script type="text/javascript">
+        let signature = '{{ machineinfo.signature }}';
+        let nonceStr = '{{ machineinfo.noncestr }}';
+        let timestamp = '{{ machineinfo.timestamp }}';
+        let appId = '{{ machineinfo.appId }}';
+        let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
+    </script>
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            循环设置
+        </h1>
+        <p class="page-hd-desc">X轴为0~23时刻表,可通过点击X轴上的节点修改此时刻7路亮的显示状态</p>
+    </div>
+
+    <div id="container" style="height:400px"></div>
+    <script>
+        let l1 = '{{ repeatdata.t1 }}';
+        let l1arr = l1.split(',');
+        let l1res = [];
+        for(let i=0;i<l1arr.length-1;i++) {
+            l1res.push(parseInt(l1arr[i]));
+        }
+
+        let l2 = '{{ repeatdata.t2 }}';
+        let l2arr = l2.split(',');
+        let l2res = [];
+        for(let i=0;i<l2arr.length-1;i++) {
+            l2res.push(parseInt(l2arr[i]));
+        }
+
+        let l3 = '{{ repeatdata.t3 }}';
+        let l3arr = l3.split(',');
+        let l3res = [];
+        for(let i=0;i<l3arr.length-1;i++) {
+            l3res.push(parseInt(l3arr[i]));
+        }
+
+        let l4 = '{{ repeatdata.t4 }}';
+        let l4arr = l4.split(',');
+        let l4res = [];
+        for(let i=0;i<l4arr.length-1;i++) {
+            l4res.push(parseInt(l4arr[i]));
+        }
+
+        let l5 = '{{ repeatdata.t5 }}';
+        let l5arr = l5.split(',');
+        let l5res = [];
+        for(let i=0;i<l5arr.length-1;i++) {
+            l5res.push(parseInt(l5arr[i]));
+        }
+
+        let l6 = '{{ repeatdata.t6 }}';
+        let l6arr = l6.split(',');
+        let l6res = [];
+        for(let i=0;i<l6arr.length-1;i++) {
+            l6res.push(parseInt(l6arr[i]));
+        }
+
+        let l7 = '{{ repeatdata.t7 }}';
+        let l7arr = l7.split(',');
+        let l7res = [];
+        for(let i=0;i<l7arr.length-1;i++) {
+            l7res.push(parseInt(l7arr[i]));
+        }
+        
+
+        var chart = Highcharts.chart('container', {
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['0', '1', '2', '3', '4', '5',
+                    '6', '7', '8', '9', '10', '11',
+                    '12', '13', '14', '15', '16',
+                    '17', '18', '19', '20', '21', '22', '23']
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            plotOptions: {
+                series: {
+                    cursor: "pointer",
+                    events: {
+                        click: function (e) {
+                            //alert(e.point.category);
+                            chart.xAxis[0].addPlotLine({
+                                value: e.point.category,
+                                width: 2,
+                                color: '#00ff00',
+                                id: 'plot-line-1'
+                            });
+                            setTimeout(() => {
+                                //alert(e.point.category);
+                                window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeatdetail&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+                            }, 500)
+
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: '一',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l1res
+            }, {
+                name: '二',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l2res
+            }, {
+                name: '三',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l3res
+            }, {
+                name: '四',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l4res
+            }, {
+                name: '五',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l5res
+            }, {
+                name: '六',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l6res
+            }, {
+                name: '七',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l7res
+            }]
+        });
+        $(".highcharts-credits").remove();
+    </script>
+</body>
+
+</html>

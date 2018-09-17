@@ -28,7 +28,7 @@ module.exports = app =>{
         app.mqttclient.on("message",(topic,message)=>{
             if(topic == "esp32/online") {
                 //{mid:esp002,mac:30:AE:A4:1A:40:DC,ip:1711843520}
-                console.log('the mqtt message is: ',message);
+                // console.log('the mqtt message is: ',message);
                 let tempmessage = message.toString().replace("{","").replace("}","");
                 let machineinfo = {};
                 let ta = tempmessage.split(',');

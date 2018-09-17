@@ -1,9 +1,8 @@
 <!doctype html>
-<html>
-
+<html  lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>基本设置</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <link rel="stylesheet" href="/public/css/weui.css" />
     <link rel="stylesheet" href="/public/css/weui2.css" />
@@ -37,17 +36,43 @@
                     }
                 ]
             });
+            
+            $("#selectshowtype").val("{{basicres.showtype}}");
+            $("#selecttestmode").val("{{basicres.testmode}}");
+            
+            $("#rangerl1").val("{{basicres.l1}}");
+            $("#rangerl2").val("{{basicres.l2}}");
+            $("#rangerl3").val("{{basicres.l3}}");
+            $("#rangerl4").val("{{basicres.l4}}");
+            $("#rangerl5").val("{{basicres.l5}}");
+            $("#rangerl6").val("{{basicres.l6}}");
+            $("#rangerl7").val("{{basicres.l7}}");
+            
+            $("#txtl1").val("{{basicres.l1}}");
+            $("#txtl2").val("{{basicres.l2}}");
+            $("#txtl3").val("{{basicres.l3}}");
+            $("#txtl4").val("{{basicres.l4}}");
+            $("#txtl5").val("{{basicres.l5}}");
+            $("#txtl6").val("{{basicres.l6}}");
+            $("#txtl7").val("{{basicres.l7}}");
         });
-
+        
     </script>
 </head>
 
 <body ontouchstart style="background-color: #f8f8f8;">
+    <script type="text/javascript">
+        let signature = '{{ machineinfo.signature }}';
+        let nonceStr = '{{ machineinfo.noncestr }}';
+        let timestamp = '{{ machineinfo.timestamp }}';
+        let appId = '{{ machineinfo.appId }}';
+        let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
+    </script>
     <div class="page-hd">
         <h1 class="page-hd-title">
             基本设置
         </h1>
-        <p class="page-hd-desc">在此可设备固定模式时的亮度</p>
+        <p class="page-hd-desc">在此可设置固定模式时的亮度;亮度范围(0-255)</p>        
     </div>
     <form id="form">
         <div class="weui_cells weui_cells_form ">
@@ -70,56 +95,55 @@
                 <div class="weui_cell_hd"><label for="" class="weui_label">第一排:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                         <input type="range" name="points" min="0" max="100" step="any" id="rangerl1" />
-                        <input type="number" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                        <input type="number" onchange="txtl1change();" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                 </div>
             </div>
-
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第二排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl2" />
-                            <input type="number" id="txtl2" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl2change();"  id="txtl2" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第三排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl3" />
-                            <input type="number" id="txtl3" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl3change();"  id="txtl3" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第四排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl4" />
-                            <input type="number" id="txtl4" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl4change();"  id="txtl4" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第五排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl5" />
-                            <input type="number" id="txtl5" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl5change();"  id="txtl5" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第六排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl6" />
-                            <input type="number" id="txtl6" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl6change();"  id="txtl6" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
             <div class="weui_cell">
                     <div class="weui_cell_hd"><label for="" class="weui_label">第七排:</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
                             <input type="range" name="points" min="0" max="100" step="any" id="rangerl7" />
-                            <input type="number" id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                            <input type="number" onchange="txtl7change();"  id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
         </div>
 
         <div class="weui_btn_area">
-            <a id="reset" href="javascript:" class="weui_btn weui_btn_primary" onclick="document.getElementById('form').reset();">保存</a>
+            <a id="btnsave" class="weui_btn weui_btn_primary" onclick="save();">保存</a>
         </div>
     </form>
     <script>
@@ -151,6 +175,8 @@
             });
         };
 
+        
+
         var change1 = function ($input) {
             $("#txtl1").val($input.value);
         }
@@ -172,6 +198,93 @@
         var change7 = function ($input) {
             $("#txtl7").val($input.value);
         }
+
+        function txtl1change() {
+            let val = $("#txtl1").val();
+            $("#rangerl1").val(val);
+        }
+
+        function txtl2change() {
+            let val = $("#txtl2").val();
+            $("#rangerl2").val(val);
+        }
+
+        function txtl3change() {
+            let val = $("#txtl3").val();
+            $("#rangerl3").val(val);
+        }
+
+        function txtl4change() {
+            let val = $("#txtl4").val();
+            $("#rangerl4").val(val);
+        }
+
+        function txtl5change() {
+            let val = $("#txtl5").val();
+            $("#rangerl5").val(val);
+        }
+
+        function txtl6change() {
+            let val = $("#txtl6").val();
+            $("#rangerl6").val(val);
+        }
+
+        function txtl7change() {
+            let val = $("#txtl7").val();
+            $("#rangerl7").val(val);
+        }
+
+        function save() {
+            let openid = "{{basicres.openid}}";
+            let showtype = $("#selectshowtype").val() == "循环"?"repeat":"fix";
+            let testmode = $("#selecttestmode").val()=="测试"?"test":"production";
+            let l1 = $("#txtl1").val();
+            let l2 = $("#txtl2").val();
+            let l3 = $("#txtl3").val();
+            let l4 = $("#txtl4").val();
+            let l5 = $("#txtl5").val();
+            let l6 = $("#txtl6").val();
+            let l7 = $("#txtl7").val();
+            
+            let params = {
+                openid:openid,
+                showtype:showtype,
+                testmode:testmode,
+                l1:l1,
+                l2:l2,
+                l3:l3,
+                l4:l4,
+                l5:l5,
+                l6:l6,
+                l7:l7
+            }
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/updatebasicinfo",
+                data: JSON.stringify(params),
+                dataType: "json",
+                success: (res) =>{
+                    if(res) {
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json",
+                            url: "/updatefixlight",
+                            data: JSON.stringify(params),
+                            dataType: "json",
+                            success: (res) =>{
+                                if(res) {
+                                    alert("保存成功");
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+
+        }
+
         $('#rangerl1').RangeSlider({ min: 0, max: 255, step: 1, callback: change1 });
         $('#rangerl2').RangeSlider({ min: 0, max: 255, step: 1, callback: change2 });
         $('#rangerl3').RangeSlider({ min: 0, max: 255, step: 1, callback: change3 });

@@ -61,7 +61,7 @@ function generateLightData(tagsres) {
                 val.push(tagsres[i - 1].tagvalue);
                 val.push(tagsres[i].tagvalue);
             }
-            updatecontent(res, val,light);
+            updatecontent(res, val, light);
         }
 
         resolve(light);
@@ -127,7 +127,8 @@ class PinoprSerive extends Service {
         }
         let getsql = `SELECT
                             showtype,
-                            testmode
+                            testmode,
+                            t1,t2,t3,t4,t5,t6,t7
                         FROM
                             userlight
                         WHERE
@@ -138,6 +139,13 @@ class PinoprSerive extends Service {
         res.openid = openid;
         res.showtype = getres[0].showtype;
         res.testmode = getres[0].testmode;
+        res.l1 = getres[0].t1.split(',')[24];
+        res.l2 = getres[0].t2.split(',')[24];
+        res.l3 = getres[0].t3.split(',')[24];
+        res.l4 = getres[0].t4.split(',')[24];
+        res.l5 = getres[0].t5.split(',')[24];
+        res.l6 = getres[0].t6.split(',')[24];
+        res.l7 = getres[0].t7.split(',')[24];
         return res;
     }
 
@@ -200,30 +208,30 @@ class PinoprSerive extends Service {
 
         let checkpre = `select count(*) existcount from userlightdetails where openid= '${openid}' and lid = ${lid} and tag = 0`;
         let checkpreres = await this.app.mysql.query(checkpre);
-        
-        if(checkpreres[0].existcount == 0) {
+
+        if (checkpreres[0].existcount == 0) {
             let init1sql = `insert into userlightdetails (openid,lid,tag,tagvalue,createdate) values ('${openid}',${lid},0,0,now())`;
-           await this.app.mysql.query(init1sql);
+            await this.app.mysql.query(init1sql);
         }
 
         let checkbuf = `select count(*) existcount from userlightdetails where openid= '${openid}' and lid = ${lid} and tag = 23`;
         let checkbufres = await this.app.mysql.query(checkbuf);
-        if(checkbufres[0].existcount == 0) {
-           let init2sql = `insert into userlightdetails (openid,lid,tag,tagvalue,createdate) values ('${openid}',${lid},23,0,now())`;
-           await this.app.mysql.query(init2sql);
+        if (checkbufres[0].existcount == 0) {
+            let init2sql = `insert into userlightdetails (openid,lid,tag,tagvalue,createdate) values ('${openid}',${lid},23,0,now())`;
+            await this.app.mysql.query(init2sql);
         }
 
         if (tagresult) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${lid} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
             let lightres = await generateLightData(tagsres);
-            
+
             let content = "";
             for (let ta of lightres) {
                 content += ta;
                 content += ","
             }
-   
+
             let fixres = await this.getoriginlight(openid, lid);
             let fixarr = fixres.split(',');
             content += fixarr[24];
@@ -261,6 +269,17 @@ class PinoprSerive extends Service {
         return result;
     }
 
+    async getrepeatdata(openid) {
+        let getsql = `SELECT
+                    t1,t2,t3,t4,t5,t6,t7
+                FROM
+                    userlight
+                WHERE
+                    openid = '${openid}'
+                `;
+        const getres = await this.app.mysql.query(getsql);
+        return getres[0];
+    }
 }
 
 module.exports = PinoprSerive;

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>亮度设置</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/public/css/weui.css" />
+    <link rel="stylesheet" href="/public/css/weui2.css" />
+    <link rel="stylesheet" href="/public/css/slider.css" />
+    <script src="/public/js/zepto.min.js"></script>
+    <script src="/public/js/picker.js"></script>
+    <script src="/public/js/RangeSlider.js"></script>
+    <script>
+        $(function () {
+            $("#selecttimepoint").picker({
+                title: "选择时间点",
+                toolbarCloseText: '确定',
+                cols: [
+                    {
+                        textAlign: 'center',
+                        values: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                        displayValues: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+                    }
+                ]
+            });
+        });
+    </script>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+    <script type="text/javascript">
+        let signature = '{{ machineinfo.signature }}';
+        let nonceStr = '{{ machineinfo.noncestr }}';
+        let timestamp = '{{ machineinfo.timestamp }}';
+        let appId = '{{ machineinfo.appId }}';
+        let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
+    </script>
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            亮度设置
+        </h1>
+        <p class="page-hd-desc">设定选择时间点时亮度;亮度范围(0-255)</p>
+    </div>
+    <form id="form">
+        <div class="weui_cells weui_cells_form ">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">时间点</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='selecttimepoint' />
+                </div>
+            </div>
+            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第一排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl1" />
+                    <input type="number" onchange="txtl1change();" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第二排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl2" />
+                    <input type="number" onchange="txtl2change();" id="txtl2" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第三排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl3" />
+                    <input type="number" onchange="txtl3change();" id="txtl3" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第四排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl4" />
+                    <input type="number" onchange="txtl4change();" id="txtl4" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第五排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl5" />
+                    <input type="number" onchange="txtl5change();" id="txtl5" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第六排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl6" />
+                    <input type="number" onchange="txtl6change();" id="txtl6" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第七排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl7" />
+                    <input type="number" onchange="txtl7change();" id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_btn_area">
+            <a id="btnsave" class="weui_btn weui_btn_primary" onclick="save();">保存</a>
+        </div>
+    </form>
+    <script>
+        $.fn.RangeSlider = function (cfg) {
+            this.sliderCfg = {
+                min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
+                max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+                step: cfg && Number(cfg.step) ? cfg.step : 1,
+                callback: cfg && cfg.callback ? cfg.callback : null
+            };
+
+            var $input = $(this);
+            var min = this.sliderCfg.min;
+            var max = this.sliderCfg.max;
+            var step = this.sliderCfg.step;
+            var callback = this.sliderCfg.callback;
+
+            $input.attr('min', min)
+                .attr('max', max)
+                .attr('step', step);
+
+            $input.bind("input", function (e) {
+                $input.attr('value', this.value);
+                $input.css('background-size', this.value * 100.0 / max + '% 100%');
+
+                if ($.isFunction(callback)) {
+                    callback(this);
+                }
+            });
+        };
+
+        
+
+        var change1 = function ($input) {
+            $("#txtl1").val($input.value);
+        }
+        var change2 = function ($input) {
+            $("#txtl2").val($input.value);
+        }
+        var change3 = function ($input) {
+            $("#txtl3").val($input.value);
+        }
+        var change4 = function ($input) {
+            $("#txtl4").val($input.value);
+        }
+        var change5 = function ($input) {
+            $("#txtl5").val($input.value);
+        }
+        var change6 = function ($input) {
+            $("#txtl6").val($input.value);
+        }
+        var change7 = function ($input) {
+            $("#txtl7").val($input.value);
+        }
+
+        function txtl1change() {
+            let val = $("#txtl1").val();
+            $("#rangerl1").val(val);
+        }
+
+        function txtl2change() {
+            let val = $("#txtl2").val();
+            $("#rangerl2").val(val);
+        }
+
+        function txtl3change() {
+            let val = $("#txtl3").val();
+            $("#rangerl3").val(val);
+        }
+
+        function txtl4change() {
+            let val = $("#txtl4").val();
+            $("#rangerl4").val(val);
+        }
+
+        function txtl5change() {
+            let val = $("#txtl5").val();
+            $("#rangerl5").val(val);
+        }
+
+        function txtl6change() {
+            let val = $("#txtl6").val();
+            $("#rangerl6").val(val);
+        }
+
+        function txtl7change() {
+            let val = $("#txtl7").val();
+            $("#rangerl7").val(val);
+        }
+
+        function save() { 
+            let openid = "{{basicres.openid}}";
+            alert(openid);
+        }
+    </script>
+</body>
+</head>
