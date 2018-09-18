@@ -29,17 +29,18 @@ class PinoprController extends Controller {
 
     async updatelightdetail() {
         let result = false;
-        let lightinfo = {
-            openid: "123456",
-            lights: [{ lid: 1, tag: 20, tagvalue: 100 },
-            { lid: 2, tag: 20, tagvalue: 200 },
-            { lid: 3, tag: 20, tagvalue: 200 },
-            { lid: 4, tag: 20, tagvalue: 200 },
-            { lid: 5, tag: 20, tagvalue: 200 },
-            { lid: 6, tag: 20, tagvalue: 200 },
-            { lid: 7, tag: 20, tagvalue: 200 }]
-        }
-
+        // let lightinfo = {
+        //     openid: "123456",
+        //     lights: [{ lid: 1, tag: 20, tagvalue: 100 },
+        //     { lid: 2, tag: 20, tagvalue: 200 },
+        //     { lid: 3, tag: 20, tagvalue: 200 },
+        //     { lid: 4, tag: 20, tagvalue: 200 },
+        //     { lid: 5, tag: 20, tagvalue: 200 },
+        //     { lid: 6, tag: 20, tagvalue: 200 },
+        //     { lid: 7, tag: 20, tagvalue: 200 }]
+        // }
+        const ctx = this.ctx;
+        let lightinfo = ctx.request.body;
         let openid = lightinfo.openid;
         for (let ta of lightinfo.lights) {
             let lid = ta.lid;
@@ -148,6 +149,7 @@ class PinoprController extends Controller {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
         let code = ctx.query.code;
+        let tag = ctx.request.query.state;
         const userinfores = await ctx.service.verify.getwechatuser(code);
 
         let userinfo = {
@@ -161,13 +163,61 @@ class PinoprController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const machineinfo = await ctx.service.verify.verify(url);
+
+        const tagres = await ctx.service.pinopr.getrepeatdata(userinfo.openid);
+
+        let l1 = tagres.t1.split(',')[tag];
+        let l2 = tagres.t2.split(',')[tag];
+        let l3 = tagres.t3.split(',')[tag];
+        let l4 = tagres.t4.split(',')[tag];
+        let l5 = tagres.t5.split(',')[tag];
+        let l6 = tagres.t6.split(',')[tag];
+        let l7 = tagres.t7.split(',')[tag];
+
+        let tagvalues = {
+            l1: l1,
+            l2: l2,
+            l3: l3,
+            l4: l4,
+            l5: l5,
+            l6: l6,
+            l7: l7
+        }
+
         let result = {
             userinfo: userinfores,
-            machineinfo: machineinfo
+            machineinfo: machineinfo,
+            tag: tag,
+            tagvalues: tagvalues
         }
         await ctx.render('home/repeatdetail.html', result);
     }
 
+
+    async gettagvalue() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let tag = ctx.request.body.tag;
+        const tagres = await ctx.service.pinopr.getrepeatdata(openid);
+        let l1 = tagres.t1.split(',')[tag];
+        let l2 = tagres.t2.split(',')[tag];
+        let l3 = tagres.t3.split(',')[tag];
+        let l4 = tagres.t4.split(',')[tag];
+        let l5 = tagres.t5.split(',')[tag];
+        let l6 = tagres.t6.split(',')[tag];
+        let l7 = tagres.t7.split(',')[tag];
+        let result = {
+            l1: l1,
+            l2: l2,
+            l3: l3,
+            l4: l4,
+            l5: l5,
+            l6: l6,
+            l7: l7
+        }
+        ctx.body = { result };
+        ctx.status = 201;
+    }
 }
 
 module.exports = PinoprController;

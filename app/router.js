@@ -29,11 +29,12 @@ module.exports = app => {
   router.get("/getmacip",controller.account.getmacip);
   router.get("/getbasicinfo",controller.pinopr.getbasicinfo);
   router.post("/updatebasicinfo",controller.pinopr.updatebasicinfo);
-  router.get("/updatelightdetail",controller.pinopr.updatelightdetail);
+  router.post("/updatelightdetail",controller.pinopr.updatelightdetail);
   router.get("/getbindmachine",controller.pinopr.getbindmachine);
   router.post("/updatefixlight",controller.pinopr.updatefixlight);
   router.get("/binded",controller.setup.binded);
   router.get("/basic",controller.pinopr.basic);
   router.get("/repeat",controller.pinopr.repeat);
   router.get("/repeatdetail",controller.pinopr.repeatdetail);
+  router.post("/gettagvalue",controller.pinopr.gettagvalue);
 };

@@ -12,7 +12,7 @@
     <script src="/public/js/picker.js"></script>
     <script src="/public/js/RangeSlider.js"></script>
     <script>
-        $(function () {
+        $(function () {            
             $("#selecttimepoint").picker({
                 title: "选择时间点",
                 toolbarCloseText: '确定',
@@ -46,7 +46,7 @@
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label for="" class="weui_label">时间点</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" value="" id='selecttimepoint' />
+                    <input class="weui_input" type="text" onchange="tagchange();" value="" id='selecttimepoint' />
                 </div>
             </div>
             
@@ -54,7 +54,7 @@
                 <div class="weui_cell_hd"><label for="" class="weui_label">第一排:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input type="range" name="points" min="0" max="100" step="any" id="rangerl1" />
-                    <input type="number" onchange="txtl1change();" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                    <input type="number" onchange="txtl1change();" value="100" id="txtl1" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                 </div>
             </div>
             <div class="weui_cell">
@@ -103,6 +103,7 @@
 
         <div class="weui_btn_area">
             <a id="btnsave" class="weui_btn weui_btn_primary" onclick="save();">保存</a>
+            <a id="btnback" class="weui_btn weui_btn_default" onclick="back();">返回</a>
         </div>
     </form>
     <script>
@@ -194,9 +195,119 @@
         }
 
         function save() { 
-            let openid = "{{basicres.openid}}";
-            alert(openid);
+            let openid = "{{userinfo.openid}}";
+            let lightinfo = {
+                openid: "{{userinfo.openid}}",
+                lights: [{lid: 1,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl1").val()},
+                         {lid: 2,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl2").val()},
+                         {lid: 3,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl3").val()},
+                         {lid: 4,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl4").val()},
+                         {lid: 5,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl5").val()},
+                         {lid: 6,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl6").val()},
+                         {lid: 7,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl7").val()}]
+            }
+            $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/updatelightdetail",
+                    data: JSON.stringify(lightinfo),
+                    dataType: 'json',
+                    success: (res)=>{
+                        alert(res==true?"保存成功":"保存失败");                
+                    }
+                });
         }
+        
+        function back() {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        }
+
+        function tagchange() {
+            //alert($("#selecttimepoint").val());
+            //gettagvalue
+            let params = {
+                openid:  "{{userinfo.openid}}",
+                tag: $("#selecttimepoint").val()
+            }
+            $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/gettagvalue",
+                    data: JSON.stringify(params),
+                    dataType: 'json',
+                    success: (res)=>{
+                        let cl1 = res.result.l1;
+                        cl1 = Number(cl1);
+                        let cl2 = res.result.l2;
+                        cl2 = Number(cl2);
+                        let cl3 = res.result.l3;
+                        cl3 = Number(cl3);
+                        let cl4 = res.result.l4;
+                        cl4 = Number(cl4);
+                        let cl5 = res.result.l5;
+                        cl5 = Number(cl5);
+                        let cl6 = res.result.l6;
+                        cl6 = Number(cl6);
+                        let cl7 = res.result.l7;
+                        cl7 = Number(cl7);
+                        $("#txtl1").val(cl1);
+                        $("#txtl2").val(cl2);
+                        $("#txtl3").val(cl3);
+                        $("#txtl4").val(cl4);
+                        $("#txtl5").val(cl5);
+                        $("#txtl6").val(cl6);
+                        $("#txtl7").val(cl7);
+                        $("#rangerl1").val(cl1);
+                        $("#rangerl2").val(cl2);
+                        $("#rangerl3").val(cl3);
+                        $("#rangerl4").val(cl4);
+                        $("#rangerl5").val(cl5);
+                        $("#rangerl6").val(cl6);
+                        $("#rangerl7").val(cl7);
+                    }
+                });
+        }
+
+        $('#rangerl1').RangeSlider({ min: 0, max: 255, step: 1, callback: change1 });
+        $('#rangerl2').RangeSlider({ min: 0, max: 255, step: 1, callback: change2 });
+        $('#rangerl3').RangeSlider({ min: 0, max: 255, step: 1, callback: change3 });
+        $('#rangerl4').RangeSlider({ min: 0, max: 255, step: 1, callback: change4 });
+        $('#rangerl5').RangeSlider({ min: 0, max: 255, step: 1, callback: change5 });
+        $('#rangerl6').RangeSlider({ min: 0, max: 255, step: 1, callback: change6 });
+        $('#rangerl7').RangeSlider({ min: 0, max: 255, step: 1, callback: change7 });
+
+        $("#selecttimepoint").val("{{tag}}");
+        let l1res = "{{tagvalues.l1}}";
+        l1res = Number(l1res);
+        $("#txtl1").val(l1res);
+        let l2res = "{{tagvalues.l2}}";
+        l2res = Number(l2res);
+        $("#txtl2").val(l2res);
+        let l3res = "{{tagvalues.l3}}";
+        l3res = Number(l3res);
+        $("#txtl3").val(l3res);
+        let l4res = "{{tagvalues.l4}}";
+        l4res = Number(l4res);
+        $("#txtl4").val(l4res);
+        let l5res = "{{tagvalues.l5}}";
+        l5res = Number(l5res);
+        $("#txtl5").val(l5res);
+        let l6res = "{{tagvalues.l6}}";
+        l6res = Number(l6res);
+        $("#txtl6").val(l6res);
+        let l7res = "{{tagvalues.l7}}";
+        l7res = Number(l7res);
+        $("#txtl7").val(l7res);
+
+
+        $("#rangerl1").val("{{tagvalues.l1}}");
+        $("#rangerl2").val("{{tagvalues.l2}}");
+        $("#rangerl3").val("{{tagvalues.l3}}");
+        $("#rangerl4").val("{{tagvalues.l4}}");
+        $("#rangerl5").val("{{tagvalues.l5}}");
+        $("#rangerl6").val("{{tagvalues.l6}}");
+        $("#rangerl7").val("{{tagvalues.l7}}");
+
     </script>
 </body>
 </head>
