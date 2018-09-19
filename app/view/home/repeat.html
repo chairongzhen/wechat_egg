@@ -114,7 +114,7 @@
                             chart.xAxis[0].addPlotLine({
                                 value: e.point.category,
                                 width: 2,
-                                color: '#00ff00',
+                                color: '#666666',
                                 id: 'plot-line-1'
                             });
                             setTimeout(() => {
@@ -170,6 +170,17 @@
                 data: l7res
             }]
         });
+
+        let modifytag = "{{modifytag}}";
+        let marr = modifytag.split(',');
+        for(let ta of marr) {
+            chart.xAxis[0].addPlotLine({
+                value: ta,
+                width: 2,
+                color: 'green',
+                id: 'plot-line-1'
+            });
+        }
         $(".highcharts-credits").remove();
     </script>
 </body>

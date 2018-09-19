@@ -137,10 +137,26 @@ class PinoprController extends Controller {
         await this.service.account.checkaccount(userinfo);
         const machineinfo = await ctx.service.verify.verify(url);
         const repeatdata = await this.service.pinopr.getrepeatdata(userinfo.openid);
+        const modifydata = await this.service.pinopr.getmodifystamp(userinfo.openid);
+        let modifytag = "";
+        for(let ta of modifydata) {
+            if(ta.tag ==0 && ta.tagvalue ==0) {
+                continue;
+            }else if(ta.tag == 23 && ta.tagvalue ==0) {                
+                continue;
+            } else {
+                modifytag += ta.tag;
+                modifytag += ",";
+            }            
+        }
+        if(modifytag.length >2) {
+            modifytag = modifytag.substring(0,modifytag.length-1);
+        }
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
-            repeatdata: repeatdata
+            repeatdata: repeatdata,
+            modifytag: modifytag
         }
         await ctx.render('home/repeat.html', result);
     }

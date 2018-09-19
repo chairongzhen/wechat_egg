@@ -42,6 +42,11 @@ module.exports = app =>{
                         }
                         console.log("mqtt online notify",machineinfo);
                         ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip);
+                        
+                        let timestamp = Date.now()/1000|0;
+                        app.mqttclient.publish("esp32/checktime",timestamp.toString());
+                        
+
                     } catch(e) {
                         console.log("mqtt online error");
                         console.log(e,tempmessage);
@@ -50,9 +55,7 @@ module.exports = app =>{
                 } else {
                     console.log("mqtt online error");
                     console.log(tempmessage);
-                }
-
-                
+                }                
             }
         });
 

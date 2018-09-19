@@ -280,6 +280,19 @@ class PinoprSerive extends Service {
         const getres = await this.app.mysql.query(getsql);
         return getres[0];
     }
+
+    async getmodifystamp(openid) {
+        let getsql = `SELECT
+                        tag,tagvalue
+                    FROM
+                        userlightdetails
+                    WHERE
+                        openid = '${openid}'
+                    AND lid = 1
+                    order by tag`;
+        const getres = await this.app.mysql.query(getsql);
+        return getres;
+    }
 }
 
 module.exports = PinoprSerive;
