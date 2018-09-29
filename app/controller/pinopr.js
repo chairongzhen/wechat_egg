@@ -200,11 +200,13 @@ class PinoprController extends Controller {
             l7: l7
         }
 
+        const hightag = await this.service.pinopr.candelete(userinfo.openid,tag);
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
             tag: tag,
-            tagvalues: tagvalues
+            tagvalues: tagvalues,
+            hightag: hightag
         }
         await ctx.render('home/repeatdetail.html', result);
     }
@@ -233,6 +235,35 @@ class PinoprController extends Controller {
         }
         ctx.body = { result };
         ctx.status = 201;
+    }
+
+    async candelete() {
+        const ctx = this.ctx;
+        let openid = "o9Ruz0iGzFv0VhAiKr6xeIM9ivOA";
+        let tag = 15;
+
+        const result = await this.service.pinopr.candelete(openid,tag);
+        ctx.body = result;
+        ctx.status = 201;
+    }
+
+    async deletetag() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let tag = ctx.request.body.tag;
+        
+        const result = await this.service.pinopr.deletetag(openid,tag);
+        ctx.body = { result }
+        ctx.status = 201;
+    }
+
+    async checktagvalue() {
+        const ctx = this.ctx;
+        let openid = "o9Ruz0k6t7SJYZgV358z-CcqUjGc";
+        const result = await this.service.pinopr.checktagvalue(openid);
+        ctx.body = { result }
+        ctx.status = 201;
+
     }
 }
 

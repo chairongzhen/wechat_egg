@@ -12,6 +12,7 @@ const Service = require('egg').Service;
 // }
 
 function updatecontent(arr, val, light) {
+    
     let length = arr.length;
     light[arr[length - 1]] = val[1];
     let diff = 0;
@@ -26,9 +27,8 @@ function updatecontent(arr, val, light) {
         diff = val[0] - val[1];
         perval = diff / length | 0;
         for (let i = 0; i < length - 1; i++) {
-            light[arr[i]] = (perval * (length - i));
+            light[arr[i]] = (perval * (length - i)) + val[1] - perval;
         }
-        light[arr[length - 1]] = val[1];
     } else {
         for (let i = 0; i < length; i++) {
             light[arr[i]] = val[0];
@@ -292,6 +292,100 @@ class PinoprSerive extends Service {
                     order by tag`;
         const getres = await this.app.mysql.query(getsql);
         return getres;
+    }
+
+    async candelete(openid,tag) {
+        let result = false;
+        let getsql = `SELECT
+                            tag,tagvalue
+                        FROM
+                            userlightdetails
+                        WHERE
+                            openid = '${openid}'
+                        AND lid = 1
+                        AND tag = ${tag}`;
+        const getres = await this.app.mysql.query(getsql);
+        if(getres.length> 0) {
+            for(let ta of getres) {
+                if(ta.tag == 0 && ta.tagvalue ==0) {
+                    result = false;
+                } else if(ta.tag ==23 && ta.tagvalue==0) {
+                    result = false;
+                } else {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    async deletetag(openid,tag) {
+        
+        let sql = '';
+        if(tag == 0 || tag == 23) {
+            sql = `update userlightdetails set tagvalue= 0 where openid = '${openid}' and tag = ${tag} `
+        } else {
+            sql = `delete from userlightdetails where openid = '${openid}' and tag = ${tag}`;
+        }
+        await this.app.mysql.query(sql);
+
+        for(let i=1;i<=7;i++) {
+            let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
+            let tagsres = await this.app.mysql.query(tagssql);
+            let lightres = await generateLightData(tagsres);
+
+            let content = "";
+            for (let ta of lightres) {
+                content += ta;
+                content += ","
+            }
+
+            let fixres = await this.getoriginlight(openid, i);
+            let fixarr = fixres.split(',');
+            content += fixarr[24];
+            //content += 0;
+            let updstr = `update userlight set t${i} = '${content}' where openid = '${openid}'`;
+            let onlinemac = await this.getbindmachine(openid);
+            for (let ta of onlinemac) {
+                let sender = ta + "/p";
+                sender = sender + i.toString();
+                await this.ctx.app.mqttclient.publish(sender, content);
+            }
+            this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
+        }
+        
+        return true;
+    }
+
+    async checktagvalue(openid) {
+        for(let i=1;i<=7;i++) {
+            console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',i);
+            let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
+            let tagsres = await this.app.mysql.query(tagssql);
+            let lightres = await generateLightData(tagsres);
+
+            let content = "";
+            for (let ta of lightres) {
+                content += ta;
+                content += ","
+            }
+
+            let fixres = await this.getoriginlight(openid, i);
+            let fixarr = fixres.split(',');
+            content += fixarr[24];
+            //content += 0;
+            let updstr = `update userlight set t${i} = '${content}' where openid = '${openid}'`;
+            let onlinemac = await this.getbindmachine(openid);
+            for (let ta of onlinemac) {
+                let sender = ta + "/p";
+                sender = sender + i.toString();
+                await this.ctx.app.mqttclient.publish(sender, content);
+            }
+            this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
+        }
+
+        return true;
     }
 }
 

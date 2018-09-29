@@ -10,7 +10,6 @@
     <script src="/public/js/zepto.min.js"></script>
     <script src="/public/js/picker.js"></script>
     <script src="/public/js/RangeSlider.js"></script>
-    
     <script>
         $(function () {
             $("#selectshowtype").picker({
@@ -59,8 +58,6 @@
         
     </script>
 </head>
-
-<body ontouchstart style="background-color: #f8f8f8;">
     <script type="text/javascript">
         let signature = '{{ machineinfo.signature }}';
         let nonceStr = '{{ machineinfo.noncestr }}';
@@ -146,6 +143,7 @@
             <a id="btnsave" class="weui_btn weui_btn_primary" onclick="save();">保存</a>
         </div>
     </form>
+    
     <script>
        $.fn.RangeSlider = function (cfg) {
             this.sliderCfg = {
@@ -265,6 +263,9 @@
                 url: "/updatebasicinfo",
                 data: JSON.stringify(params),
                 dataType: "json",
+                beforeSend: function(XMLHttpRequest) {
+                   
+                },
                 success: (res) =>{
                     if(res) {
                         $.ajax({
@@ -273,6 +274,9 @@
                             url: "/updatefixlight",
                             data: JSON.stringify(params),
                             dataType: "json",
+                            beforeSend: function() {
+                                
+                            },
                             success: (res) =>{
                                 if(res) {
                                     alert("保存成功");

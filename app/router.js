@@ -37,4 +37,7 @@ module.exports = app => {
   router.get("/repeat",controller.pinopr.repeat);
   router.get("/repeatdetail",controller.pinopr.repeatdetail);
   router.post("/gettagvalue",controller.pinopr.gettagvalue);
+  router.get("/candelete",controller.pinopr.candelete);
+  router.post("/deletetag",controller.pinopr.deletetag);
+  router.get("/checktagvalue",controller.pinopr.checktagvalue);
 };

@@ -25,6 +25,8 @@
                 ]
             });
         });
+
+        
     </script>
 
 <body ontouchstart style="background-color: #f8f8f8;">
@@ -103,6 +105,7 @@
 
         <div class="weui_btn_area">
             <a id="btnsave" class="weui_btn weui_btn_primary" onclick="save();">保存</a>
+            <a id="btndel" class="weui_btn weui_btn_warn" onclick="del();">删除</a>
             <a id="btnback" class="weui_btn weui_btn_default" onclick="back();">返回</a>
         </div>
     </form>
@@ -308,6 +311,32 @@
         $("#rangerl6").val("{{tagvalues.l6}}");
         $("#rangerl7").val("{{tagvalues.l7}}");
 
+
+        let hightag = "{{hightag}}"
+        if(hightag == "true") {
+            $("#btndel").show();
+        } else {
+            $("#btndel").hide();
+        }
+        
+        function del() {
+            let delinfo = {
+                openid: "{{userinfo.openid}}",
+                tag: $("#selecttimepoint").val()
+            }
+            
+            $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/deletetag",
+                    data: JSON.stringify(delinfo),
+                    dataType: 'json',
+                    success: (res)=>{
+                        alert(res.result == true?"删除成功":"删除失败");
+                        window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";                
+                    }
+                });
+        }
     </script>
 </body>
 </head>
