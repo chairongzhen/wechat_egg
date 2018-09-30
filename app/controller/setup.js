@@ -31,7 +31,9 @@ class SetupController extends Controller {
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
-            binddata: bindedres
+            binddata: bindedres,
+            domain: this.config.wechat.domain,
+            appid: this.config.wechat.appid
         }
         await ctx.render('home/scan.html',result);
     }

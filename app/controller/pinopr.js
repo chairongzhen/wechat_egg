@@ -156,7 +156,9 @@ class PinoprController extends Controller {
             userinfo: userinfores,
             machineinfo: machineinfo,
             repeatdata: repeatdata,
-            modifytag: modifytag
+            modifytag: modifytag,
+            domain: this.config.wechat.domain,
+            appid: this.config.wechat.appid
         }
         await ctx.render('home/repeat.html', result);
     }
@@ -206,7 +208,9 @@ class PinoprController extends Controller {
             machineinfo: machineinfo,
             tag: tag,
             tagvalues: tagvalues,
-            hightag: hightag
+            hightag: hightag,
+            domain: this.config.wechat.domain,
+            appid: this.config.wechat.appid
         }
         await ctx.render('home/repeatdetail.html', result);
     }

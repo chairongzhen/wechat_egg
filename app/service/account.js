@@ -123,7 +123,7 @@ class AccountSerive extends Service {
             let addsql = `insert into machinelog (mid,ip,updatetime) values ('${mid}','${ip}',now())`;
             result = await this.app.mysql.query(addsql).affectedRows ==0?false:true;
         } else {
-            let updsql = `update machinelog set ip = '${ip}' where mid = '${mid}'`;
+            let updsql = `update machinelog set ip = '${ip}',updatetime = now() where mid = '${mid}'`;
             result = await this.app.mysql.query(updsql).affectedRows ==0?false:true;
         }
         return result;

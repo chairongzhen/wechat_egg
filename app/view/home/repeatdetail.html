@@ -222,7 +222,7 @@
         }
         
         function back() {
-            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         }
 
         function tagchange() {
@@ -333,7 +333,7 @@
                     dataType: 'json',
                     success: (res)=>{
                         alert(res.result == true?"删除成功":"删除失败");
-                        window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";                
+                        window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";                
                     }
                 });
         }

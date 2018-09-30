@@ -23,7 +23,8 @@ module.exports = appInfo => {
     noncestr: '160303',
     accessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
     ticketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
-    cache_duration: 1000*60*60*24
+    cache_duration: 1000*60*60*24,
+    domain: 'crz.natapp1.cc'
   }
    
   config.view = {
@@ -45,8 +46,8 @@ module.exports = appInfo => {
       client: {
         // host
         //host: '192.168.8.102',
-        //host: '192.168.31.127',
-        host: localhost,
+        host: '192.168.31.127',
+        //host: '127.0.0.1',
         // 端口号
         port: '3306',
         // 用户名

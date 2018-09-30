@@ -101,7 +101,9 @@ wx.ready(function(){
     });
 
     $("#btnBinded").click(()=>{
-        window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        let domain = $("#btnBinded").attr("data-domain");
+        let appid = $("#btnBinded").attr("data-appid");
+        window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http://" + domain + "/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
     });
 });
 
