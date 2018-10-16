@@ -40,4 +40,6 @@ module.exports = app => {
   router.get("/candelete",controller.pinopr.candelete);
   router.post("/deletetag",controller.pinopr.deletetag);
   router.get("/checktagvalue",controller.pinopr.checktagvalue);
+  router.get("/dislog",controller.account.dislog);
+  router.get("/checkonline",controller.account.checkonline);
 };

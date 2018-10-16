@@ -46,10 +46,11 @@ module.exports = appInfo => {
       client: {
         // host
         //host: '192.168.8.102',
-        host: '192.168.31.127',
-        //host: '127.0.0.1',
+        //host: '192.168.31.127',
+        host: '127.0.0.1',
         // 端口号
-        port: '3306',
+        //port: '3306',
+        port: '8888',
         // 用户名
         user: 'root',
         // 密码

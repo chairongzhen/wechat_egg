@@ -25,6 +25,8 @@ module.exports = app =>{
         app.mqttclient = mqtt.connect(url,options);
 
         app.mqttclient.subscribe("esp32/online");
+        app.mqttclient.subscribe("esp32/heart");
+        app.mqttclient.subscribe("esp32/disnotify");
         app.mqttclient.on("message",(topic,message)=>{
             if(topic == "esp32/online") {
                 //{mid:esp002,mac:30:AE:A4:1A:40:DC,ip:1711843520}
@@ -44,7 +46,9 @@ module.exports = app =>{
                         ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip);
                         
                         let timestamp = Date.now()/1000|0;
-                        app.mqttclient.publish("esp32/checktime",timestamp.toString());
+                        app.mqttclient.publish("esp32/checktime",timestamp.toString(),{
+                            qos: 2
+                        });
                         
 
                     } catch(e) {
@@ -56,7 +60,14 @@ module.exports = app =>{
                     console.log("mqtt online error");
                     console.log(tempmessage);
                 }                
+            } else if(topic == "esp32/heart") {
+                console.log("mqtt heart test",message.toString(),"is alive");
+                ctx.service.account.checkonline(message.toString());
+            } else if(topic == "esp32/disnotify") {
+                console.log("mqtt disconnect notify: ",message.toString());
+                ctx.service.account.dislog(message.toString());
             }
+            
         });
 
     });

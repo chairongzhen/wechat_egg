@@ -55,12 +55,21 @@ class SetupController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const bindedres = await this.service.account.getusermachine(userinfores.openid);
+        let res = [];
+        for(let ta of bindedres) {
+            let bindma = {
+                mid: ta.mid,
+                ip: ta.ip,
+                online: ta.online ==0?"离线":"在线" 
+            }
+            res.push(bindma);
+        }
         const machineinfo = await ctx.service.verify.verify(url);
 
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
-            binddata: bindedres
+            binddata: res
         }
         await ctx.render('home/binded.html',result);
     }

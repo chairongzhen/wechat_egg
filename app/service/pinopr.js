@@ -161,11 +161,11 @@ class PinoprSerive extends Service {
         let timestamp = Date.now() / 1000 | 0;
         let timestampstr = timestamp.toString();
         let tpl_basic = `{\"showtype\":\"${showtype}\","testmode":\"${testmode}\","sysdate":\"${timestampstr}\",\"status\":\"stop\",\"conmode\": \"local\"}`;
-
+        
         let onlinemac = await this.getbindmachine(openid);
         for (let ta of onlinemac) {
             let sender = ta + "/p";
-            await this.ctx.app.mqttclient.publish(sender, tpl_basic);
+            await this.ctx.app.mqttclient.publish(sender, tpl_basic,{qos:2});
         }
         return result.affectedRows == 0 ? false : true;
     }
@@ -241,7 +241,7 @@ class PinoprSerive extends Service {
             for (let ta of onlinemac) {
                 let sender = ta + "/p";
                 sender = sender + lid.toString();
-                await this.ctx.app.mqttclient.publish(sender, content);
+                await this.ctx.app.mqttclient.publish(sender, content,{qos:2});
             }
             result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         }
@@ -263,7 +263,7 @@ class PinoprSerive extends Service {
         for (let ta of onlinemac) {
             let sender = ta + "/p";
             sender = sender + lid.toString();
-            await this.ctx.app.mqttclient.publish(sender, content);
+            await this.ctx.app.mqttclient.publish(sender, content,{qos: 2});
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         return result;
@@ -350,7 +350,7 @@ class PinoprSerive extends Service {
             for (let ta of onlinemac) {
                 let sender = ta + "/p";
                 sender = sender + i.toString();
-                await this.ctx.app.mqttclient.publish(sender, content);
+                await this.ctx.app.mqttclient.publish(sender, content,{qos:2});
             }
             this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         }
@@ -360,7 +360,6 @@ class PinoprSerive extends Service {
 
     async checktagvalue(openid) {
         for(let i=1;i<=7;i++) {
-            console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',i);
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
             let lightres = await generateLightData(tagsres);
@@ -380,7 +379,7 @@ class PinoprSerive extends Service {
             for (let ta of onlinemac) {
                 let sender = ta + "/p";
                 sender = sender + i.toString();
-                await this.ctx.app.mqttclient.publish(sender, content);
+                await this.ctx.app.mqttclient.publish(sender, content,{qos:2});
             }
             this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         }

@@ -129,6 +129,24 @@ class AccountSerive extends Service {
         return result;
     }
 
+    async dislog(mid) {
+        let newsql = `insert into disconnectlog (mid,disconnectdate) values ('${mid}',now())`;
+        await this.app.mysql.query(newsql);
+        return true;
+    }
+
+    async checkonline(mid) {
+        let checksql = `update usermachines set online = 1 where mid = '${mid}'`;
+        await this.app.mysql.query(checksql);
+        return true;
+    }
+
+    async offline() {
+        let offlinesql = `update usermachines set online = 0`;
+        await this.app.mysql.query(offlinesql);
+        return true;
+    }
+
     async getmacip(mid) {
         let result = null;
         let checksql = `select count(*) existcount from machinelog where mid = '${mid}'`;
@@ -144,7 +162,7 @@ class AccountSerive extends Service {
     }
 
     async getusermachine(openid) {
-        let getsql = `select mid,ip from usermachines where openid = '${openid}'`;
+        let getsql = `select mid,ip,online from usermachines where openid = '${openid}'`;
         const result = await this.app.mysql.query(getsql);
         return result;
     }

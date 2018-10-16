@@ -98,6 +98,18 @@ class AccountController extends Controller {
         this.ctx.body = result;
     }
 
+    async dislog() {
+        let mid = "esp004";
+        const result = await this.service.account.dislog(mid);
+        this.ctx.body = result;
+    }
+
+    async checkonline() {
+        let mid = "esp004";
+        const result = await this.service.account.checkonline(mid);
+        this.ctx.body = result;
+    }
+
     async getmacip() {
         let mid = "esp002";
         const result = await this.service.account.getmacip(mid);
