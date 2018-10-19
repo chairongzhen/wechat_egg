@@ -39,8 +39,21 @@
 								<img src="/public/png/lm.png" width="100%" height="100%"/>
 							</div>
 							<div style="margin-left: 10px;">
-								<p style="margin: 0;">{{item.mid}}</p>
-								<p style="color: #8f8f94;margin: 0;">{{item.online}}</p>
+								{% if item.online == "在线" %}
+									<p style="margin: 0;">{{item.mid}}</p>
+								{% else %}
+									<p style="color:grey;margin: 0;">[{{item.mid}}]</p>
+								{% endif %}
+								
+								{% if item.online == "在线" %}
+									<p style="margin: 0;font-size:6pt">
+										<a href="http://{{item.ip}}">{{item.ip}} (仅限局域网内可访问)</a>
+									</p>
+								{% else %}
+									<p style="color: grey;margin: 0; font-size:6pt">
+										{{item.online}}
+									</p>
+								{% endif %}
 							</div>
 						</div>					
 						<!--主题内容End-->

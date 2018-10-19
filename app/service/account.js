@@ -118,6 +118,8 @@ class AccountSerive extends Service {
     async updatemlog(mid,ip) {
         let checksql = `select count(*) existcount from machinelog where mid = '${mid}'`;
         const existres = await this.app.mysql.query(checksql);
+        const ipsql = `update usermachines set ip = '${ip}' where mid = '${mid}'`;
+        await this.app.mysql.query(ipsql);
         let result = null;
         if(existres[0].existcount == 0) {
             let addsql = `insert into machinelog (mid,ip,updatetime) values ('${mid}','${ip}',now())`;
@@ -128,6 +130,7 @@ class AccountSerive extends Service {
         }
         return result;
     }
+ 
 
     async dislog(mid) {
         let newsql = `insert into disconnectlog (mid,disconnectdate) values ('${mid}',now())`;
