@@ -61,7 +61,7 @@ module.exports = app =>{
                     console.log(tempmessage);
                 }                
             } else if(topic == "esp32/heart") {
-                console.log("mqtt heart test",message.toString(),"is alive");
+                //console.log("mqtt heart test",message.toString(),"is alive");
                 ctx.service.account.checkonline(message.toString());
             } else if(topic == "esp32/disnotify") {
                 console.log("mqtt disconnect notify: ",message.toString());

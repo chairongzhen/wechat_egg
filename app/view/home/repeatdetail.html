@@ -48,6 +48,7 @@
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label for="" class="weui_label">时间点</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
+                    <input type="hidden" id="hidselecttimepoint" />
                     <input class="weui_input" type="text" onchange="tagchange();" value="" id='selecttimepoint' />
                 </div>
             </div>
@@ -110,6 +111,32 @@
         </div>
     </form>
     <script>
+        let TIMEDEFINE =
+            ["0:00", "0:10", "0:20", "0:30", "0:40", "0:50",
+                "1:00", "1:10", "1:20", "1:30", "1:40", "1:50",
+                "2:00", "2:10", "2:20", "2:30", "2:40", "2:50",
+                "3:00", "3:10", "3:20", "3:30", "3:40", "3:50",
+                "4:00", "4:10", "4:20", "4:30", "4:40", "4:50",
+                "5:00", "5:10", "5:20", "5:30", "5:40", "5:50",
+                "6:00", "6:10", "6:20", "6:30", "6:40", "6:50",
+                "7:00", "7:10", "7:20", "7:30", "7:40", "7:50",
+                "8:00", "8:10", "8:20", "8:30", "8:40", "8:50",
+                "9:00", "9:10", "9:20", "9:30", "9:40", "9:50",
+                "10:00", "10:10", "10:20", "10:30", "10:40", "10:50",
+                "11:00", "11:10", "11:20", "11:30", "11:40", "11:50",
+                "12:00", "12:10", "12:20", "12:30", "12:40", "12:50",
+                "13:00", "13:10", "13:20", "13:30", "13:40", "13:50",
+                "14:00", "14:10", "14:20", "14:30", "14:40", "14:50",
+                "15:00", "15:10", "15:20", "15:30", "15:40", "15:50",
+                "16:00", "16:10", "16:20", "16:30", "16:40", "16:50",
+                "17:00", "17:10", "17:20", "17:30", "17:40", "17:50",
+                "18:00", "18:10", "18:20", "18:30", "18:40", "18:50",
+                "19:00", "19:10", "19:20", "19:30", "19:40", "19:50",
+                "20:00", "20:10", "20:20", "20:30", "20:40", "20:50",
+                "21:00", "21:10", "21:20", "21:30", "21:40", "21:50",
+                "22:00", "22:10", "22:20", "22:30", "22:40", "22:50",
+                "23:00", "23:10", "23:20", "23:30", "23:40", "23:50"
+            ];
         $.fn.RangeSlider = function (cfg) {
             this.sliderCfg = {
                 min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
@@ -201,13 +228,13 @@
             let openid = "{{userinfo.openid}}";
             let lightinfo = {
                 openid: "{{userinfo.openid}}",
-                lights: [{lid: 1,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl1").val()},
-                         {lid: 2,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl2").val()},
-                         {lid: 3,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl3").val()},
-                         {lid: 4,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl4").val()},
-                         {lid: 5,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl5").val()},
-                         {lid: 6,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl6").val()},
-                         {lid: 7,tag: $("#selecttimepoint").val(),tagvalue: $("#txtl7").val()}]
+                lights: [{lid: 1,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl1").val()},
+                         {lid: 2,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl2").val()},
+                         {lid: 3,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl3").val()},
+                         {lid: 4,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl4").val()},
+                         {lid: 5,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl5").val()},
+                         {lid: 6,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl6").val()},
+                         {lid: 7,tag: $("#hidselecttimepoint").val(),tagvalue: $("#txtl7").val()}]
             }
             $.ajax({
                     type: "POST",
@@ -230,7 +257,7 @@
             //gettagvalue
             let params = {
                 openid:  "{{userinfo.openid}}",
-                tag: $("#selecttimepoint").val()
+                tag: $("#hidselecttimepoint").val()
             }
             $.ajax({
                     type: "POST",
@@ -279,50 +306,64 @@
         $('#rangerl6').RangeSlider({ min: 0, max: 100, step: 1, callback: change6 });
         $('#rangerl7').RangeSlider({ min: 0, max: 100, step: 1, callback: change7 });
 
-        $("#selecttimepoint").val("{{tag}}");
-        let l1res = "{{tagvalues.l1}}";
+        
+        let tag = "{{tag}}";
+        $("#hidselecttimepoint").val(tag);
+        let timestring = TIMEDEFINE[tag];
+        $("#selecttimepoint").val(timestring);
+        
+        let l1arr = "{{tagvalues.l1}}".split(',');
+        let l1res = l1arr[tag];
         l1res = Number(l1res);
         $("#txtl1").val(l1res);
-        let l2res = "{{tagvalues.l2}}";
+
+        let l2arr = "{{tagvalues.l2}}".split(',');
+        let l2res = l2arr[tag];
         l2res = Number(l2res);
         $("#txtl2").val(l2res);
-        let l3res = "{{tagvalues.l3}}";
+
+        let l3arr = "{{tagvalues.l3}}".split(',');
+        let l3res = l3arr[tag];
         l3res = Number(l3res);
         $("#txtl3").val(l3res);
-        let l4res = "{{tagvalues.l4}}";
+
+        let l4arr = "{{tagvalues.l4}}".split(',');
+        let l4res = l4arr[tag];
         l4res = Number(l4res);
         $("#txtl4").val(l4res);
-        let l5res = "{{tagvalues.l5}}";
+
+
+        let l5arr = "{{tagvalues.l5}}".split(',');
+        let l5res = l5arr[tag];
         l5res = Number(l5res);
         $("#txtl5").val(l5res);
-        let l6res = "{{tagvalues.l6}}";
+        
+        
+        let l6arr = "{{tagvalues.l6}}".split(',');
+        let l6res = l6arr[tag];
         l6res = Number(l6res);
         $("#txtl6").val(l6res);
-        let l7res = "{{tagvalues.l7}}";
+        
+        
+        let l7arr = "{{tagvalues.l7}}".split(',');
+        let l7res = l7arr[tag];
         l7res = Number(l7res);
         $("#txtl7").val(l7res);
 
 
-        $("#rangerl1").val("{{tagvalues.l1}}");
-        $("#rangerl2").val("{{tagvalues.l2}}");
-        $("#rangerl3").val("{{tagvalues.l3}}");
-        $("#rangerl4").val("{{tagvalues.l4}}");
-        $("#rangerl5").val("{{tagvalues.l5}}");
-        $("#rangerl6").val("{{tagvalues.l6}}");
-        $("#rangerl7").val("{{tagvalues.l7}}");
+        $("#rangerl1").val(l1res);
+        $("#rangerl2").val(l2res);
+        $("#rangerl3").val(l3res);
+        $("#rangerl4").val(l4res);
+        $("#rangerl5").val(l5res);
+        $("#rangerl6").val(l6res);
+        $("#rangerl7").val(l7res);
 
-
-        let hightag = "{{hightag}}"
-        if(hightag == "true") {
-            $("#btndel").show();
-        } else {
-            $("#btndel").hide();
-        }
         
         function del() {
             let delinfo = {
                 openid: "{{userinfo.openid}}",
-                tag: $("#selecttimepoint").val()
+                tag: $("#hidselecttimepoint").val()
             }
             
             $.ajax({

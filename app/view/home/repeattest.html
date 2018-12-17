@@ -21,38 +21,28 @@
 </head>
 
 <body ontouchstart style="background-color: #f8f8f8;">
-    <script type="text/javascript">
-        let signature = '{{ machineinfo.signature }}';
-        let nonceStr = '{{ machineinfo.noncestr }}';
-        let timestamp = '{{ machineinfo.timestamp }}';
-        let appId = '{{ machineinfo.appId }}';
-        let jsapi_ticket = '{{ machineinfo.jsapi_ticket }}';
-    </script>
+
     <div class="page-hd">
         <h1 class="page-hd-title">
             循环设置
         </h1>
         <p class="page-hd-desc">设定选定时间节点各排灯的亮度,最小单位为10分钟</p>
     </div>
-
     <div style="text-align: center">
         <input type="hidden" id="hidtime" value="0" />
         <i class="fa fa-angle-left" aria-hidden="true" style="cursor:pointer; font-size:25px;" onclick="timeback()"></i>
-        <input type="text" id="txtTimeline" value="0:00" style="width:50px; border: 0px; text-align: center; width:200px; font-size:22px" />
+        <input type="text" id="txtTimeline" value="0:00" style="width:50px; border: 0px; text-align: center; width:200px; font-size:22px"/>
         <i class="fa fa-angle-right" style="cursor: pointer;font-size:25px;" aria-hidden="true" onclick="timego()"></i>
     </div>
     <div id="container" style="height:400px"></div>
     <div style="margin-left:10px; margin-right:10px; margin-top:5px; margin-bottom: 5px;">
-        <input type="range" id="rgTimeline" step="1" max="143" min="0" style="width:100%; " onchange="timelinechange(this)" />
+        <input type="range" id="rgTimeline" step="1" max="143" min="0" style="width:100%; " onchange="timelinechange(this)"/>
     </div>
-    <div style="margin-left:20px;">
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="add()"><i class="fa fa-plus" style="font-size:22px;"
-                aria-hidden="true"></i></div>
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="remove()"><i class="fa fa-minus"
-                aria-hidden="true" style="font-size:22px;"></i> </div>
+    <div style="margin-left:20px;">        
+        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="add()" ><i class="fa fa-plus" style="font-size:22px;" aria-hidden="true"></i></div>
+        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="remove()"><i class="fa fa-minus" aria-hidden="true" style="font-size:22px;"></i> </div>
         <div style="float:left; margin-right:20px; cursor:pointer;" onclick="modify()"><i class="fa fa-cog" style="font-size:22px;"></i></div>
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="empty()"><i class="fa fa-trash"
-                aria-hidden="true" style="font-size:22px;"></i> </div>
+        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="empty()"><i class="fa fa-trash" aria-hidden="true" style="font-size:22px;"></i> </div>        
     </div>
     <script>
         let XDEFINE =
@@ -89,7 +79,16 @@
         let l5 = [];
         let l6 = [];
         let l7 = [];
-
+        // let tagvalues = [
+        //     {tag:0, tagvalue:0 },
+        //     {tag: 10,tagvalue: 100},
+        //     {tag: 20, tagvalue: 70},
+        //     {tag: 50, tagvalue: 90},
+        //     {tag: 110, tagvalue: 40},
+        //     {tag: 130, tagvalue: 80},
+        //     {tag:143, tagvalue:0 }
+        // ];
+        
         let tags = "{{tags}}".split(',');
         let l1val = "{{l1}}".split(',');
         let l2val = "{{l2}}".split(',');
@@ -109,26 +108,26 @@
 
         let has0 = false;
         let has143 = false;
-        for (let ta of tags) {
-            if (ta == "0") {
+        for(let ta of tags) {
+            if(ta == "0") {
                 has0 = true;
             } else if (ta == "143") {
                 has143 = true;
             }
         }
-
-        if (!has0) {
-            tags.splice(0, 0, 0);
-            l1val.splice(0, 0, 0);
-            l2val.splice(0, 0, 0);
-            l3val.splice(0, 0, 0);
-            l4val.splice(0, 0, 0);
-            l5val.splice(0, 0, 0);
-            l6val.splice(0, 0, 0);
-            l7val.splice(0, 0, 0);
+        
+        if(!has0) {
+            tags.splice(0,0,0);
+            l1val.splice(0,0,0);
+            l2val.splice(0,0,0);
+            l3val.splice(0,0,0);
+            l4val.splice(0,0,0);
+            l5val.splice(0,0,0);
+            l6val.splice(0,0,0);
+            l7val.splice(0,0,0);
         }
 
-        if (!has143) {
+        if(!has143) {
             tags.push(143);
             l1val.push(0);
             l2val.push(0);
@@ -139,7 +138,7 @@
             l7val.push(0);
         }
 
-        for (let i = 0; i < tags.length; i++) {
+        for(let i=0;i<tags.length;i++) {
             l1tags.push({
                 tag: Number(tags[i]),
                 tagvalue: Number(l1val[i])
@@ -172,35 +171,35 @@
 
 
 
-        for (let i = 0; i < 144; i++) {
-            let haskey = false;
-            let keyval = null;
-            let l1keyval = null;
-            let l2keyval = null;
-            let l3keyval = null;
-            let l4keyval = null;
-            let l5keyval = null;
-            let l6keyval = null;
-            let l7keyval = null;
-            for (let tag of l1tags) {
-                if (tag.tag == i) {
-                    haskey = true;
-                    keyval = tag.tagvalue;
-                }
-            }
-            for (let j = 0; j < tags.length; j++) {
-                if (tags[j] == i) {
-                    haskey = true;
-                    l1keyval = Number(l1val[j]);
-                    l2keyval = Number(l2val[j]);
-                    l3keyval = Number(l3val[j]);
-                    l4keyval = Number(l4val[j]);
-                    l5keyval = Number(l5val[j]);
-                    l6keyval = Number(l6val[j]);
-                    l7keyval = Number(l7val[j]);
-                }
-            }
-            if (haskey) {
+        for(let i=0;i<144;i++) {
+             let haskey = false;
+             let keyval = null;
+             let l1keyval = null;
+             let l2keyval = null;
+             let l3keyval = null;
+             let l4keyval = null;
+             let l5keyval = null;
+             let l6keyval = null;
+             let l7keyval = null;
+             for(let tag of l1tags) {
+                 if(tag.tag == i) {
+                     haskey = true;
+                     keyval = tag.tagvalue;  
+                 }
+             }
+             for(let j=0;j<tags.length;j++) {
+                 if(tags[j] == i) {
+                     haskey = true;
+                     l1keyval = Number(l1val[j]);
+                     l2keyval = Number(l2val[j]);
+                     l3keyval = Number(l3val[j]);
+                     l4keyval = Number(l4val[j]);
+                     l5keyval = Number(l5val[j]);
+                     l6keyval = Number(l6val[j]);
+                     l7keyval = Number(l7val[j]);
+                 }
+             }
+             if(haskey) {
                 l1.push(l1keyval);
                 l2.push(l2keyval);
                 l3.push(l3keyval);
@@ -208,18 +207,19 @@
                 l5.push(l5keyval);
                 l6.push(l6keyval);
                 l7.push(l7keyval);
-
-            } else {
-                l1.push(null);
-                l2.push(null);
-                l3.push(null);
-                l4.push(null);
-                l5.push(null);
-                l6.push(null);
-                l7.push(null);
-            }
+                
+             } else {
+                 l1.push(null);
+                 l2.push(null);
+                 l3.push(null);
+                 l4.push(null);
+                 l5.push(null);
+                 l6.push(null);
+                 l7.push(null);
+             }
         }
-
+        
+        console.log(l1);
 
         var chart = Highcharts.chart('container', {
             chart: {
@@ -233,7 +233,7 @@
                 labels: {
                     enabled: true
                 },
-                tickPositions: [0, 24, 48, 72, 96, 114, 143]
+                tickPositions: [0,24,48,72,96,114,143]
             },
             yAxis: {
                 labels: {
@@ -246,7 +246,7 @@
             },
             plotOptions: {
                 series: {
-                    connectNulls: true,
+                    connectNulls:true,
                     cursor: "pointer",
                     events: {
                         click: function (e) {
@@ -266,37 +266,37 @@
                     symbol: 'circle'
                 },
                 data: l1
-            }, {
+            },{
                 name: '二',
                 marker: {
                     symbol: 'circle'
                 },
-                data: l2
-            }, {
+                data: l2 
+            },{
                 name: '三',
                 marker: {
                     symbol: 'circle'
                 },
-                data: l3
-            }, {
+                data: l3 
+            },{
                 name: '四',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l4
-            }, {
+            },{
                 name: '五',
                 marker: {
                     symbol: 'circle'
                 },
-                data: l5
-            }, {
+                data: l5 
+            },{
                 name: '六',
                 marker: {
                     symbol: 'circle'
                 },
-                data: l6
-            }, {
+                data: l6 
+            },{
                 name: '七',
                 marker: {
                     symbol: 'circle'
@@ -305,74 +305,7 @@
             }]
         });
 
-
-        for (let i = 0; i < 144; i++) {
-            let haskey = false;
-            let keyval = null;
-            for (let tag of tagvalues) {
-                if (tag.tag == i) {
-                    haskey = true;
-                    keyval = tag.tagvalue;
-                }
-            }
-            if (haskey) {
-                l1.push(keyval)
-            } else {
-                l1.push(null);
-            }
-        }
-
-        //console.log(l1);
-
-        var chart = Highcharts.chart('container', {
-            chart: {
-                type: 'spline'
-            },
-            title: {
-                text: ''
-            },
-            xAxis: {
-                categories: XDEFINE,
-                labels: {
-                    enabled: true
-                },
-                tickPositions: [0, 24, 48, 72, 96, 114, 143]
-            },
-            yAxis: {
-                labels: {
-                    enabled: false
-                },
-                title: {
-                    text: ''
-                },
-                ceiling: 100
-            },
-            plotOptions: {
-                series: {
-                    connectNulls: true,
-                    cursor: "pointer",
-                    events: {
-                        click: function (e) {
-                            alert(e.point.category);
-                            // setTimeout(() => {
-                            //     //alert(e.point.category);
-                            //     //window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeatdetail&response_type=code&scope=snsapi_userinfo&state=" + e.point.category + "#wechat_redirect";
-                            // }, 500)
-
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: '一',
-                marker: {
-                    symbol: 'circle'
-                },
-                data: l1
-            }]
-        });
-
-
+        
         // let modifytag = "{{modifytag}}";
         // let marr = modifytag.split(',');
         // for(let ta of marr) {
@@ -386,12 +319,13 @@
         $(".highcharts-credits").remove();
 
         function timelinechange(val) {
+            
             chart.xAxis[0].removePlotLine("newplot");
             let tagvalue = $(val).val();
             $("#hidtime").val(tagvalue);
             chart.xAxis[0].addPlotLine({
                 value: tagvalue,
-                width: 2,
+                width:2,
                 color: 'orange',
                 id: "newplot"
             });
@@ -400,8 +334,8 @@
 
         function timeback() {
             let current = parseInt($("#hidtime").val());
-            current = current - 1;
-            if (current < 0) {
+            current = current -1;
+            if(current <0) {
                 current = 0;
             }
             $("#hidtime").val(current);
@@ -409,7 +343,7 @@
             chart.xAxis[0].removePlotLine("newplot");
             chart.xAxis[0].addPlotLine({
                 value: current,
-                width: 2,
+                width:2,
                 color: 'orange',
                 id: "newplot"
             });
@@ -419,7 +353,7 @@
         function timego() {
             let current = parseInt($("#hidtime").val());
             current = current + 1;
-            if (current > 143) {
+            if(current >143) {
                 current = 143;
             }
             $("#hidtime").val(current);
@@ -427,16 +361,17 @@
             chart.xAxis[0].removePlotLine("newplot");
             chart.xAxis[0].addPlotLine({
                 value: current,
-                width: 2,
+                width:2,
                 color: 'orange',
                 id: "newplot"
             });
             $("#rgTimeline").val(current);
-
+            
         }
 
         function add() {
-            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeatdetail&response_type=code&scope=snsapi_userinfo&state=" + $("#hidtime").val() + "#wechat_redirect";
+            console.log($("#hidtime").val());
+            window.location = "http://localhost:7001/repeatdetail?state=" + $("#hidtime").val();
         }
 
         function modify() {
@@ -451,40 +386,40 @@
 
         }
 
-        $(function () {
-            var date = new Date();
-            var h = date.getHours();
-            var m = date.getMinutes();
+        $(function() {
+            var date=new Date();
+            var h=date.getHours();
+            var m=date.getMinutes(); 
             let timemin = 0;
             let timehour = h;
-            if (m == 0) {
+            if(m == 0) {
                 timemin = 0;
             }
-            else if (m >= 0 && m < 10) {
+            else if(m>=0 && m<10) {
                 timemin = 10;
-            } else if (m >= 10 && m < 20) {
+            } else if(m>=10 && m<20) {
                 timemin = 20;
-            } else if (m >= 20 && m < 30) {
+            } else if(m>=20 && m<30) {
                 timemin = 30;
-            } else if (m >= 30 && m < 40) {
+            } else if(m>=30 && m<40) {
                 timemin = 40;
-            } else if (m >= 40 && m < 50) {
+            } else if(m>=40 && m<50) {
                 timemin = 50;
-            } else if (m >= 50 && m < 60) {
-                timehour = timehour + 1;
-                if (timehour > 23) {
+            } else if(m>=50 && m<60) {
+                timehour = timehour +1;
+                if(timehour >23) {
                     timehour = 0;
                 }
                 timemin = 0;
             }
-
-            let timeres = timehour.toString().length == 1 ? "0" + timehour.toString() : timehour.toString();
+            
+            let timeres = timehour.toString().length== 1?"0"+timehour.toString():timehour.toString();
             timeres = timeres + ":";
-            timeres = timeres + (timemin.toString().length == 1 ? "0" + timemin.toString() : timemin.toString());
+            timeres = timeres + (timemin.toString().length == 1?"0"+timemin.toString():timemin.toString());
             $("#txtTimeline").val(timeres);
             let currentindex = 0;
-            for (let i = 0; i < 144; i++) {
-                if (timeres == XDEFINE[i]) {
+            for(let i=0;i<144;i++) {
+                if(timeres == XDEFINE[i]) {
                     currentindex = i;
                     break;
                 }
@@ -494,11 +429,11 @@
 
             chart.xAxis[0].addPlotLine({
                 value: currentindex,
-                width: 2,
+                width:2,
                 color: 'green',
                 id: "currentplot"
             });
-
+            
         });
     </script>
 </body>

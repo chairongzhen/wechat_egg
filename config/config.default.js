@@ -35,6 +35,11 @@ module.exports = appInfo => {
   }
 
   config.mqtt = {
+    // url: "tcp://localhost:1883",
+    // username: 'eric',
+    // password: '111111',
+    // clientid: 'wechatserver-1536282709723'
+
     url: "tcp://m12.cloudmqtt.com:16610",
     username: 'cqyjmitd',
     password: 'SXLMuaorn881',

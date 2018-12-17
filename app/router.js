@@ -35,6 +35,7 @@ module.exports = app => {
   router.get("/binded",controller.setup.binded);
   router.get("/basic",controller.pinopr.basic);
   router.get("/repeat",controller.pinopr.repeat);
+  router.get("/repeattest",controller.pinopr.repeattest);
   router.get("/repeatdetail",controller.pinopr.repeatdetail);
   router.post("/gettagvalue",controller.pinopr.gettagvalue);
   router.get("/candelete",controller.pinopr.candelete);

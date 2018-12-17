@@ -1,6 +1,25 @@
 'use strict';
 const Controller = require('egg').Controller;
 
+function tohex(str) {
+    if (str == "0") {
+        return "00";
+    } else {
+        var intval = parseInt(str);
+        if (intval) {
+            var hexval = intval.toString(16);
+            if (hexval.length == 1) {
+                var res = "0";
+                return res + hexval;
+            } else {
+                return hexval;
+            }
+        } else {
+            return "00";
+        }
+    }
+}
+
 class PinoprController extends Controller {
 
     async getbindmachine() {
@@ -10,9 +29,18 @@ class PinoprController extends Controller {
     }
 
     async getbasicinfo() {
-        let openid = "123456";
-        const result = await this.service.pinopr.getbasicinfo(openid);
-        this.ctx.body = result;
+        let openid = "o9Ruz0iGzFv0VhAiKr6xeIM9ivOA";
+        //let tag = 14;
+        //const result = await this.service.pinopr.getbasicinfo(openid);
+        //const result = await this.service.pinopr.getrepeatdata(openid);
+        //const result = await this.service.pinopr.test();
+        //const result = await this.service.pinopr.deletetag(openid,tag);
+        //const result = await this.service.pinopr.updaterepeatdata(openid);
+        //console.log(result.join(','));
+        
+        const result = await this.service.pinopr.getmodifystamp(openid);
+        console.log(result);
+        this.ctx.body = "hello world";
     }
 
     async updatebasicinfo() {
@@ -41,13 +69,7 @@ class PinoprController extends Controller {
         // }
         const ctx = this.ctx;
         let lightinfo = ctx.request.body;
-        let openid = lightinfo.openid;
-        for (let ta of lightinfo.lights) {
-            let lid = ta.lid;
-            let tag = ta.tag;
-            let tagvalue = ta.tagvalue;
-            result = await this.service.pinopr.updatelightdetail(openid, lid, tag, tagvalue);
-        }
+        result = await this.service.pinopr.updatelightdetail(lightinfo.openid, lightinfo.lights);
         this.ctx.body = result;
     }
 
@@ -61,32 +83,9 @@ class PinoprController extends Controller {
         let l5 = ctx.request.body.l5;
         let l6 = ctx.request.body.l6;
         let l7 = ctx.request.body.l7;
-
-        let lightinfo = {
-            openid: openid,
-            lights: [{ lid: 1, tagvalue: l1 },
-            { lid: 2, tagvalue: l2 },
-            { lid: 3, tagvalue: l3 },
-            { lid: 4, tagvalue: l4 },
-            { lid: 5, tagvalue: l5 },
-            { lid: 6, tagvalue: l6 },
-            { lid: 7, tagvalue: l7 }]
-        }
-
+        let tagvalue = tohex(l1) + tohex(l2) + tohex(l3) + tohex(l4) + tohex(l5) + tohex(l6) + tohex(l7);
         let result = false;
-        // let lightinfo = {
-        //     openid: "123456",
-        //     lights: [{lid:1,tagvalue:255},
-        //         {lid:2,tagvalue:255},
-        //         {lid:3,tagvalue:255},
-        //         {lid:4,tagvalue:255},
-        //         {lid:5,tagvalue:255},
-        //         {lid:6,tagvalue:255},
-        //         {lid:7,tagvalue:255}]
-        // }
-        for (let ta of lightinfo.lights) {
-            result = await this.service.pinopr.updatefixlight(lightinfo.openid, ta.lid, ta.tagvalue);
-        }
+        result = await this.service.pinopr.updatefixlight(openid, tagvalue);
         this.ctx.body = result;
     }
 
@@ -119,6 +118,25 @@ class PinoprController extends Controller {
         await ctx.render('home/basic.html', result);
     }
 
+    async repeattest() {
+        let openid = "o9Ruz0iGzFv0VhAiKr6xeIM9ivOA";
+        const repeatdata = await this.service.pinopr.getmodifystamp(openid);
+        
+        let result = {
+            tags : repeatdata.tags,
+            l1: repeatdata.l1,
+            l2: repeatdata.l2,
+            l3: repeatdata.l3,
+            l4: repeatdata.l4,
+            l5: repeatdata.l5,
+            l6: repeatdata.l6,
+            l7: repeatdata.l7,
+            modifytag: [],
+        }
+        console.log(result);
+        await this.ctx.render('home/repeattest.html', result);
+    }
+    
     async repeat() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
@@ -136,27 +154,34 @@ class PinoprController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const machineinfo = await ctx.service.verify.verify(url);
-        const repeatdata = await this.service.pinopr.getrepeatdata(userinfo.openid);
-        const modifydata = await this.service.pinopr.getmodifystamp(userinfo.openid);
-        let modifytag = "";
-        for(let ta of modifydata) {
-            if(ta.tag ==0 && ta.tagvalue ==0) {
-                continue;
-            }else if(ta.tag == 23 && ta.tagvalue ==0) {                
-                continue;
-            } else {
-                modifytag += ta.tag;
-                modifytag += ",";
-            }            
-        }
-        if(modifytag.length >2) {
-            modifytag = modifytag.substring(0,modifytag.length-1);
-        }
+        const repeatdata = await this.service.pinopr.getmodifystamp(userinfo.openid);
+        //const modifydata = await this.service.pinopr.getmodifystamp(userinfo.openid);
+        // let modifytag = "";
+        // for(let ta of modifydata) {
+        //     if(ta.tag ==0 && ta.tagvalue ==0) {
+        //         continue;
+        //     }else if(ta.tag == 23 && ta.tagvalue ==0) {                
+        //         continue;
+        //     } else {
+        //         modifytag += ta.tag;
+        //         modifytag += ",";
+        //     }            
+        // }
+        // if(modifytag.length >2) {
+        //     modifytag = modifytag.substring(0,modifytag.length-1);
+        // }
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
-            repeatdata: repeatdata,
-            modifytag: modifytag,
+            tags : repeatdata.tags,
+            l1: repeatdata.l1,
+            l2: repeatdata.l2,
+            l3: repeatdata.l3,
+            l4: repeatdata.l4,
+            l5: repeatdata.l5,
+            l6: repeatdata.l6,
+            l7: repeatdata.l7,
+            modifytag: [],
             domain: this.config.wechat.domain,
             appid: this.config.wechat.appid
         }
@@ -184,13 +209,13 @@ class PinoprController extends Controller {
 
         const tagres = await ctx.service.pinopr.getrepeatdata(userinfo.openid);
 
-        let l1 = tagres.t1.split(',')[tag];
-        let l2 = tagres.t2.split(',')[tag];
-        let l3 = tagres.t3.split(',')[tag];
-        let l4 = tagres.t4.split(',')[tag];
-        let l5 = tagres.t5.split(',')[tag];
-        let l6 = tagres.t6.split(',')[tag];
-        let l7 = tagres.t7.split(',')[tag];
+        let l1 = tagres.t1;
+        let l2 = tagres.t2;
+        let l3 = tagres.t3;
+        let l4 = tagres.t4;
+        let l5 = tagres.t5;
+        let l6 = tagres.t6;
+        let l7 = tagres.t7;
 
         let tagvalues = {
             l1: l1,
@@ -201,6 +226,7 @@ class PinoprController extends Controller {
             l6: l6,
             l7: l7
         }
+
 
         const hightag = await this.service.pinopr.candelete(userinfo.openid,tag);
         let result = {
@@ -263,7 +289,7 @@ class PinoprController extends Controller {
 
     async checktagvalue() {
         const ctx = this.ctx;
-        let openid = "o9Ruz0k6t7SJYZgV358z-CcqUjGc";
+        let openid = "123456";
         const result = await this.service.pinopr.checktagvalue(openid);
         ctx.body = { result }
         ctx.status = 201;
