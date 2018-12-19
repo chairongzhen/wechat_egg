@@ -43,4 +43,5 @@ module.exports = app => {
   router.get("/checktagvalue",controller.pinopr.checktagvalue);
   router.get("/dislog",controller.account.dislog);
   router.get("/checkonline",controller.account.checkonline);
+  router.post("/emptytags",controller.pinopr.emptytags);
 };

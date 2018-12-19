@@ -48,7 +48,6 @@ function tohex(str) {
 
 function updatecontent(arr, val, light) {
     let length = arr.length;
-    //console.log(arr,val);
     light[arr[length - 1]] = val[1];
     let diff = 0;
     let perval = 0;
@@ -108,7 +107,6 @@ function generateLightData(tagsres) {
     for (var i = 0; i < 144; i++) {
         light.push(0);
     }
-    console.log(tagsres);
     return new Promise((resolve, reject) => {
         let temparr = [];
         for (var i = 0; i < 144; i++) {
@@ -135,7 +133,6 @@ function generateLightData(tagsres) {
                 val.push(tagsres[i - 1].tagvalue);
                 val.push(tagsres[i].tagvalue);
             }
-            //console.log(res,val);
             updatecontent(res, val, light);
         }
 
@@ -361,10 +358,9 @@ class PinoprSerive extends Service {
         result.l6 = [];
         result.l7 = [];
         for (let tags of getres) {
-
             switch (tags.lid) {
                 case 1:
-                    result.tags.push(tags.tag);
+                    result.tags.push(Number(tags.tag));
                     result.l1.push(tags.tagvalue);
                     break;
                 case 2:
@@ -420,7 +416,7 @@ class PinoprSerive extends Service {
             }
             index += 1;
         }
-        //console.log(lightjson);
+
         let content = JSON.stringify(lightjson);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
@@ -459,8 +455,38 @@ class PinoprSerive extends Service {
         ];
 
         let res = await generateLightData(tagsres);
-        console.log(res.join(','));
         return res;
+    }
+
+    async emptytags(openid) {
+        let emptysql = `delete from userlightdetails where openid = '${openid}'`;
+        await this.app.mysql.query(emptysql);
+
+        let originlight = await this.getoriginlight(openid);
+        let lightjson = JSON.parse(originlight);
+        let index = 0;
+        for (let key in lightjson) {
+            if (key != "tfix") {
+                let l1val = "00";
+                let l2val = "00";
+                let l3val = "00";
+                let l4val = "00";
+                let l5val = "00";
+                let l6val = "00";
+                let l7val = "00";
+                lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val;
+            }
+            index += 1;
+        }
+        let content = JSON.stringify(lightjson);
+        let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
+        this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
+        let onlinemac = await this.getbindmachine(openid);
+        for (let ta of onlinemac) {
+            let sender = ta + "/setp";
+            await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
+        }
+        return true;
     }
 }
 

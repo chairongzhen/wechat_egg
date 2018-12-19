@@ -38,21 +38,25 @@
     <div style="text-align: center">
         <input type="hidden" id="hidtime" value="0" />
         <i class="fa fa-angle-left" aria-hidden="true" style="cursor:pointer; font-size:25px;" onclick="timeback()"></i>
-        <input type="text" id="txtTimeline" value="0:00" style="width:50px; border: 0px; text-align: center; width:200px; font-size:22px" />
+        <input type="text" disabled id="txtTimeline" value="0:00" style="width:50px; border: 0px; text-align: center; width:200px; font-size:30px" />
         <i class="fa fa-angle-right" style="cursor: pointer;font-size:25px;" aria-hidden="true" onclick="timego()"></i>
     </div>
     <div id="container" style="height:400px"></div>
     <div style="margin-left:10px; margin-right:10px; margin-top:5px; margin-bottom: 5px;">
         <input type="range" id="rgTimeline" step="1" max="143" min="0" style="width:100%; " onchange="timelinechange(this)" />
     </div>
-    <div style="margin-left:20px;">
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="add()"><i class="fa fa-plus" style="font-size:22px;"
-                aria-hidden="true"></i></div>
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="remove()"><i class="fa fa-minus"
-                aria-hidden="true" style="font-size:22px;"></i> </div>
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="modify()"><i class="fa fa-cog" style="font-size:22px;"></i></div>
-        <div style="float:left; margin-right:20px; cursor:pointer;" onclick="empty()"><i class="fa fa-trash"
-                aria-hidden="true" style="font-size:22px;"></i> </div>
+    <div style="margin-left:50px;">
+        <div style="float:left; margin-right:30px; cursor:pointer;" onclick="add()"><i class="fa fa-plus-square-o"
+                aria-hidden="true" style="font-size:30px; color: green"></i></div>
+        <div style="float:left; margin-right:30px;cursor:pointer;"><i id="icondelete" class="fa fa-minus-square-o"
+                aria-hidden="true" style="font-size:30px; color:grey; "></i> </div>
+        <div style="float:left; margin-right:30px; cursor:pointer;" onclick="previoustag()"><i id="iconpre" style="font-size:30px;color: green"
+                class="fa fa-angle-double-left"></i></div>
+        <div style="float:left; cursor:pointer;margin-right:30px" onclick="nexttag()"><i id="iconnext" style="font-size:30px;color: green"
+                class="fa fa-angle-double-right"></i></div>
+        <div style="float:left; margin-right:30px; cursor:pointer;" onclick="empty()"><i class="fa fa-trash"
+                aria-hidden="true" style="font-size:30px;color: green"></i> </div>
+        <div style="float:left; cursor:pointer;" onclick="gobasic()"><i style="font-size:30px;color: green" class="fa fa-cog"></i></div>
     </div>
     <script>
         let XDEFINE =
@@ -90,14 +94,18 @@
         let l6 = [];
         let l7 = [];
 
-        let tags = "{{tags}}".split(',');
-        let l1val = "{{l1}}".split(',');
-        let l2val = "{{l2}}".split(',');
-        let l3val = "{{l3}}".split(',');
-        let l4val = "{{l4}}".split(',');
-        let l5val = "{{l5}}".split(',');
-        let l6val = "{{l6}}".split(',');
-        let l7val = "{{l7}}".split(',');
+        let tags = "{{tags}}" == "" ? [] : "{{tags}}".split(',');
+        let l1val = "{{l1}}" == "" ? [] : "{{l1}}".split(',');
+        let l2val = "{{l2}}" == "" ? [] : "{{l2}}".split(',');
+        let l3val = "{{l3}}" == "" ? [] : "{{l3}}".split(',');
+        let l4val = "{{l4}}" == "" ? [] : "{{l4}}".split(',');
+        let l5val = "{{l5}}" == "" ? [] : "{{l5}}".split(',');
+        let l6val = "{{l6}}" == "" ? [] : "{{l6}}".split(',');
+        let l7val = "{{l7}}" == "" ? [] : "{{l7}}".split(',');
+
+        if (tags.length > 0) {
+            tags = tags.map(Number);
+        }
 
         let l1tags = [];
         let l2tags = [];
@@ -110,13 +118,12 @@
         let has0 = false;
         let has143 = false;
         for (let ta of tags) {
-            if (ta == "0") {
+            if (ta == 0) {
                 has0 = true;
-            } else if (ta == "143") {
+            } else if (ta == 143) {
                 has143 = true;
             }
         }
-
         if (!has0) {
             tags.splice(0, 0, 0);
             l1val.splice(0, 0, 0);
@@ -127,7 +134,6 @@
             l6val.splice(0, 0, 0);
             l7val.splice(0, 0, 0);
         }
-
         if (!has143) {
             tags.push(143);
             l1val.push(0);
@@ -138,7 +144,6 @@
             l6val.push(0);
             l7val.push(0);
         }
-
         for (let i = 0; i < tags.length; i++) {
             l1tags.push({
                 tag: Number(tags[i]),
@@ -169,9 +174,6 @@
                 tagvalue: Number(l7val[i])
             });
         }
-
-
-
         for (let i = 0; i < 144; i++) {
             let haskey = false;
             let keyval = null;
@@ -219,11 +221,15 @@
                 l7.push(null);
             }
         }
-
-
         var chart = Highcharts.chart('container', {
             chart: {
                 type: 'spline'
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
             },
             title: {
                 text: ''
@@ -233,6 +239,8 @@
                 labels: {
                     enabled: true
                 },
+                gridLineColor: 'grey',
+                gridLineWidth: 0.3,
                 tickPositions: [0, 24, 48, 72, 96, 114, 143]
             },
             yAxis: {
@@ -242,216 +250,387 @@
                 title: {
                     text: ''
                 },
-                ceiling: 100
+                ceiling: 110,
+                tickPositions: [0, 20, 40, 60, 80, 100, 110]
             },
             plotOptions: {
                 series: {
                     connectNulls: true,
-                    cursor: "pointer",
-                    events: {
-                        click: function (e) {
-                            alert(e.point.category);
-                            setTimeout(() => {
-                                //alert(e.point.category);
-                                //window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeatdetail&response_type=code&scope=snsapi_userinfo&state=" + e.point.category + "#wechat_redirect";
-                            }, 500)
-
-                        }
-                    }
+                    cursor: "pointer"
                 }
             },
             series: [{
-                name: '一',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l1
             }, {
-                name: '二',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l2
             }, {
-                name: '三',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l3
             }, {
-                name: '四',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l4
             }, {
-                name: '五',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l5
             }, {
-                name: '六',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l6
             }, {
-                name: '七',
+                name: ' ',
                 marker: {
                     symbol: 'circle'
                 },
                 data: l7
             }]
         });
+        $(".highcharts-credits").remove();
 
+        function emptychart() {
+            tags = [0, 143];
+            l1 = [];
+            l2 = [];
+            l3 = [];
+            l4 = [];
+            l5 = [];
+            l6 = [];
+            l7 = [];
 
-        for (let i = 0; i < 144; i++) {
-            let haskey = false;
-            let keyval = null;
-            for (let tag of tagvalues) {
-                if (tag.tag == i) {
-                    haskey = true;
-                    keyval = tag.tagvalue;
-                }
+            for (let i = 0; i < 144; i++) {
+                l1.push(0);
+                l2.push(0);
+                l3.push(0);
+                l4.push(0);
+                l5.push(0);
+                l6.push(0);
+                l7.push(0);
             }
-            if (haskey) {
-                l1.push(keyval)
-            } else {
-                l1.push(null);
-            }
-        }
-
-        //console.log(l1);
-
-        var chart = Highcharts.chart('container', {
-            chart: {
-                type: 'spline'
-            },
-            title: {
-                text: ''
-            },
-            xAxis: {
-                categories: XDEFINE,
-                labels: {
-                    enabled: true
+            chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'spline'
                 },
-                tickPositions: [0, 24, 48, 72, 96, 114, 143]
-            },
-            yAxis: {
-                labels: {
+                legend: {
+                    enabled: false
+                },
+                exporting: {
                     enabled: false
                 },
                 title: {
                     text: ''
                 },
-                ceiling: 100
-            },
-            plotOptions: {
-                series: {
-                    connectNulls: true,
-                    cursor: "pointer",
-                    events: {
-                        click: function (e) {
-                            alert(e.point.category);
-                            // setTimeout(() => {
-                            //     //alert(e.point.category);
-                            //     //window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeatdetail&response_type=code&scope=snsapi_userinfo&state=" + e.point.category + "#wechat_redirect";
-                            // }, 500)
-
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: '一',
-                marker: {
-                    symbol: 'circle'
+                xAxis: {
+                    categories: XDEFINE,
+                    labels: {
+                        enabled: true
+                    },
+                    gridLineColor: 'grey',
+                    gridLineWidth: 0.3,
+                    tickPositions: [0, 24, 48, 72, 96, 114, 143]
                 },
-                data: l1
-            }]
-        });
+                yAxis: {
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: ''
+                    },
+                    ceiling: 110,
+                    tickPositions: [0, 20, 40, 60, 80, 100, 110]
+                },
+                plotOptions: {
+                    series: {
+                        connectNulls: true,
+                        cursor: "pointer"
+                    }
+                },
+                series: [{
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l1
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l2
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l3
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l4
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l5
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l6
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l7
+                }]
+            });
 
-
-        // let modifytag = "{{modifytag}}";
-        // let marr = modifytag.split(',');
-        // for(let ta of marr) {
-        //     chart.xAxis[0].addPlotLine({
-        //         value: ta,
-        //         width: 2,
-        //         color: 'green',
-        //         id: 'plot-line-1'
-        //     });
-        // }
-        $(".highcharts-credits").remove();
-
-        function timelinechange(val) {
-            chart.xAxis[0].removePlotLine("newplot");
-            let tagvalue = $(val).val();
-            $("#hidtime").val(tagvalue);
+            let currentindex = getcurrenttimeindex();
             chart.xAxis[0].addPlotLine({
-                value: tagvalue,
+                value: currentindex,
                 width: 2,
-                color: 'orange',
+                color: "green",
+                id: "currentplot"
+            });
+            $(".highcharts-credits").remove();
+        }
+        function refreshchart(deletetag) {
+            if (deletetag == 0 || deletetag == 143) {
+                l1[deletetag] = 0;
+                l2[deletetag] = 0;
+                l3[deletetag] = 0;
+                l4[deletetag] = 0;
+                l5[deletetag] = 0;
+                l6[deletetag] = 0;
+                l7[deletetag] = 0;
+            } else {
+                let index = tags.indexOf(deletetag);
+                if (index > -1) {
+                    tags.splice(index, 1);
+                }
+                l1.splice(deletetag, 1, null);
+                l2.splice(deletetag, 1, null);
+                l3.splice(deletetag, 1, null);
+                l4.splice(deletetag, 1, null);
+                l5.splice(deletetag, 1, null);
+                l6.splice(deletetag, 1, null);
+                l7.splice(deletetag, 1, null);
+            }
+
+
+
+            chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'spline'
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: XDEFINE,
+                    labels: {
+                        enabled: true
+                    },
+                    gridLineColor: 'grey',
+                    gridLineWidth: 0.3,
+                    tickPositions: [0, 24, 48, 72, 96, 114, 143]
+                },
+                yAxis: {
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: ''
+                    },
+                    ceiling: 110,
+                    tickPositions: [0, 20, 40, 60, 80, 100, 110]
+                },
+                plotOptions: {
+                    series: {
+                        connectNulls: true,
+                        cursor: "pointer"
+                    }
+                },
+                series: [{
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l1
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l2
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l3
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l4
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l5
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l6
+                }, {
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l7
+                }]
+            });
+
+            let currentindex = getcurrenttimeindex();
+            chart.xAxis[0].addPlotLine({
+                value: currentindex,
+                width: 2,
+                color: "green",
+                id: "currentplot"
+            });
+            $(".highcharts-credits").remove();
+        }
+        function checklineexist(tagval) {
+            if (chart.xAxis && chart.xAxis.length > 0) {
+                chart.xAxis[0].removePlotLine("newplot");
+            }
+
+            let exist = false;
+            for (let tag of tags) {
+                if (Number(tag) == tagval) {
+                    exist = true;
+                }
+            }
+            let linecolor = "orange";
+            if (exist) {
+                $("#icondelete").attr("style", "color: green;font-size:30px; ");
+                $("#icondelete").attr("onclick", "remove();");
+                linecolor = "blue";
+            } else {
+                $("#icondelete").attr("style", "color: grey;font-size:30px; ");
+                $("#icondelete").removeAttr("onclick");
+                linecolor = "orange";
+            }
+
+            $("#hidtime").val(tagval);
+            chart.xAxis[0].addPlotLine({
+                value: tagval,
+                width: 2,
+                color: linecolor,
                 id: "newplot"
             });
-            $("#txtTimeline").val(XDEFINE[tagvalue]);
-        }
 
+        }
+        function timelinechange(val) {
+            let tagvalue = $(val).val();
+            $("#txtTimeline").val(XDEFINE[tagvalue]);
+            checklineexist(tagvalue);
+        }
         function timeback() {
             let current = parseInt($("#hidtime").val());
             current = current - 1;
             if (current < 0) {
                 current = 0;
             }
-            $("#hidtime").val(current);
             $("#txtTimeline").val(XDEFINE[current]);
-            chart.xAxis[0].removePlotLine("newplot");
-            chart.xAxis[0].addPlotLine({
-                value: current,
-                width: 2,
-                color: 'orange',
-                id: "newplot"
-            });
             $("#rgTimeline").val(current);
+            checklineexist(current);
         }
-
         function timego() {
             let current = parseInt($("#hidtime").val());
             current = current + 1;
             if (current > 143) {
                 current = 143;
             }
-            $("#hidtime").val(current);
             $("#txtTimeline").val(XDEFINE[current]);
-            chart.xAxis[0].removePlotLine("newplot");
-            chart.xAxis[0].addPlotLine({
-                value: current,
-                width: 2,
-                color: 'orange',
-                id: "newplot"
-            });
             $("#rgTimeline").val(current);
+            checklineexist(current);
 
         }
-
         function add() {
             window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/repeatdetail&response_type=code&scope=snsapi_userinfo&state=" + $("#hidtime").val() + "#wechat_redirect";
         }
-
-        function modify() {
-
-        }
-
         function remove() {
-
+            let openid = "{{userinfo.openid}}";
+            let delinfo = {
+                openid: openid,
+                tag: $("#hidtime").val()
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/deletetag",
+                data: JSON.stringify(delinfo),
+                dataType: 'json',
+                success: (res) => {
+                    alert(res.result == true ? "删除成功" : "删除失败");
+                    refreshchart($("#hidtime").val());
+                    $("#icondelete").attr("style", "color: grey;font-size:30px; ");
+                    $("#icondelete").removeAttr("onclick");
+                }
+            });
         }
-
         function empty() {
-
+            let openid = "{{userinfo.openid}}";
+            let emptyinfo = {
+                openid: openid
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/emptytags",
+                data: JSON.stringify(emptyinfo),
+                dataType: 'json',
+                success: (res) => {
+                    alert("删除成功");
+                    emptychart();
+                }
+            });
         }
-
-        $(function () {
+        function getcurrenttime() {
             var date = new Date();
             var h = date.getHours();
             var m = date.getMinutes();
@@ -478,27 +657,91 @@
                 timemin = 0;
             }
 
-            let timeres = timehour.toString().length == 1 ? "0" + timehour.toString() : timehour.toString();
+            let timeres = timehour.toString();
             timeres = timeres + ":";
             timeres = timeres + (timemin.toString().length == 1 ? "0" + timemin.toString() : timemin.toString());
-            $("#txtTimeline").val(timeres);
+            return timeres;
+        }
+        function getcurrenttimeindex() {
+            let timeres = getcurrenttime();
             let currentindex = 0;
             for (let i = 0; i < 144; i++) {
                 if (timeres == XDEFINE[i]) {
                     currentindex = i;
+                }
+            }
+            return currentindex;
+        }
+        function gobasic() {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={{appid}}&redirect_uri=http://{{domain}}/basic&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect";
+        }
+        function nexttag() {
+            let currentindex = $("#hidtime").val();
+            let nextval = 0;
+            if (currentindex == 143) {
+                nextval = 0;
+            } else {
+                for (let tag of tags) {
+                    if (tag > currentindex) {
+                        nextval = tag;
+                        break;
+                    }
+                }
+            }
+
+            $("#txtTimeline").val(XDEFINE[nextval]);
+            $("#rgTimeline").val(nextval);
+            $("#txtTimeline").val(XDEFINE[nextval]);
+            checklineexist(nextval);
+        }
+        function previoustag() {
+            let currentindex = $("#hidtime").val();
+            let nextval = 0;
+            if (currentindex == 0) {
+                nextval = 143;
+            } else {
+                for (let i = 0; i < tags.length; i++) {
+                    if (tags[i] == currentindex) {
+                        nextval = tags[i - 1];
+                        break;
+                    }
+                }
+            }
+
+            $("#txtTimeline").val(XDEFINE[nextval]);
+            $("#rgTimeline").val(nextval);
+            $("#txtTimeline").val(XDEFINE[nextval]);
+            checklineexist(nextval);
+        }
+
+        $(function () {
+            let timeres = getcurrenttime();
+            $("#txtTimeline").val(timeres);
+            let currentindex = getcurrenttimeindex();
+            $("#hidtime").val(currentindex);
+            $("#rgTimeline").val(currentindex);
+
+            let isnow = false;
+            for (let tag of tags) {
+                if (tag == currentindex) {
+                    isnow = true;
                     break;
                 }
             }
-            $("#hidtime").val(currentindex);
-            $("#rgTimeline").val(currentindex);
+            //console.log('here it is', isnow,currentindex);            
+            let linecolor = "green";
+            if (isnow) {
+                linecolor = "blue";
+                $("#icondelete").attr("style", "color: green;font-size:30px; ");
+                $("#icondelete").attr("onclick", "remove();");
+            }
 
             chart.xAxis[0].addPlotLine({
                 value: currentindex,
                 width: 2,
-                color: 'green',
+                color: linecolor,
                 id: "currentplot"
             });
-
         });
     </script>
 </body>

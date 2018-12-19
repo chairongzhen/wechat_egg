@@ -130,10 +130,8 @@ class PinoprController extends Controller {
             l4: repeatdata.l4,
             l5: repeatdata.l5,
             l6: repeatdata.l6,
-            l7: repeatdata.l7,
-            modifytag: [],
+            l7: repeatdata.l7
         }
-        console.log(result);
         await this.ctx.render('home/repeattest.html', result);
     }
     
@@ -155,21 +153,6 @@ class PinoprController extends Controller {
         await this.service.account.checkaccount(userinfo);
         const machineinfo = await ctx.service.verify.verify(url);
         const repeatdata = await this.service.pinopr.getmodifystamp(userinfo.openid);
-        //const modifydata = await this.service.pinopr.getmodifystamp(userinfo.openid);
-        // let modifytag = "";
-        // for(let ta of modifydata) {
-        //     if(ta.tag ==0 && ta.tagvalue ==0) {
-        //         continue;
-        //     }else if(ta.tag == 23 && ta.tagvalue ==0) {                
-        //         continue;
-        //     } else {
-        //         modifytag += ta.tag;
-        //         modifytag += ",";
-        //     }            
-        // }
-        // if(modifytag.length >2) {
-        //     modifytag = modifytag.substring(0,modifytag.length-1);
-        // }
         let result = {
             userinfo: userinfores,
             machineinfo: machineinfo,
@@ -181,7 +164,6 @@ class PinoprController extends Controller {
             l5: repeatdata.l5,
             l6: repeatdata.l6,
             l7: repeatdata.l7,
-            modifytag: [],
             domain: this.config.wechat.domain,
             appid: this.config.wechat.appid
         }
@@ -289,11 +271,28 @@ class PinoprController extends Controller {
 
     async checktagvalue() {
         const ctx = this.ctx;
-        let openid = "123456";
-        const result = await this.service.pinopr.checktagvalue(openid);
+        let openid = ctx.query.openid;
+        const repeatdata = await this.service.pinopr.getmodifystamp(openid);
+        let result = {
+            tags : repeatdata.tags,
+            l1: repeatdata.l1,
+            l2: repeatdata.l2,
+            l3: repeatdata.l3,
+            l4: repeatdata.l4,
+            l5: repeatdata.l5,
+            l6: repeatdata.l6,
+            l7: repeatdata.l7
+        }
         ctx.body = { result }
         ctx.status = 201;
+    }
 
+    async emptytags() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        const result = await this.service.pinopr.emptytags(openid);
+        ctx.body = result;
+        ctx.status = 201;
     }
 }
 
