@@ -94,28 +94,34 @@ class PinoprController extends Controller {
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
         let code = ctx.query.code;
         const userinfores = await ctx.service.verify.getwechatuser(code);
-
-        let userinfo = {
-            openid: userinfores.openid,
-            nickname: userinfores.nickname,
-            gender: userinfores.sex,
-            province: userinfores.province,
-            city: userinfores.city,
-            country: userinfores.country,
-            headimgurl: userinfores.headimgurl
+        if(userinfores && userinfores.openid) {
+            let userinfo = {
+                openid: userinfores.openid,
+                nickname: userinfores.nickname,
+                gender: userinfores.sex,
+                province: userinfores.province,
+                city: userinfores.city,
+                country: userinfores.country,
+                headimgurl: userinfores.headimgurl
+            }
+            await this.service.account.checkaccount(userinfo);
+            const basicres = await this.service.pinopr.getbasicinfo(userinfo.openid);
+            const machineinfo = await ctx.service.verify.verify(url);
+            basicres.showtype = basicres.showtype == "fix" ? "固定" : "循环";
+            basicres.testmode = basicres.testmode == "test" ? "测试" : "产品";
+            let result = {
+                userinfo: userinfores,
+                machineinfo: machineinfo,
+                basicres: basicres
+            }
+    
+            await ctx.render('home/basic.html', result);
+        } else {
+            ctx.body = "session timeout";
+            ctx.status = 400;
         }
-        await this.service.account.checkaccount(userinfo);
-        const basicres = await this.service.pinopr.getbasicinfo(userinfo.openid);
-        const machineinfo = await ctx.service.verify.verify(url);
-        basicres.showtype = basicres.showtype == "fix" ? "固定" : "循环";
-        basicres.testmode = basicres.testmode == "test" ? "测试" : "产品";
-        let result = {
-            userinfo: userinfores,
-            machineinfo: machineinfo,
-            basicres: basicres
-        }
 
-        await ctx.render('home/basic.html', result);
+
     }
 
     async repeattest() {
@@ -140,34 +146,39 @@ class PinoprController extends Controller {
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
         let code = ctx.query.code;
         const userinfores = await ctx.service.verify.getwechatuser(code);
+        if(userinfores && userinfores.openid) {
+            let userinfo = {
+                openid: userinfores.openid,
+                nickname: userinfores.nickname,
+                gender: userinfores.sex,
+                province: userinfores.province,
+                city: userinfores.city,
+                country: userinfores.country,
+                headimgurl: userinfores.headimgurl
+            }
+            await this.service.account.checkaccount(userinfo);
+            const machineinfo = await ctx.service.verify.verify(url);
+            const repeatdata = await this.service.pinopr.getmodifystamp(userinfo.openid);
+            let result = {
+                userinfo: userinfores,
+                machineinfo: machineinfo,
+                tags : repeatdata.tags,
+                l1: repeatdata.l1,
+                l2: repeatdata.l2,
+                l3: repeatdata.l3,
+                l4: repeatdata.l4,
+                l5: repeatdata.l5,
+                l6: repeatdata.l6,
+                l7: repeatdata.l7,
+                domain: this.config.wechat.domain,
+                appid: this.config.wechat.appid
+            }
+            await ctx.render('home/repeat.html', result);
+        } else {
+            ctx.body = "session timeout";
+            ctx.status = 400;
+        }
 
-        let userinfo = {
-            openid: userinfores.openid,
-            nickname: userinfores.nickname,
-            gender: userinfores.sex,
-            province: userinfores.province,
-            city: userinfores.city,
-            country: userinfores.country,
-            headimgurl: userinfores.headimgurl
-        }
-        await this.service.account.checkaccount(userinfo);
-        const machineinfo = await ctx.service.verify.verify(url);
-        const repeatdata = await this.service.pinopr.getmodifystamp(userinfo.openid);
-        let result = {
-            userinfo: userinfores,
-            machineinfo: machineinfo,
-            tags : repeatdata.tags,
-            l1: repeatdata.l1,
-            l2: repeatdata.l2,
-            l3: repeatdata.l3,
-            l4: repeatdata.l4,
-            l5: repeatdata.l5,
-            l6: repeatdata.l6,
-            l7: repeatdata.l7,
-            domain: this.config.wechat.domain,
-            appid: this.config.wechat.appid
-        }
-        await ctx.render('home/repeat.html', result);
     }
 
     async repeatdetail() {
@@ -176,51 +187,56 @@ class PinoprController extends Controller {
         let code = ctx.query.code;
         let tag = ctx.request.query.state;
         const userinfores = await ctx.service.verify.getwechatuser(code);
-
-        let userinfo = {
-            openid: userinfores.openid,
-            nickname: userinfores.nickname,
-            gender: userinfores.sex,
-            province: userinfores.province,
-            city: userinfores.city,
-            country: userinfores.country,
-            headimgurl: userinfores.headimgurl
+        if(userinfores && userinfores.openid) {
+            let userinfo = {
+                openid: userinfores.openid,
+                nickname: userinfores.nickname,
+                gender: userinfores.sex,
+                province: userinfores.province,
+                city: userinfores.city,
+                country: userinfores.country,
+                headimgurl: userinfores.headimgurl
+            }
+            await this.service.account.checkaccount(userinfo);
+            const machineinfo = await ctx.service.verify.verify(url);
+    
+            const tagres = await ctx.service.pinopr.getrepeatdata(userinfo.openid);
+    
+            let l1 = tagres.t1;
+            let l2 = tagres.t2;
+            let l3 = tagres.t3;
+            let l4 = tagres.t4;
+            let l5 = tagres.t5;
+            let l6 = tagres.t6;
+            let l7 = tagres.t7;
+    
+            let tagvalues = {
+                l1: l1,
+                l2: l2,
+                l3: l3,
+                l4: l4,
+                l5: l5,
+                l6: l6,
+                l7: l7
+            }
+            
+            const hightag = await this.service.pinopr.candelete(userinfo.openid,tag);
+            let result = {
+                userinfo: userinfores,
+                machineinfo: machineinfo,
+                tag: tag,
+                tagvalues: tagvalues,
+                hightag: hightag,
+                domain: this.config.wechat.domain,
+                appid: this.config.wechat.appid
+            }
+            await ctx.render('home/repeatdetail.html', result);
+        } else {
+            ctx.body = "session timeout";
+            ctx.status = 400;
         }
-        await this.service.account.checkaccount(userinfo);
-        const machineinfo = await ctx.service.verify.verify(url);
+        
 
-        const tagres = await ctx.service.pinopr.getrepeatdata(userinfo.openid);
-
-        let l1 = tagres.t1;
-        let l2 = tagres.t2;
-        let l3 = tagres.t3;
-        let l4 = tagres.t4;
-        let l5 = tagres.t5;
-        let l6 = tagres.t6;
-        let l7 = tagres.t7;
-
-        let tagvalues = {
-            l1: l1,
-            l2: l2,
-            l3: l3,
-            l4: l4,
-            l5: l5,
-            l6: l6,
-            l7: l7
-        }
-
-
-        const hightag = await this.service.pinopr.candelete(userinfo.openid,tag);
-        let result = {
-            userinfo: userinfores,
-            machineinfo: machineinfo,
-            tag: tag,
-            tagvalues: tagvalues,
-            hightag: hightag,
-            domain: this.config.wechat.domain,
-            appid: this.config.wechat.appid
-        }
-        await ctx.render('home/repeatdetail.html', result);
     }
 
 

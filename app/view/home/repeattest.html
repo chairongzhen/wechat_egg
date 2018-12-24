@@ -34,7 +34,70 @@
         <input type="text" id="txtTimeline" value="0:00" style="width:50px; border: 0px; text-align: center; width:200px; font-size:22px" />
         <i class="fa fa-angle-right" style="cursor: pointer;font-size:25px;" aria-hidden="true" onclick="timego()"></i>
     </div>
-    <div id="container" style="height:400px"></div>
+    <div style="margin-left:40px;margin-top:20px;">
+        <div style="float:left; width:13%;">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">一</span>
+            </span>
+        </div>
+
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">二</span>
+            </span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">三</span>
+            </span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">四</span>
+            </span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">五</span>
+            </span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">六</span>
+            </span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="border-radius: 50%;    height: 20px;    width: 20px;    display: inline-block; border: 1px solid green;      vertical-align: top;">
+                <span style="display: block;    color: green;    height: 20px;    line-height: 20px;    text-align: center; font-size:12px">七</span>
+            </span>
+        </div>
+
+        <div style="clear:both;"></div>
+        
+        <div style="float:left; width:13%;">
+            <span style="font-size:9px;" id="sp1"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp2"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp3"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp4"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp5"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp6"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp7"></span><span style="font-size:9px;">%</span>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div id="container" style="height:200px"></div>
     <div style="margin-left:10px; margin-right:10px; margin-top:5px; margin-bottom: 5px;">
         <input type="range" id="rgTimeline" step="1" max="143" min="0" style="width:100%; " onchange="timelinechange(this)" />
     </div>
@@ -255,7 +318,7 @@
                 },
                 gridLineColor: 'grey',
                 gridLineWidth: 0.3,
-                tickPositions: [0, 24, 48, 72, 96, 114, 143]
+                tickPositions: [0, 24, 48, 72, 96, 120, 143]
             },
             yAxis: {
                 labels: {
@@ -566,10 +629,26 @@
                 $("#icondelete").attr("style", "color: green;font-size:30px; ");
                 $("#icondelete").attr("onclick", "remove();");
                 linecolor = "blue";
+
+                $("#sp1").html(l1[tagval]==null?0:l1[tagval]);
+                $("#sp2").html(l2[tagval]==null?0:l2[tagval]);
+                $("#sp3").html(l3[tagval]==null?0:l3[tagval]);
+                $("#sp4").html(l4[tagval]==null?0:l4[tagval]);
+                $("#sp5").html(l5[tagval]==null?0:l5[tagval]);
+                $("#sp6").html(l6[tagval]==null?0:l6[tagval]);
+                $("#sp7").html(l7[tagval]==null?0:l7[tagval]);
+
             } else {
                 $("#icondelete").attr("style", "color: grey;font-size:30px; ");
                 $("#icondelete").removeAttr("onclick");
                 linecolor = "orange";
+                $("#sp1").html(0);
+                $("#sp2").html(0);
+                $("#sp3").html(0);
+                $("#sp4").html(0);
+                $("#sp5").html(0);
+                $("#sp6").html(0);
+                $("#sp7").html(0);
             }
 
             $("#hidtime").val(tagval);
@@ -615,9 +694,6 @@
             window.location = "http://localhost:7001/repeatdetail?state=" + $("#hidtime").val();
         }
 
-        function modify() {
-
-        }
 
         function remove() {
             let openid = "o9Ruz0iGzFv0VhAiKr6xeIM9ivOA"
@@ -718,6 +794,14 @@
                 }
             }
 
+            $("#sp1").html(l1[currentindex]==null?0:l1[nextval]);
+            $("#sp2").html(l2[currentindex]==null?0:l2[nextval]);
+            $("#sp3").html(l3[currentindex]==null?0:l3[nextval]);
+            $("#sp4").html(l4[currentindex]==null?0:l4[nextval]);
+            $("#sp5").html(l5[currentindex]==null?0:l5[nextval]);
+            $("#sp6").html(l6[currentindex]==null?0:l6[nextval]);
+            $("#sp7").html(l7[currentindex]==null?0:l7[nextval]);
+
             $("#txtTimeline").val(XDEFINE[nextval]);
             $("#rgTimeline").val(nextval);
             $("#txtTimeline").val(XDEFINE[nextval]);
@@ -736,6 +820,13 @@
                     }
                 }
             }
+            $("#sp1").html(l1[currentindex]==null?0:l1[nextval]);
+            $("#sp2").html(l2[currentindex]==null?0:l2[nextval]);
+            $("#sp3").html(l3[currentindex]==null?0:l3[nextval]);
+            $("#sp4").html(l4[currentindex]==null?0:l4[nextval]);
+            $("#sp5").html(l5[currentindex]==null?0:l5[nextval]);
+            $("#sp6").html(l6[currentindex]==null?0:l6[nextval]);
+            $("#sp7").html(l7[currentindex]==null?0:l7[nextval]);
 
             $("#txtTimeline").val(XDEFINE[nextval]);
             $("#rgTimeline").val(nextval);
@@ -748,6 +839,15 @@
             let currentindex = getcurrenttimeindex();
             $("#hidtime").val(currentindex);
             $("#rgTimeline").val(currentindex);
+
+            
+            $("#sp1").html(l1[currentindex]==null?0:l1[currentindex]);
+            $("#sp2").html(l2[currentindex]==null?0:l2[currentindex]);
+            $("#sp3").html(l3[currentindex]==null?0:l3[currentindex]);
+            $("#sp4").html(l4[currentindex]==null?0:l4[currentindex]);
+            $("#sp5").html(l5[currentindex]==null?0:l5[currentindex]);
+            $("#sp6").html(l6[currentindex]==null?0:l6[currentindex]);
+            $("#sp7").html(l7[currentindex]==null?0:l7[currentindex]);
 
             let isnow = false;
             for (let tag of tags) {
