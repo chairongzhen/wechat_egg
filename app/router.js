@@ -8,7 +8,7 @@ module.exports = app => {
   
   const wechat = app.middlewares.wechat({
     token: "wechattest",
-    appid: "wx34727032e21a5295",
+    appid: "wxf5d8fc1891bdf774",
     encodingAESKey: ""
   })
   
