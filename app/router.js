@@ -14,6 +14,7 @@ module.exports = app => {
   
   router.get('/', controller.home.index);
   router.get('/404', controller.home.error);
+  router.get('/MP_verify_JLi94vO16rP0kiBE.txt', controller.home.sercert)
   router.get('/wechat',wechat);
   router.post('/wechat',wechat);
   router.get('/smartconfig',controller.setup.smartConfig);

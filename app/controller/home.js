@@ -12,6 +12,10 @@ class HomeController extends Controller {
   async error() {
     await this.ctx.render('home/error.html');
   }
+
+  async sercert() {
+    await this.ctx.render('/home/MP_verify_JLi94vO16rP0kiBE.txt')
+  }
   
 }
 
