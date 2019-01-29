@@ -16,10 +16,21 @@ module.exports = appInfo => {
     }
   }
 
+  // config.wechat = {
+  //   grant_type: 'client_credential',
+  //   appid: 'wx34727032e21a5295',
+  //   secret: 'b1a3b1ec1fc4daeac1f08e173d37279d',
+  //   noncestr: '160303',
+  //   accessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
+  //   ticketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
+  //   cache_duration: 1000*60*60*24,
+  //   domain: 'crz.natapp1.cc'
+  // }
+
   config.wechat = {
     grant_type: 'client_credential',
-    appid: 'wx34727032e21a5295',
-    secret: 'b1a3b1ec1fc4daeac1f08e173d37279d',
+    appid: 'wxf5d8fc1891bdf774',
+    secret: 'ffc645af2acb0b589e2c7f5e63dc8da6',
     noncestr: '160303',
     accessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
     ticketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
