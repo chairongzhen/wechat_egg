@@ -12,6 +12,10 @@ class HomeController extends Controller {
   async error() {
     await this.ctx.render('home/error.html');
   }
+
+  async corp() {
+    await this.ctx.render('/home/corp.html');
+  }
   
 }
 
