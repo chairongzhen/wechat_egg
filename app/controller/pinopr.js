@@ -117,8 +117,8 @@ class PinoprController extends Controller {
     
             await ctx.render('home/basic.html', result);
         } else {
-            ctx.body = "session timeout";
-            ctx.status = 400;
+            console.log('cannot get the openid');
+            await ctx.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/basic&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
         }
 
 
@@ -175,8 +175,8 @@ class PinoprController extends Controller {
             }
             await ctx.render('home/repeat.html', result);
         } else {
-            ctx.body = "session timeout";
-            ctx.status = 400;
+            console.log("cannot get the openid");
+            await ctx.render("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
         }
 
     }
@@ -232,8 +232,8 @@ class PinoprController extends Controller {
             }
             await ctx.render('home/repeatdetail.html', result);
         } else {
-            ctx.body = "session timeout";
-            ctx.status = 400;
+            console.log("cannot get the openid");
+            await ctx.render("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/repeatdetail&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
         }
         
 
