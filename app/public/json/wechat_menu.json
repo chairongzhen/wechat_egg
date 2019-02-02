@@ -3,7 +3,7 @@
         {
             "type": "view", 
             "name": "一键上网", 
-            "url": "http://crz.natapp1.cc/smartconfig"
+            "url": "http://www.polypite.com/smartconfig"
         }, 
         {
             "type": "view", 
@@ -12,11 +12,11 @@
                 {
                     "type": "view",
                     "name": "我的设备",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
                 },{
                     "type": "view",
                     "name": "添加设备",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/scan&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/scan&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
                 }
             ] 
             
@@ -27,11 +27,11 @@
             "sub_button":[{
                 "type": "view",
                 "name": "基本设置",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/basic&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/basic&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
             },{
                 "type": "view",
                 "name": "循环设置",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34727032e21a5295&redirect_uri=http://crz.natapp1.cc/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/repeat&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
             }]            
         }
     ]

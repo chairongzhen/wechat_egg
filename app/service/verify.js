@@ -6,7 +6,7 @@ const sha1 = require('sha1');
 
 class VerifySerive extends Service {
     async verify(originalurl) {
-        let url = originalurl;
+        let url = originalurl.replace(":80","");
         let noncestr = this.config.wechat.noncestr,
             timestamp = Math.floor(Date.now() / 1000),
             jsapi_ticket, signature;
@@ -19,6 +19,7 @@ class VerifySerive extends Service {
             const tokenMap = await getUrlcontent(grantUrl);
             let ticketUrl = this.config.wechat.ticketUrl + "?access_token=" + tokenMap.access_token + "&type=jsapi";
             const ticketMap = await getUrlcontent(ticketUrl);
+            cache.put('ticket',ticketMap.ticket,this.config.wechat.cache_duration);  //加入缓存
             jsapi_ticket = ticketMap.ticket;
             signature = sha1('jsapi_ticket=' + ticketMap.ticket + '&noncestr=' + noncestr + '&timestamp=' + timestamp + '&url=' + url)
         }

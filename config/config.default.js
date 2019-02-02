@@ -35,7 +35,7 @@ module.exports = appInfo => {
     accessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
     ticketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
     cache_duration: 1000*60*60*24,
-    domain: 'crz.natapp1.cc'
+    domain: 'www.polypite.com'
   }
    
   config.view = {
