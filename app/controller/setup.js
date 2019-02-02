@@ -43,35 +43,40 @@ class SetupController extends Controller {
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
         let code = ctx.query.code;
         const userinfores = await ctx.service.verify.getwechatuser(code);
-        
-        let userinfo = {
-            openid: userinfores.openid,
-            nickname: userinfores.nickname,
-            gender: userinfores.sex,
-            province: userinfores.province,
-            city: userinfores.city,
-            country: userinfores.country,
-            headimgurl: userinfores.headimgurl
-        }
-        await this.service.account.checkaccount(userinfo);
-        const bindedres = await this.service.account.getusermachine(userinfores.openid);
-        let res = [];
-        for(let ta of bindedres) {
-            let bindma = {
-                mid: ta.mid,
-                ip: ta.ip,
-                online: ta.online ==0?"离线":"在线" 
+        if(userinfores && userinfores.openid) {
+            let userinfo = {
+                openid: userinfores.openid,
+                nickname: userinfores.nickname,
+                gender: userinfores.sex,
+                province: userinfores.province,
+                city: userinfores.city,
+                country: userinfores.country,
+                headimgurl: userinfores.headimgurl
             }
-            res.push(bindma);
+            await this.service.account.checkaccount(userinfo);
+            const bindedres = await this.service.account.getusermachine(userinfores.openid);
+            let res = [];
+            for(let ta of bindedres) {
+                let bindma = {
+                    mid: ta.mid,
+                    ip: ta.ip,
+                    online: ta.online ==0?"离线":"在线" 
+                }
+                res.push(bindma);
+            }
+            const machineinfo = await ctx.service.verify.verify(url);
+    
+            let result = {
+                userinfo: userinfores,
+                machineinfo: machineinfo,
+                binddata: res
+            }
+            await ctx.render('home/binded.html',result);
+        } else {
+            console.log('cannot get the openid');
+            await ctx.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf5d8fc1891bdf774&redirect_uri=http://www.polypite.com/binded&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
         }
-        const machineinfo = await ctx.service.verify.verify(url);
-
-        let result = {
-            userinfo: userinfores,
-            machineinfo: machineinfo,
-            binddata: res
-        }
-        await ctx.render('home/binded.html',result);
+        
     }
 
     async bind() {
