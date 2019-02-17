@@ -25,9 +25,13 @@ module.exports = (options,app) =>{
                     reply = "请输入设备号";
                 } else {
                     let mid = Content.toLowerCase().substring(4);
-                    await ctx.service.account.getmid(mid);
-                    await ctx.service.account.addmid(mid);
-                    reply = "添加成功";
+                    const exist = await ctx.service.account.getmid(mid);
+                    if(exist) {
+                        reply = "已存在";
+                    } else {
+                        await ctx.service.account.addmid(mid);
+                        reply = "添加成功";
+                    }
                 }
             }else {
                 reply = "未知指令";
