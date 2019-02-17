@@ -177,7 +177,7 @@ class AccountSerive extends Service {
     }
 
     async addmid(mid) {
-        let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}}', '00000000')`;
+        let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}', '00000000')`;
         await this.app.mysql.query(addsql);
         return true;
     }
