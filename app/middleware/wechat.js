@@ -13,7 +13,13 @@ module.exports = (options,app) =>{
                     reply = "IP: " + res ;
                 }
             } else if(Content.toLowerCase()== "list") {
-                reply = "有好多哦";
+                const res = await ctx.service.account.getmids();
+                let resstr = "";
+                for(let ta of res) {
+                    resstr += ta["mid"];
+                    resstr += ",";
+                }
+                reply = resstr;
             }else {
                 reply = "未知指令";
             }

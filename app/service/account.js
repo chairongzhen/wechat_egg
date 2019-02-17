@@ -169,6 +169,12 @@ class AccountSerive extends Service {
         const result = await this.app.mysql.query(getsql);
         return result;
     }
+
+    async getmids() {
+        let getsql = `select mid from machines order by mid`;
+        const result = await this.app.mysql.query(getsql);
+        return result;
+    }
 }
 
 module.exports = AccountSerive;
