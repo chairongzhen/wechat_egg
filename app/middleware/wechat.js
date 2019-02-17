@@ -25,6 +25,7 @@ module.exports = (options,app) =>{
                     reply = "请输入设备号";
                 } else {
                     let mid = Content.toLowerCase().substring(4);
+                    await ctx.service.account.getmid(mid);
                     await ctx.service.account.addmid(mid);
                     reply = "添加成功";
                 }

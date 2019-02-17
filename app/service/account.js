@@ -176,6 +176,17 @@ class AccountSerive extends Service {
         return result;
     }
 
+    async getmid(mid) {
+        let getsql = `select mid from machines where mid = '${mid}'`;
+        const result = await this.app.mysql.query(getsql);
+        console.log(result.length);
+        if(result && result.length >0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     async addmid(mid) {
         let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}', '00000000')`;
         await this.app.mysql.query(addsql);
