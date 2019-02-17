@@ -12,7 +12,7 @@ module.exports = (options,app) =>{
                     const res = await ctx.service.account.getmacip(Content.toLowerCase());
                     reply = "IP: " + res ;
                 }
-            } else if(Content.toLowerCase()== "esp list") {
+            } else if(Content.toLowerCase()== "list") {
                 reply = "有好多哦";
             }else {
                 reply = "未知指令";
