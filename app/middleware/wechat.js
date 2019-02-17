@@ -20,6 +20,15 @@ module.exports = (options,app) =>{
                     resstr += ",";
                 }
                 reply = resstr;
+            } else if(Content.toLowerCase().substring(0,3) == "add") {
+                if(Content.length <4) {
+                    reply = "请输入设备号";
+                } else {
+                    let mid = Content.toLowerCase().substring(4);
+                    
+                    //const res = await ctx.service.account.getmacip(Content.toLowerCase());
+                    reply = "IP: " + mid ;
+                }
             }else {
                 reply = "未知指令";
             }
