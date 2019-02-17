@@ -22,8 +22,9 @@ module.exports = app =>{
             password: self.config.mqtt.password,
             clientId: self.config.mqtt.clientid
         }
-        app.mqttclient = mqtt.connect(url,options);
-
+        //app.mqttclient = mqtt.connect(url,options);
+        app.mqttclient = mqtt.connect(url);
+        
         app.mqttclient.subscribe("esp32/online");
         app.mqttclient.subscribe("esp32/heart");
         app.mqttclient.subscribe("esp32/disnotify");

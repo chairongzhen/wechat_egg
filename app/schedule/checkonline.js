@@ -2,7 +2,7 @@ module.exports = {
     schedule: {
         interval: '30s',
         type: 'worker',
-        disable: true
+        disable: false
     },
 
     async task(ctx) {

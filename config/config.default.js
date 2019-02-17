@@ -34,6 +34,8 @@ module.exports = appInfo => {
     noncestr: '160303',
     accessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
     ticketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
+    loginUrl: 'https://open.weixin.qq.com/connect/qrconnect',
+    serviceUrl: 'http://www.polypite.com',
     cache_duration: 1000*60*60*24,
     domain: 'www.polypite.com'
   }
@@ -46,15 +48,15 @@ module.exports = appInfo => {
   }
 
   config.mqtt = {
-    // url: "tcp://localhost:1883",
-    // username: 'eric',
-    // password: '111111',
-    // clientid: 'wechatserver-1536282709723'
+    url: "mqtt://www.polypite.com:1883",
+    username: '',
+    password: '',
+    clientid: ''
 
-    url: "tcp://m12.cloudmqtt.com:16610",
-    username: 'cqyjmitd',
-    password: 'SXLMuaorn881',
-    clientid: 'wechatserver-1536282709723'
+    // url: "tcp://m12.cloudmqtt.com:16610",
+    // username: 'cqyjmitd',
+    // password: 'SXLMuaorn881',
+    // clientid: 'wechatserver-1536282709723'
   }
 
   config.mysql = {
