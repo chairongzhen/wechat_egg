@@ -25,9 +25,8 @@ module.exports = (options,app) =>{
                     reply = "请输入设备号";
                 } else {
                     let mid = Content.toLowerCase().substring(4);
-                    
-                    //const res = await ctx.service.account.getmacip(Content.toLowerCase());
-                    reply = "IP: " + mid ;
+                    await ctx.service.account.addmid(mid);
+                    reply = "添加成功";
                 }
             }else {
                 reply = "未知指令";

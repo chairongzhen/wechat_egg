@@ -175,6 +175,12 @@ class AccountSerive extends Service {
         const result = await this.app.mysql.query(getsql);
         return result;
     }
+
+    async addmid(mid) {
+        let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}}', '00000000')`;
+        await this.app.mysql.query(addsql);
+        return true;
+    }
 }
 
 module.exports = AccountSerive;
