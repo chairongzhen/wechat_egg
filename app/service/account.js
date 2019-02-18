@@ -179,7 +179,6 @@ class AccountSerive extends Service {
     async getmid(mid) {
         let getsql = `select mid from machines where mid = '${mid}'`;
         const result = await this.app.mysql.query(getsql);
-        console.log(result.length);
         if(result && result.length >0) {
             return true;
         } else {
@@ -191,6 +190,12 @@ class AccountSerive extends Service {
         let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}', '00000000')`;
         await this.app.mysql.query(addsql);
         return true;
+    }
+
+    async getonlines() {
+        let onlinesql = 'select mid from usermachines where online = 1';
+        const result = await this.app.mysql.query(onlinesql);
+        return result;
     }
 }
 

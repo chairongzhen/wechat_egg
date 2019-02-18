@@ -33,6 +33,15 @@ module.exports = (options,app) =>{
                         reply = "添加成功";
                     }
                 }
+            }else if(Content.toLowerCase() == "online"){
+                const res = await ctx.service.account.getonlines();
+                let resstr = "";
+                for(let ta of res) {
+                    resstr += ta["mid"];
+                    resstr += ",";
+                }
+                reply = resstr;
+
             }else {
                 reply = "未知指令";
             }
