@@ -46,7 +46,9 @@ module.exports = app => {
   router.get("/dislog",controller.account.dislog);
   router.get("/checkonline",controller.account.checkonline);
   router.post("/emptytags",controller.pinopr.emptytags);
-  
+  router.post("/version",controller.setup.checkversion);
+
+
   router.get("/login",controller.login.Login);
   router.get("/index",controller.login.Index);
 };
