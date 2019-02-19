@@ -113,6 +113,16 @@ class SetupController extends Controller {
         }
         
     }
+
+    async checkversion() {
+        const ctx = this.ctx;
+        let res = await ctx.service.setup.checkversion();
+        ctx.body = {
+            error_code : 0,
+            err_msg: null,
+            data : res[0]["version"]
+        }
+    }
 }
 
 module.exports = SetupController;
