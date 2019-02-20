@@ -117,7 +117,7 @@ class SetupController extends Controller {
     async checkversion() {
         const ctx = this.ctx;
         let res = await ctx.service.setup.checkversion();
-        ctx.body = res[0]["version"];
+        ctx.body = "version:" + res[0]["version"];
     }
 }
 
