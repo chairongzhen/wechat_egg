@@ -41,6 +41,7 @@ class VerifySerive extends Service {
         const reauthres = await getUrlcontent(reauthurl);
         let userinfourl = `https://api.weixin.qq.com/sns/userinfo?access_token=${reauthres.access_token}&openid=${reauthres.openid}&lang=zh_CN`;
         const userinfores = await getUrlcontent(userinfourl);
+        userinfores.openid = userinfores.unionid;
         return userinfores;
     }
 }
