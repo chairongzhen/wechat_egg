@@ -47,7 +47,7 @@ module.exports = (options,app) =>{
             }
             return reply;
         }else {
-            return "Welcome to the ESP";
+            return;
         }
     });
 };
