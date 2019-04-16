@@ -165,7 +165,7 @@ class AccountSerive extends Service {
     }
 
     async getusermachine(openid) {
-        let getsql = `select mid,ip,online from usermachines where openid = '${openid}'`;
+        let getsql = `select mid,mname,ip,online from usermachines where openid = '${openid}'`;
         const result = await this.app.mysql.query(getsql);
         return result;
     }
@@ -187,16 +187,22 @@ class AccountSerive extends Service {
     }
 
     async addmid(mid) {
-        let addsql = `INSERT INTO machines (mid,mac) VALUES('${mid}', '00000000')`;
+        let addsql = `INSERT INTO machines (mid,mname,mac) VALUES('${mid}', '${mid}','00000000')`;
         await this.app.mysql.query(addsql);
         return true;
     }
 
     async getonlines() {
-        let onlinesql = 'select mid from usermachines where online = 1';
+        let onlinesql = 'select mname from usermachines where online = 1';
         const result = await this.app.mysql.query(onlinesql);
         return result;
     }
+
+    async updatemid(mid,mname) {
+        let updatesql = `update machines set mname = '${mname}' where mid = '${mid}'`;
+        await this.app.mysql.query(updatesql);
+        return true;
+    } 
 }
 
 module.exports = AccountSerive;

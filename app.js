@@ -47,9 +47,9 @@ module.exports = app =>{
                         ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip);
                         
                         let timestamp = Date.now()/1000|0;
-                        app.mqttclient.publish("esp32/checktime",timestamp.toString(),{
-                            qos: 2
-                        });
+                        // app.mqttclient.publish("esp32/checktime",timestamp.toString(),{
+                        //     qos: 2
+                        // });
                         
 
                     } catch(e) {

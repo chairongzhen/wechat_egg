@@ -59,6 +59,7 @@ class SetupController extends Controller {
             for(let ta of bindedres) {
                 let bindma = {
                     mid: ta.mid,
+                    mname: ta.mname,
                     ip: ta.ip,
                     online: ta.online ==0?"离线":"在线" 
                 }

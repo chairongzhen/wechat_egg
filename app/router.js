@@ -51,4 +51,6 @@ module.exports = app => {
 
   router.get("/login",controller.login.Login);
   router.get("/index",controller.login.Index);
+
+  router.post("/updatemid",controller.account.updatemid);
 };

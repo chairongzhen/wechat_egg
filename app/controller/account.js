@@ -115,6 +115,14 @@ class AccountController extends Controller {
         const result = await this.service.account.getmacip(mid);
         this.ctx.body = result;
     }
+
+    async updatemid() {
+        const ctx = this.ctx;
+        let mid = ctx.request.body.mid;
+        let mname = ctx.request.body.mname;
+        const result = await this.service.account.updatemid(mid, mname);
+        this.ctx.body = result;
+    }
 }
 
 module.exports = AccountController;
