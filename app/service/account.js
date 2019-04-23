@@ -165,7 +165,7 @@ class AccountSerive extends Service {
     }
 
     async getusermachine(openid) {
-        let getsql = `select mid,mname,ip,online from usermachines where openid = '${openid}'`;
+        let getsql = `select usermachines.mid,machines.mname,ip,online from usermachines LEFT OUTER JOIN machines ON machines.mid = usermachines.mid where openid = '${openid}'`;
         const result = await this.app.mysql.query(getsql);
         return result;
     }
@@ -193,7 +193,7 @@ class AccountSerive extends Service {
     }
 
     async getonlines() {
-        let onlinesql = 'select mname from usermachines where online = 1';
+        let onlinesql = 'SELECT mname FROM usermachines LEFT OUTER JOIN machines ON machines.mid = usermachines.mid WHERE ONLINE = 1';
         const result = await this.app.mysql.query(onlinesql);
         return result;
     }
