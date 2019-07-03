@@ -115,7 +115,7 @@ class PinoprController extends Controller {
                 machineinfo: machineinfo,
                 basicres: basicres
             }
-    
+            console.log('the result is: ',result);
             await ctx.render('home/basic.html', result);
         } else {
             console.log('cannot get the openid');
