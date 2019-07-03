@@ -137,6 +137,13 @@
                             <input type="number" onchange="txtl7change();"  id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                     </div>
             </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第八排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl8" />
+                    <input type="number" onchange="txtl8change();"  id="txtl8" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
         </div>
 
         <div class="weui_btn_area">
@@ -196,6 +203,9 @@
         var change7 = function ($input) {
             $("#txtl7").val($input.value);
         }
+        var change8 = function ($input) {
+            $("#txtl8").val($input.value);
+        }
 
         function txtl1change() {
             let val = $("#txtl1").val();
@@ -232,6 +242,11 @@
             $("#rangerl7").val(val);
         }
 
+        function txtl8change() {
+            let val = $("#txtl8").val();
+            $("#rangerl8").val(val);
+        }
+
         function save() {
             let openid = "{{basicres.openid}}";
             let showtype = $("#selectshowtype").val() == "循环"?"repeat":"fix";
@@ -243,6 +258,7 @@
             let l5 = $("#txtl5").val();
             let l6 = $("#txtl6").val();
             let l7 = $("#txtl7").val();
+            let l8 = $("#txtl8").val();
             
             let params = {
                 openid:openid,
@@ -254,7 +270,8 @@
                 l4:l4,
                 l5:l5,
                 l6:l6,
-                l7:l7
+                l7:l7,
+                l8:l8
             }
 
             $.ajax({
@@ -296,6 +313,7 @@
         $('#rangerl5').RangeSlider({ min: 0, max: 100, step: 1, callback: change5 });
         $('#rangerl6').RangeSlider({ min: 0, max: 100, step: 1, callback: change6 });
         $('#rangerl7').RangeSlider({ min: 0, max: 100, step: 1, callback: change7 });
+        $('#rangerl8').RangeSlider({ min: 0, max: 100, step: 1, callback: change8 });
     </script>
 </body>
 
