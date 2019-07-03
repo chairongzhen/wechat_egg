@@ -405,12 +405,11 @@ class PinoprSerive extends Service {
 
     async updaterepeatdata(openid) {
         let lvs = {};
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
             lvs["l" + i] = await generateLightData(tagsres);
         }
-        console.log('the lvs is: ', lvs);
         let originlight = await this.getoriginlight(openid);
         let lightjson = JSON.parse(originlight);
         let index = 0;
