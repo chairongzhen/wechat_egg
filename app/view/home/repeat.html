@@ -102,6 +102,9 @@
         <div style="float:left; width:13%; ">
             <span style="font-size:9px;" id="sp7"></span><span style="font-size:9px;">%</span>
         </div>
+        <div style="float:left; width:13%; ">
+            <span style="font-size:9px;" id="sp8"></span><span style="font-size:9px;">%</span>
+        </div>
         <div style="clear:both;"></div>
     </div>
     <div id="container" style="height:200px"></div>
@@ -156,6 +159,7 @@
         let l5 = [];
         let l6 = [];
         let l7 = [];
+        let l8 = [];
 
         let tags = "{{tags}}" == "" ? [] : "{{tags}}".split(',');
         let l1val = "{{l1}}" == "" ? [] : "{{l1}}".split(',');
@@ -165,6 +169,7 @@
         let l5val = "{{l5}}" == "" ? [] : "{{l5}}".split(',');
         let l6val = "{{l6}}" == "" ? [] : "{{l6}}".split(',');
         let l7val = "{{l7}}" == "" ? [] : "{{l7}}".split(',');
+        let l8val = "{{l8}}" == "" ? [] : "{{l8}}".split(',');
 
         if (tags.length > 0) {
             tags = tags.map(Number);
@@ -177,6 +182,7 @@
         let l5tags = [];
         let l6tags = [];
         let l7tags = [];
+        let l8tags = [];
 
         let has0 = false;
         let has143 = false;
@@ -196,6 +202,7 @@
             l5val.splice(0, 0, 0);
             l6val.splice(0, 0, 0);
             l7val.splice(0, 0, 0);
+            l8val.splice(0, 0, 0);
         }
         if (!has143) {
             tags.push(143);
@@ -206,6 +213,7 @@
             l5val.push(0);
             l6val.push(0);
             l7val.push(0);
+            l8val.push(0);
         }
         for (let i = 0; i < tags.length; i++) {
             l1tags.push({
@@ -236,6 +244,10 @@
                 tag: Number(tags[i]),
                 tagvalue: Number(l7val[i])
             });
+            l8tags.push({
+                tag: Number(tags[i]),
+                tagvalue: Number(l8val[i])
+            });
         }
         for (let i = 0; i < 144; i++) {
             let haskey = false;
@@ -247,6 +259,7 @@
             let l5keyval = null;
             let l6keyval = null;
             let l7keyval = null;
+            let l8keyval = null;
             for (let tag of l1tags) {
                 if (tag.tag == i) {
                     haskey = true;
@@ -263,6 +276,7 @@
                     l5keyval = Number(l5val[j]);
                     l6keyval = Number(l6val[j]);
                     l7keyval = Number(l7val[j]);
+                    l8keyval = Number(l8val[j]);
                 }
             }
             if (haskey) {
@@ -273,6 +287,7 @@
                 l5.push(l5keyval);
                 l6.push(l6keyval);
                 l7.push(l7keyval);
+                l8.push(l8keyval);
 
             } else {
                 l1.push(null);
@@ -282,6 +297,7 @@
                 l5.push(null);
                 l6.push(null);
                 l7.push(null);
+                l8.push(null);
             }
         }
         var chart = Highcharts.chart('container', {
@@ -364,6 +380,12 @@
                     symbol: 'circle'
                 },
                 data: l7
+            },{
+                name: ' ',
+                marker: {
+                    symbol: 'circle'
+                },
+                data: l8
             }]
         });
         $(".highcharts-credits").remove();
@@ -377,6 +399,7 @@
             l5 = [];
             l6 = [];
             l7 = [];
+            l8 = [];
 
             for (let i = 0; i < 144; i++) {
                 l1.push(0);
@@ -386,6 +409,7 @@
                 l5.push(0);
                 l6.push(0);
                 l7.push(0);
+                l8.push(0);
             }
             chart = Highcharts.chart('container', {
                 chart: {
@@ -467,6 +491,12 @@
                         symbol: 'circle'
                     },
                     data: l7
+                },{
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l8
                 }]
             });
 
@@ -488,6 +518,7 @@
                 l5[deletetag] = 0;
                 l6[deletetag] = 0;
                 l7[deletetag] = 0;
+                l8[deletetag] = 0;
             } else {
                 let index = tags.indexOf(deletetag);
                 if (index > -1) {
@@ -500,6 +531,7 @@
                 l5.splice(deletetag, 1, null);
                 l6.splice(deletetag, 1, null);
                 l7.splice(deletetag, 1, null);
+                l8.splice(deletetag, 1, null);
             }
 
 
@@ -584,6 +616,12 @@
                         symbol: 'circle'
                     },
                     data: l7
+                },{
+                    name: ' ',
+                    marker: {
+                        symbol: 'circle'
+                    },
+                    data: l8
                 }]
             });
 
@@ -758,6 +796,7 @@
             $("#sp5").html(l5[currentindex]==null?0:l5[nextval]);
             $("#sp6").html(l6[currentindex]==null?0:l6[nextval]);
             $("#sp7").html(l7[currentindex]==null?0:l7[nextval]);
+            $("#sp8").html(l8[currentindex]==null?0:l8[nextval]);
             $("#txtTimeline").val(XDEFINE[nextval]);
             $("#rgTimeline").val(nextval);
             $("#txtTimeline").val(XDEFINE[nextval]);
@@ -783,6 +822,7 @@
             $("#sp5").html(l5[currentindex]==null?0:l5[nextval]);
             $("#sp6").html(l6[currentindex]==null?0:l6[nextval]);
             $("#sp7").html(l7[currentindex]==null?0:l7[nextval]);
+            $("#sp8").html(l8[currentindex]==null?0:l8[nextval]);
             $("#txtTimeline").val(XDEFINE[nextval]);
             $("#rgTimeline").val(nextval);
             $("#txtTimeline").val(XDEFINE[nextval]);
@@ -809,7 +849,8 @@
             $("#sp4").html(l4[currentindex]==null?0:l4[currentindex]);
             $("#sp5").html(l5[currentindex]==null?0:l5[currentindex]);
             $("#sp6").html(l6[currentindex]==null?0:l6[currentindex]);
-            $("#sp7").html(l7[currentindex]==null?0:l7[currentindex]);  
+            $("#sp7").html(l7[currentindex]==null?0:l7[currentindex]);
+            $("#sp8").html(l8[currentindex]==null?0:l8[currentindex]);    
             let linecolor = "green";
             if (isnow) {
                 linecolor = "blue";

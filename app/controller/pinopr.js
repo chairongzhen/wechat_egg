@@ -170,6 +170,7 @@ class PinoprController extends Controller {
                 l5: repeatdata.l5,
                 l6: repeatdata.l6,
                 l7: repeatdata.l7,
+                l8: repeatdata.l8,
                 domain: this.config.wechat.domain,
                 appid: this.config.wechat.appid
             }
@@ -209,6 +210,7 @@ class PinoprController extends Controller {
             let l5 = tagres.t5;
             let l6 = tagres.t6;
             let l7 = tagres.t7;
+            let l8 = tagres.t8;
     
             let tagvalues = {
                 l1: l1,
@@ -217,7 +219,8 @@ class PinoprController extends Controller {
                 l4: l4,
                 l5: l5,
                 l6: l6,
-                l7: l7
+                l7: l7,
+                l8: l8
             }
             
             const hightag = await this.service.pinopr.candelete(userinfo.openid,tag);
@@ -297,7 +300,8 @@ class PinoprController extends Controller {
             l4: repeatdata.l4,
             l5: repeatdata.l5,
             l6: repeatdata.l6,
-            l7: repeatdata.l7
+            l7: repeatdata.l7,
+            l8: repeatdata.l8
         }
         ctx.body = { result }
         ctx.status = 201;

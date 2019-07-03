@@ -195,7 +195,6 @@ class PinoprSerive extends Service {
                             openid = '${openid}'
                         `;
         const getres = await this.app.mysql.query(getsql);
-        console.log('the result is: ',getres);
         let res = {};
         res.openid = openid;
         res.showtype = getres[0].showtype;
@@ -303,6 +302,7 @@ class PinoprSerive extends Service {
         let l5 = [];
         let l6 = [];
         let l7 = [];
+        let l8 = [];
         for (let key in jsonlvs) {
             if (key != "tfix") {
                 let tv = "";
@@ -328,6 +328,9 @@ class PinoprSerive extends Service {
                 tv = jsonlvs[key].substr(12, 2);
                 tdec = parseInt(tv, 16);
                 l7.push(tdec);
+                tv = jsonlvs[key].substr(14, 2);
+                tdec = parseInt(tv, 16);
+                l8.push(tdec);
             }
         }
         res.t1 = l1;
@@ -337,6 +340,7 @@ class PinoprSerive extends Service {
         res.t5 = l5;
         res.t6 = l6;
         res.t7 = l7;
+        res.t8 = l8;
         return res;
     }
 
@@ -359,6 +363,7 @@ class PinoprSerive extends Service {
         result.l5 = [];
         result.l6 = [];
         result.l7 = [];
+        result.l8 = [];
         for (let tags of getres) {
             switch (tags.lid) {
                 case 1:
@@ -382,6 +387,9 @@ class PinoprSerive extends Service {
                     break;
                 case 7:
                     result.l7.push(tags.tagvalue);
+                    break;
+                case 8:
+                    result.l8.push(tags.tagvalue);
                     break;
                 default:
                     break;
@@ -414,7 +422,8 @@ class PinoprSerive extends Service {
                 let l5val = tohex(lvs.l5[index]);
                 let l6val = tohex(lvs.l6[index]);
                 let l7val = tohex(lvs.l7[index]);
-                lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val;
+                let l8val = tohex(lvs.l8[index]);
+                lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val + l8val;
             }
             index += 1;
         }
@@ -476,7 +485,8 @@ class PinoprSerive extends Service {
                 let l5val = "00";
                 let l6val = "00";
                 let l7val = "00";
-                lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val;
+                let l8val = "00";
+                lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val + l8val;
             }
             index += 1;
         }
