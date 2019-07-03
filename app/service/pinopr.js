@@ -410,6 +410,7 @@ class PinoprSerive extends Service {
             let tagsres = await this.app.mysql.query(tagssql);
             lvs["l" + i] = await generateLightData(tagsres);
         }
+        console.log('the lvs is: ', lvs);
         let originlight = await this.getoriginlight(openid);
         let lightjson = JSON.parse(originlight);
         let index = 0;
