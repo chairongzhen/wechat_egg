@@ -69,6 +69,7 @@ class PinoprController extends Controller {
         // }
         const ctx = this.ctx;
         let lightinfo = ctx.request.body;
+        console.log('the result is: ',lightinfo);
         result = await this.service.pinopr.updatelightdetail(lightinfo.openid, lightinfo.lights);
         this.ctx.body = result;
     }
