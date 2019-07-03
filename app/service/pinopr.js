@@ -195,6 +195,7 @@ class PinoprSerive extends Service {
                             openid = '${openid}'
                         `;
         const getres = await this.app.mysql.query(getsql);
+        console.log('the result is: ',getres);
         let res = {};
         res.openid = openid;
         res.showtype = getres[0].showtype;
