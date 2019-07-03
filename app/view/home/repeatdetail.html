@@ -85,6 +85,13 @@
                     <input type="number" onchange="txtl7change();" id="txtl7" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
                 </div>
             </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">第八排:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="range" name="points" min="0" max="100" step="any" id="rangerl8" />
+                    <input type="number" onchange="txtl8change();" id="txtl8" style="width:30px; height:20px; text-align:center; vertical-align:-webkit-baseline-middle" />
+                </div>
+            </div>
         </div>
 
         <div class="weui_btn_area">
@@ -172,6 +179,9 @@
         var change7 = function ($input) {
             $("#txtl7").val($input.value);
         }
+        var change8 = function ($input) {
+            $("#txtl8").val($input.value);
+        }
 
         function txtl1change() {
             let val = $("#txtl1").val();
@@ -207,6 +217,10 @@
             let val = $("#txtl7").val();
             $("#rangerl7").val(val);
         }
+        function txtl8change() {
+            let val = $("#txtl8").val();
+            $("#rangerl8").val(val);
+        }
 
         function save() {
             let openid = "{{userinfo.openid}}";
@@ -218,7 +232,8 @@
                 { lid: 4, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl4").val() },
                 { lid: 5, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl5").val() },
                 { lid: 6, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl6").val() },
-                { lid: 7, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl7").val() }]
+                { lid: 7, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl7").val() },
+                { lid: 8, tag: $("#hidselecttimepoint").val(), tagvalue: $("#txtl8").val() }]
             }
             $.ajax({
                 type: "POST",
@@ -262,6 +277,8 @@
                     cl6 = Number(cl6);
                     let cl7 = res.result.l7;
                     cl7 = Number(cl7);
+                    let cl8 = res.result.l8;
+                    cl8 = Number(cl8);
                     $("#txtl1").val(cl1);
                     $("#txtl2").val(cl2);
                     $("#txtl3").val(cl3);
@@ -269,6 +286,7 @@
                     $("#txtl5").val(cl5);
                     $("#txtl6").val(cl6);
                     $("#txtl7").val(cl7);
+                    $("#txtl8").val(cl8);
                     $("#rangerl1").val(cl1);
                     $("#rangerl2").val(cl2);
                     $("#rangerl3").val(cl3);
@@ -276,6 +294,7 @@
                     $("#rangerl5").val(cl5);
                     $("#rangerl6").val(cl6);
                     $("#rangerl7").val(cl7);
+                    $("#rangerl8").val(cl8);
                 }
             });
         }
@@ -287,6 +306,7 @@
         $('#rangerl5').RangeSlider({ min: 0, max: 100, step: 1, callback: change5 });
         $('#rangerl6').RangeSlider({ min: 0, max: 100, step: 1, callback: change6 });
         $('#rangerl7').RangeSlider({ min: 0, max: 100, step: 1, callback: change7 });
+        $('#rangerl8').RangeSlider({ min: 0, max: 100, step: 1, callback: change8 });
 
 
         let tag = "{{tag}}";
@@ -332,6 +352,11 @@
         l7res = Number(l7res);
         $("#txtl7").val(l7res);
 
+        let l8arr = "{{tagvalues.l8}}".split(',');
+        let l8res = l8arr[tag];
+        l8res = Number(l8res);
+        $("#txtl8").val(l8res);
+
 
         $("#rangerl1").val(l1res);
         $("#rangerl2").val(l2res);
@@ -340,6 +365,7 @@
         $("#rangerl5").val(l5res);
         $("#rangerl6").val(l6res);
         $("#rangerl7").val(l7res);
+        $("#rangerl8").val(l8res);
 
 
         // function del() {
