@@ -55,7 +55,9 @@ class AccountSerive extends Service {
         const unbindres = await this.app.mysql.query(unbindsql);
         let result = "";
         if(existres[0].existcount == 0) { 
-            result = "notexist";
+            //result = "notexist";
+            await ctx.service.account.addmid(`${machineinfo.mid}`);
+            result = "new";
         } else {
             if(unbindres[0].existcount == 0) {
                 result = "available";
@@ -72,7 +74,7 @@ class AccountSerive extends Service {
         let result = {};
         for(let mar of machineinfos) {
             let res = await this.checkmachine(userinfo,mar);
-            if(res == "available") {
+            if(res == "available" || res == "new") {
                 let insertsql = `INSERT INTO usermachines (openid, mid, binddate)
                         VALUES
                             (
