@@ -26,7 +26,7 @@ class SetupController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const bindedres = await this.service.account.getusermachine(userinfores.openid);
-        console.log('here it is....', binderes);
+        console.log('here it is......', binderes);
         const machineinfo = await ctx.service.verify.verify(url);
 
         let result = {
