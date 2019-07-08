@@ -88,7 +88,6 @@ class SetupController extends Controller {
             openid: openid
         }
         let mc = ctx.request.body.mc;
-        console.log('here it is: ',mc);        
         const result = await this.service.account.bingmachine(userinfo,mc);  
         ctx.body = { result };
         ctx.status = 201;
