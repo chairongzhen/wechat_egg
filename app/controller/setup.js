@@ -26,7 +26,6 @@ class SetupController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const bindedres = await this.service.account.getusermachine(userinfores.openid);
-        console.log('here it is......', bindedres);
         const machineinfo = await ctx.service.verify.verify(url);
 
         let result = {
@@ -88,7 +87,8 @@ class SetupController extends Controller {
         let userinfo = {
             openid: openid
         }
-        let mc = ctx.request.body.mc;        
+        let mc = ctx.request.body.mc;
+        console.log('here it is: ',mc);        
         const result = await this.service.account.bingmachine(userinfo,mc);  
         ctx.body = { result };
         ctx.status = 201;
