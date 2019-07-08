@@ -26,7 +26,7 @@ class SetupController extends Controller {
         }
         await this.service.account.checkaccount(userinfo);
         const bindedres = await this.service.account.getusermachine(userinfores.openid);
-        console.log('here it is......', binderes);
+        console.log('here it is......', bindedres);
         const machineinfo = await ctx.service.verify.verify(url);
 
         let result = {
@@ -36,6 +36,7 @@ class SetupController extends Controller {
             domain: this.config.wechat.domain,
             appid: this.config.wechat.appid
         }
+        
         await ctx.render('home/scan.html',result);
     }
 
