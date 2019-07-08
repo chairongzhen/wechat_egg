@@ -56,7 +56,7 @@ class AccountSerive extends Service {
         let result = "";
         if(existres[0].existcount == 0) { 
             //result = "notexist";
-            await this.app.service.account.addmid(`${machineinfo.mid}`);
+            await this.addmid(`${machineinfo.mid}`);
             result = "new";
         } else {
             if(unbindres[0].existcount == 0) {
