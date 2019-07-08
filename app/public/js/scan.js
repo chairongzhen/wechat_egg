@@ -19,6 +19,7 @@ wx.ready(function(){
                     mid: tmparr[0].replace("mid:",""),
                     mac: tmparr[1].split(':')[1]
                 }
+                alert(tmparr[0]);
                 let bindinfo = {
                     openid: $("#hidopenid").val(),
                     mc: [{
