@@ -16,7 +16,7 @@ wx.ready(function(){
                 tempres = tempres.replace('}',"").replace("{","");
                 let tmparr = tempres.split(',');
                 let machineinfo = {
-                    mid: tmparr[0].split(':')[1],
+                    mid: tmparr[0].replace("mid:",""),
                     mac: tmparr[1].split(':')[1]
                 }
                 let bindinfo = {
