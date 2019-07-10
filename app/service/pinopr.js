@@ -282,7 +282,9 @@ class PinoprSerive extends Service {
         fixresarr.tfix = tagvalue;
         let content = JSON.stringify(fixresarr);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
+        console.log('the updstr is: ',updstr);
         let onlinemac = await this.getbindmachine(openid);
+        console.log("here it is: ",onlinemac);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
