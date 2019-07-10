@@ -286,8 +286,7 @@ class PinoprSerive extends Service {
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            console.log(content);
-            await this.ctx.app.mqttclient.publish(sender, "hello world", { qos: 2 });
+            await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         return result;
