@@ -40,7 +40,7 @@ module.exports = app =>{
                     try {
                         ip = numToIp(ta[2].split(":")[1]);
                         let machineinfo = {
-                            mid: ta[0].split(":")[1],
+                            mid: ta[0].replace("mid:",""),
                             ip: ip
                         }
                         console.log("mqtt online notify",machineinfo);
