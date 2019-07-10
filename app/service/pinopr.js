@@ -277,22 +277,21 @@ class PinoprSerive extends Service {
     }
 
     async updatefixlight(openid, tagvalue) {
-        // let fixres = await this.getoriginlight(openid);
-        // let fixresarr = JSON.parse(fixres);
-        // fixresarr.tfix = tagvalue;
-        // let content = JSON.stringify(fixresarr);
-        // let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
-        // let onlinemac = await this.getbindmachine(openid);
-        // for (let ta of onlinemac) {
-        //     let sender = ta + "/setp";
-        //     console.log('here it is: ', sender);
-        //     //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-        //     await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/p", content, { qos: 2 });
-        // }
-        // let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
-        // return result;
-        await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/setp", "hello world", { qos: 2 });
-        return true;
+        let fixres = await this.getoriginlight(openid);
+        let fixresarr = JSON.parse(fixres);
+        fixresarr.tfix = tagvalue;
+        let content = JSON.stringify(fixresarr);
+        let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
+        let onlinemac = await this.getbindmachine(openid);
+        for (let ta of onlinemac) {
+            let sender = ta + "/setp";
+            //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
+            await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/p", content, { qos: 2 });
+        }
+        let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
+        return result;
+        // await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/setp", "hello world", { qos: 2 });
+        // return true;
     }
 
     async getrepeatdata(openid) {
