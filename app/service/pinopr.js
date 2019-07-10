@@ -290,8 +290,7 @@ class PinoprSerive extends Service {
         // }
         // let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         // return result;
-        await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/p", "hello world", { qos: 2 });
-        console.log('here it is');
+        await this.ctx.app.mqttclient.publish("esp_24:0A:C4:9F:85:5C/hello", "hello world", { qos: 2 });
         return true;
     }
 
