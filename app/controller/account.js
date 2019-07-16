@@ -123,6 +123,24 @@ class AccountController extends Controller {
         const result = await this.service.account.updatemid(mid, mname);
         this.ctx.body = result;
     }
+
+    async register() {
+        const ctx = this.ctx;
+        let username = ctx.request.body.username;
+        let pwd = ctx.request.body.pwd;
+        let confirmPwd = ctx.request.body.confirmPwd;
+        let nickname = ctx.request.body.nickname;
+        const result = await this.service.account.register(username,pwd,confirmPwd,nickname);
+        this.ctx.body = result;
+    }
+
+    async login() { 
+        const ctx = this.ctx;
+        let username = ctx.request.body.username;
+        let pwd = ctx.request.body.pwd;
+        const result = await this.service.account.login(username,pwd);
+        this.ctx.body = result;
+    }
 }
 
 module.exports = AccountController;

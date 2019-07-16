@@ -67,13 +67,13 @@ module.exports = appInfo => {
         //host: '192.168.31.127',
         host: '212.129.143.159',
         // 端口号
-        port: '3306',
+        port: '3307',
         // 用户名
         user: 'root',
         // 密码
         password: '1983117@crz',
         // 数据库名
-        database: 'Lights',
+        database: 'newlights',
       },
       // 是否加载到 app 上，默认开启
       app: true,

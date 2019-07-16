@@ -204,7 +204,47 @@ class AccountSerive extends Service {
         let updatesql = `update machines set mname = '${mname}' where mid = '${mid}'`;
         await this.app.mysql.query(updatesql);
         return true;
-    } 
+    }
+
+    async register(username,pwd,confirmPwd,nickname) {
+        let result = "";
+        let checkuserexist = `select count(uid) existcount from appuser where username = '${username}' and isdelete = 0`
+        const existres = await this.app.mysql.query(checkuserexist);
+        if(existres[0].existcount > 0) { 
+            result = "用户名已存在";
+        } else {
+            if(pwd != confirmPwd) {
+                result = "两次输入的密码不同"
+            } else {
+                let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
+                await this.app.mysql.query(insertSql);
+                result = "注册成功"
+            }
+        }
+        return result;
+    }
+
+    async login(username,pwd) {
+        var result = {
+            isSuccess: false,
+            message: "",
+            content: null
+        }
+        let loginSql = `select uid,username,nickname,openid from appuser where username = '${username}' and pwd = '${pwd}' AND isdelete = 0`;
+        const existres = await this.app.mysql.query(loginSql);
+        console.log(existres);
+        if(existres.length >0) { 
+            result.isSuccess = true;
+            result.message = "登陆成功"
+            result.content = existres[0];
+        } else {
+            result.isSuccess = false;
+            result.message = "用户名或密码错误"
+        }
+
+        return result;
+    }
+    
 }
 
 module.exports = AccountSerive;
