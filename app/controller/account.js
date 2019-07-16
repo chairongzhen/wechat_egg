@@ -143,7 +143,7 @@ class AccountController extends Controller {
     }
 
     async test() {
-        const result = await this.service.account.test(username,pwd);
+        const result = await this.service.account.test();
         this.ctx.body = result;
     }
 }
