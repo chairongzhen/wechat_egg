@@ -245,6 +245,7 @@ class AccountSerive extends Service {
     }
 
     async test() {
+        console.log("herer it is");
         var result = {
             isSuccess: true,
             message: "获取成功",
