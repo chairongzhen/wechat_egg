@@ -232,7 +232,6 @@ class AccountSerive extends Service {
         }
         let loginSql = `select uid,username,nickname,openid from appuser where username = '${username}' and pwd = '${pwd}' AND isdelete = 0`;
         const existres = await this.app.mysql.query(loginSql);
-        console.log(existres);
         if(existres.length >0) { 
             result.isSuccess = true;
             result.message = "登陆成功"
@@ -243,6 +242,18 @@ class AccountSerive extends Service {
         }
 
         return result;
+    }
+
+    async test() {
+        var result = {
+            isSuccess: true,
+            message: "获取成功",
+            content: null
+        }
+        let testsql = "select * from users";
+        const resultres = await this.app.mysql.query(testsql);
+        result.content = resultres
+        return result;      
     }
     
 }

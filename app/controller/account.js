@@ -141,6 +141,11 @@ class AccountController extends Controller {
         const result = await this.service.account.login(username,pwd);
         this.ctx.body = result;
     }
+
+    async test() {
+        const result = await this.service.account.test(username,pwd);
+        this.ctx.body = result;
+    }
 }
 
 module.exports = AccountController;
