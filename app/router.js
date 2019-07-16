@@ -57,6 +57,6 @@ module.exports = app => {
   router.post("/register",controller.account.register);
   router.post("/login",controller.account.login);
 
-  router.get("/test",controller.account.test);
-  router.post("/test",controller.account.test);
+  router.get("/gettest",controller.account.test);
+  router.post("/posttest",controller.account.test);
 };
