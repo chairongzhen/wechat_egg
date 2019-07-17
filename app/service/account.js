@@ -207,17 +207,23 @@ class AccountSerive extends Service {
     }
 
     async register(username,pwd,nickname) {
-        let result = "";
+        let result = {
+            isSuccess: false,
+            message: ""
+        }
         let checkuserexist = `select count(uid) existcount from appuser where username = '${username}' and isdelete = 0`
         const existres = await this.app.mysql.query(checkuserexist);
         if(existres[0].existcount > 0) { 
-            result = "用户名已存在";
+            result.isSuccess = false
+            result.message = "用户名已存在"
         } else {
 
             let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
             await this.app.mysql.query(insertSql);
-            result = "注册成功"
+            result.isSuccess = true
+            result.message = "注册成功"
         }
+
         return result;
     }
 
