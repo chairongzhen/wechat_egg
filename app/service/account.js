@@ -206,20 +206,17 @@ class AccountSerive extends Service {
         return true;
     }
 
-    async register(username,pwd,confirmPwd,nickname) {
+    async register(username,pwd,nickname) {
         let result = "";
         let checkuserexist = `select count(uid) existcount from appuser where username = '${username}' and isdelete = 0`
         const existres = await this.app.mysql.query(checkuserexist);
         if(existres[0].existcount > 0) { 
             result = "用户名已存在";
         } else {
-            if(pwd != confirmPwd) {
-                result = "两次输入的密码不同"
-            } else {
-                let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
-                await this.app.mysql.query(insertSql);
-                result = "注册成功"
-            }
+
+            let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
+            await this.app.mysql.query(insertSql);
+            result = "注册成功"
         }
         return result;
     }
