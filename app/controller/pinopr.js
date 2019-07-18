@@ -316,7 +316,7 @@ class PinoprController extends Controller {
         ctx.status = 201;
     }
 
-    async getsetting(openid) {
+    async getsetting() {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
         const result = await this.service.pinopr.getsetting(openid);
