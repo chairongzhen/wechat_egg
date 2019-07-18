@@ -217,8 +217,8 @@ class AccountSerive extends Service {
             result.isSuccess = false
             result.message = "用户名已存在"
         } else {
-
             let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
+            console.log(insertSql)
             await this.app.mysql.query(insertSql);
             result.isSuccess = true
             result.message = "注册成功"
