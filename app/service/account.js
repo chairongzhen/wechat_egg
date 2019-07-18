@@ -218,6 +218,7 @@ class AccountSerive extends Service {
             result.message = "用户名已存在"
         } else {
             let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
+            console.log(insertSql)
             let temp = await this.app.mysql.query(insertSql);
             console.log(temp);
             result.isSuccess = true
