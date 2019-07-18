@@ -175,7 +175,7 @@ class PinoprSerive extends Service {
         };
 
         if(getres[0]) {
-            console.log(getres[0]);
+            console.log(getres[0].showtype);
             res.isSuccess = true;
             res.content.showtype = getres[0].showtype;
             res.content.testmode = getres[0].testmode;
