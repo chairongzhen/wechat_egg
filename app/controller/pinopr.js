@@ -23,7 +23,7 @@ function tohex(str) {
 class PinoprController extends Controller {
 
     async getbindmachine() {
-        let openid = "123456";
+        let openid = "04e84d30-a933-11e9-afa6-cff1b081de37";
         const result = await this.service.pinopr.getbindmachine(openid);
         this.ctx.body = result;
     }
