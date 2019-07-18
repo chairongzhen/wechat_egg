@@ -211,6 +211,7 @@ class AccountSerive extends Service {
             isSuccess: false,
             message: ""
         }
+        console.log("pwd: ", pwd);
         let checkuserexist = `select count(uid) existcount from appuser where username = '${username}' and isdelete = 0`
         const existres = await this.app.mysql.query(checkuserexist);
         if(existres[0].existcount > 0) { 
@@ -218,7 +219,6 @@ class AccountSerive extends Service {
             result.message = "用户名已存在"
         } else {
             let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
-            console.log(insertSql)
             await this.app.mysql.query(insertSql);
             result.isSuccess = true
             result.message = "注册成功"
