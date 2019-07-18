@@ -36,8 +36,23 @@ class PinoprController extends Controller {
             message: "",
             content: null
         }
-        const resultres = await this.service.pinopr.getbindmachine(openid);
-        console.log(resultres)
+        const bindedres = await this.service.account.getusermachine(userinfores.openid);
+        let res = [];
+        for(let ta of bindedres) {
+            let bindma = {
+                mid: ta.mid,
+                mname: ta.mname,
+                ip: ta.ip,
+                online: ta.online ==0?"离线":"在线" 
+            }
+            res.push(bindma);
+        }
+        if(res.length >0) {
+            result.isSuccess = true
+            result.content = res
+        } else {
+            result.message = "未绑定任何设备"
+        }
 
         this.ctx.body = result;
     }
