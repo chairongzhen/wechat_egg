@@ -1,4 +1,7 @@
+var UUID = require('uuid');
+
 const Service = require('egg').Service;
+
 
 class AccountSerive extends Service {
     async checkaccount(userinfo) {
@@ -218,7 +221,7 @@ class AccountSerive extends Service {
             result.message = "用户名已存在"
         } else {
             let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values (uuid(),"${username}","${pwd}","${nickname}","",0)`;
-            console.log(insertSql)
+            console.log(UUID.v1())
             let temp = await this.app.mysql.query(insertSql);
             console.log(temp);
             result.isSuccess = true
