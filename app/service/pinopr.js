@@ -161,8 +161,8 @@ class PinoprSerive extends Service {
 
     async getsetting(openid) {
         let getsql = `SELECT
-                showtype,
-                testmode
+                showtype repeatMode,
+                testmode productionMode
             FROM
                 userlight
             WHERE
