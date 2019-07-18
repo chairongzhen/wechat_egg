@@ -171,12 +171,15 @@ class PinoprSerive extends Service {
         const getres = await this.app.mysql.query(getsql);
         let res = {
             isSuccess: false,
-            content: null
+            content: null,
+            message: ""
         };
 
         if(getres[0]) {
             res.isSuccess = true;
             res.content = getres[0];
+        } else {
+            res.message = "未找到配置信息,请联系商家";
         }
         return res;
     } 
