@@ -58,8 +58,8 @@ class PinoprController extends Controller {
     async updateset() {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
-        let showtype = ctx.request.body.showtype;
-        let testmode = ctx.request.body.testmode;
+        let showtype = ctx.request.body.repeatmode;
+        let testmode = ctx.request.body.productionmode;
         let result = {
             isSuccess: false,
             message: ""
