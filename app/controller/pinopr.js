@@ -315,6 +315,13 @@ class PinoprController extends Controller {
         ctx.body = result;
         ctx.status = 201;
     }
+
+    async getsetting(openid) {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        const result = await this.service.pinopr.getsetting(openid);
+        ctx.body = result;
+    }
 }
 
 module.exports = PinoprController;

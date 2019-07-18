@@ -159,6 +159,28 @@ class PinoprSerive extends Service {
         return originfixres[0].lvs;
     }
 
+    async getsetting(openid) {
+        let getsql = `SELECT
+                showtype,
+                testmode
+            FROM
+                userlight
+            WHERE
+                openid = '${openid}'
+            `;
+        const getres = await this.app.mysql.query(getsql);
+        let res = {
+            isSuccess: false,
+            content: null
+        };
+        if(getres.existcount >0 && getres[0]) {
+            res.isSuccess = true;
+            res.content.showtype = getres[0].showtype;
+            res.content.testmode = getres[0].testmode;
+        }
+        return res;
+    } 
+
     async getbasicinfo(openid) {
         let checksql = `SELECT
                         count(*) existcount

@@ -54,8 +54,12 @@ module.exports = app => {
 
   router.post("/updatemid",controller.account.updatemid);
 
+
+  // for ios app start
   router.post("/register",controller.account.register);
-  router.post("/login",controller.account.login);
+  router.post("/applogin",controller.account.login);
+  router.post("/getset",controller.pinopr.getsetting);
+  // for ios app end
 
   router.get("/gettest",controller.account.test);
   router.post("/posttest",controller.account.test);
