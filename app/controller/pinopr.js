@@ -55,6 +55,24 @@ class PinoprController extends Controller {
         this.ctx.body = result;
     }
 
+    async updateset() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let showtype = ctx.request.body.showtype;
+        let testmode = ctx.request.body.testmode;
+        let result = {
+            isSuccess: false,
+            message: ""
+        }
+        const resultres = await this.service.pinopr.updatebasicinfo(openid, showtype, testmode);
+        if(resultres) {
+            result.isSuccess = true
+        } else {
+            result.message = "更新有错误,请联系商家"
+        }
+        this.ctx.body = result;
+    }
+
     async updatelightdetail() {
         let result = false;
         // let lightinfo = {

@@ -59,6 +59,8 @@ module.exports = app => {
   router.post("/register",controller.account.register);
   router.post("/applogin",controller.account.login);
   router.post("/getset",controller.pinopr.getsetting);
+  router.post("/updateset",controller.pinopr.updateset);
+  
   // for ios app end
 
   router.get("/gettest",controller.account.test);

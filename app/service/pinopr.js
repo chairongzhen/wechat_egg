@@ -260,6 +260,7 @@ class PinoprSerive extends Service {
         return result.affectedRows == 0 ? false : true;
     }
 
+
     async updatelightdetail(openid, tagvalues) {
         let result = false;
         for (let i = 0; i < tagvalues.length; i++) {
