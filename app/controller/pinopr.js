@@ -36,7 +36,7 @@ class PinoprController extends Controller {
             message: "",
             content: null
         }
-        const bindedres = await this.service.account.getusermachine(userinfores.openid);
+        const bindedres = await this.service.account.getusermachine(openid);
         let res = [];
         for(let ta of bindedres) {
             let bindma = {
