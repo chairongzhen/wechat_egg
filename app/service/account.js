@@ -221,7 +221,9 @@ class AccountSerive extends Service {
             result.message = "用户名已存在"
         } else {
             let newid = UUID.v1();
-            let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values ("${newid}","${username}","${pwd}","${nickname}","${newid}",0) ; insert into users (openid,nickname,gender,province,city,country,headimgurl,createdate,lastonline) VALUES ("${newid}","${nickname}",1,"上海","上海","上海","",now(),now()) `;
+            let insertSql = `INSERT INTO appuser (uid,username,pwd,nickname,openid,isdelete) values ("${newid}","${username}","${pwd}","${nickname}","${newid}",0) `;
+            await this.app.mysql.query(insertSql);
+            insertSql = `insert into users (openid,nickname,gender,province,city,country,headimgurl,createdate,lastonline) VALUES ("${newid}","${nickname}",1,"上海","上海","上海","",now(),now()) `
             await this.app.mysql.query(insertSql);
             result.isSuccess = true
             result.message = "注册成功"
