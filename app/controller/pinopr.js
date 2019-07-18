@@ -28,6 +28,20 @@ class PinoprController extends Controller {
         this.ctx.body = result;
     }
 
+    async getbinds() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let result = {
+            isSuccess: false,
+            message: "",
+            content: null
+        }
+        const resultres = await this.service.pinopr.getbindmachine(openid);
+        console.log(resultres)
+
+        this.ctx.body = result;
+    }
+
     async getbasicinfo() {
         let openid = "o9Ruz0iGzFv0VhAiKr6xeIM9ivOA";
         //let tag = 14;
