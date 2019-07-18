@@ -128,9 +128,8 @@ class AccountController extends Controller {
         const ctx = this.ctx;
         let username = ctx.request.body.username;
         let pwd = ctx.request.body.pwd;
-        let confirmPwd = ctx.request.body.confirmPwd;
         let nickname = ctx.request.body.nickname;
-        const result = await this.service.account.register(username,pwd,confirmPwd,nickname);
+        const result = await this.service.account.register(username,pwd,nickname);
         this.ctx.body = result;
     }
 
