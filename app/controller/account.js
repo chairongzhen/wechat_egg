@@ -160,8 +160,9 @@ class AccountController extends Controller {
         } else {
             result.message = "操作失败,请联系商家";
         }
-        return result;
+        this.ctx.body = result;
     }
+
 }
 
 module.exports = AccountController;
