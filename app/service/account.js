@@ -116,8 +116,8 @@ class AccountSerive extends Service {
         FROM
             usermachines
         WHERE
-            openid = '${userinfo.openid}'
-        AND mid = '${machineinfo.mid}'`;
+            openid = '${openid}'
+        AND mid = '${mid}'`;
         const result = await this.app.mysql.query(deletesql);
         return result.affectedRows==0?false:true;
     }
