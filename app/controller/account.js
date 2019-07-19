@@ -163,6 +163,22 @@ class AccountController extends Controller {
         this.ctx.body = result;
     }
 
+    async bindmid() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let mid = ctx.request.body.mid;
+        const resultres = await this.service.account.bindmid(openid,mid);
+        let result = {
+            isSuccess: false,
+            message: ""
+        }
+        if(resultres) {
+            result.isSuccess = true;
+        } else {
+            result.message = "操作失败,设备已被绑定";
+        }
+        this.ctx.body = result;
+    }
 }
 
 module.exports = AccountController;

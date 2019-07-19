@@ -62,7 +62,7 @@ module.exports = app => {
   router.post("/updateset",controller.pinopr.updateset);
   router.post("/getbinds", controller.pinopr.getbinds);
   router.post("/unbindforapp",controller.account.unbind);
-  
+  router.post("/bindmid",controller.account.bindmid);
   // for ios app end
 
   router.get("/gettest",controller.account.test);

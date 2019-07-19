@@ -71,6 +71,49 @@ class AccountSerive extends Service {
         return result;
     }
 
+    async bindmid(openid,mid) {
+        const existsql = `SELECT
+                count(*) existcount
+            FROM
+                machines
+            WHERE
+                mid = '${mid}'`;
+        const existres = await this.app.mysql.query(existsql);
+        const unbindsql = `SELECT
+                count(*) existcount
+            FROM
+                usermachines
+            WHERE
+            1=1
+            AND mid = '${mid}'`;
+        const unbindres = await this.app.mysql.query(unbindsql);
+        let result = "";
+        if(existres[0].existcount == 0) { 
+            //result = "notexist";
+            await this.addmid(`${mid}`);
+            result = "new";
+            } else {
+            if(unbindres[0].existcount == 0) {
+            result = "available";
+            } else {
+            result = "binded";
+            }
+        }
+        if(result == "available" || result == "new") { 
+            let insertsql = `INSERT INTO usermachines (openid, mid, binddate)
+            VALUES
+                (
+                    '${openid}',
+                    '${mid}',
+                    now()
+                )`;
+            const insertres = await this.app.mysql.query(insertsql);
+            return true
+        } else {
+            return false
+        }
+    }
+
     async bingmachine(userinfo,machineinfos) {
         let bindmachine = [];
         let unbindmachine = [];
