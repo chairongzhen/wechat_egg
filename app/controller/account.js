@@ -145,6 +145,23 @@ class AccountController extends Controller {
         const result = await this.service.account.test();
         this.ctx.body = result;
     }
+
+    async unbind() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let mid = ctx.request.body.mid;
+        const resultres = await this.service.account.unbind(openid,mid);
+        let result = {
+            isSuccess: false,
+            message: ""
+        }
+        if(resultres) {
+            result.isSuccess = true;
+        } else {
+            result.message = "操作失败,请联系商家";
+        }
+        return result;
+    }
 }
 
 module.exports = AccountController;

@@ -111,6 +111,17 @@ class AccountSerive extends Service {
         return result.affectedRows==0?false:true;
     }
 
+    async unbind(openid,mid) {
+        let deletesql = `DELETE
+        FROM
+            usermachines
+        WHERE
+            openid = '${userinfo.openid}'
+        AND mid = '${machineinfo.mid}'`;
+        const result = await this.app.mysql.query(deletesql);
+        return result.affectedRows==0?false:true;
+    }
+
     async updateip(mid,ip) {
         let updatesql = `UPDATE usermachines
             SET ip = '${ip}'
