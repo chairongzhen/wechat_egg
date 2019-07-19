@@ -42,7 +42,7 @@ class PinoprController extends Controller {
             let bindma = {
                 mid: ta.mid,
                 mname: ta.mname,
-                ip: ta.ip,
+                ip: ta.ip == null?"":ta.ip,
                 online: ta.online ==0?"离线":"在线" 
             }
             res.push(bindma);
