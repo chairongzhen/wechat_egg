@@ -67,5 +67,5 @@ module.exports = app => {
   // for ios app end
 
   router.get("/gettest",controller.account.test);
-  router.post("/posttest",controller.account.test);
+  router.post("/posttest",controller.account.unbind);
 };
