@@ -43,7 +43,7 @@ class PinoprController extends Controller {
                 mid: ta.mid,
                 mname: ta.mname,
                 ip: ta.ip == null?"":ta.ip,
-                online: ta.online ==0?"离线":"在线" 
+                online: ta.online ==0?"offline":"online" 
             }
             res.push(bindma);
         }
