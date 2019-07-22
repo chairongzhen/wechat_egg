@@ -184,6 +184,28 @@ class PinoprSerive extends Service {
         return res;
     } 
 
+    async getfix(openid) {
+        let getsql = `SELECT
+                            t
+                        FROM
+                            userlight
+                        WHERE
+                            openid = '${openid}'
+                        `;
+        const getres = await this.app.mysql.query(getsql);
+        let lvs = JSON.parse(getres[0].t);
+        let res = {};
+        res.l1 = parseInt(lvs.tfix.substr(0, 2), 16);
+        res.l2 = parseInt(lvs.tfix.substr(2, 2), 16);
+        res.l3 = parseInt(lvs.tfix.substr(4, 2), 16);
+        res.l4 = parseInt(lvs.tfix.substr(6, 2), 16);
+        res.l5 = parseInt(lvs.tfix.substr(8, 2), 16);
+        res.l6 = parseInt(lvs.tfix.substr(10, 2), 16);
+        res.l7 = parseInt(lvs.tfix.substr(12, 2), 16);
+        res.l8 = parseInt(lvs.tfix.substr(14,2),16);
+        return res;
+    }
+
     async getbasicinfo(openid) {
         let checksql = `SELECT
                         count(*) existcount

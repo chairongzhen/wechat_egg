@@ -394,6 +394,18 @@ class PinoprController extends Controller {
         const result = await this.service.pinopr.getsetting(openid);
         ctx.body = result;
     }
+
+    async getfix() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        const resultres = await this.service.pinopr.getfix(openid);
+        let result = {
+            isSuccess: true,
+            message: "",
+            content: resultres
+        } 
+        this.ctx.body = result;
+    }
 }
 
 module.exports = PinoprController;

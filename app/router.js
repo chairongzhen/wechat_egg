@@ -64,6 +64,7 @@ module.exports = app => {
   router.post("/unbindforapp",controller.account.unbind);
   router.post("/bindmid",controller.account.bindmid);
   router.post("/updatefix",controller.pinopr.updatefix);
+  router.post("/getfix",controller.pinopr.getfix);
   // for ios app end
 
   router.get("/gettest",controller.account.test);
