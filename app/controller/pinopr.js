@@ -138,6 +138,31 @@ class PinoprController extends Controller {
         this.ctx.body = result;
     }
 
+    async updatefix() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let l1 = ctx.request.body.l1;
+        let l2 = ctx.request.body.l2;
+        let l3 = ctx.request.body.l3;
+        let l4 = ctx.request.body.l4;
+        let l5 = ctx.request.body.l5;
+        let l6 = ctx.request.body.l6;
+        let l7 = ctx.request.body.l7;
+        let l8 = ctx.request. body.l8;
+        let tagvalue = tohex(l1) + tohex(l2) + tohex(l3) + tohex(l4) + tohex(l5) + tohex(l6) + tohex(l7) + tohex(l8);
+        let result = {
+            isSuccess: false,
+            message: ""
+        }
+        let resultres = await this.service.pinopr.updatefixlight(openid, tagvalue);
+        if(resultres) {
+            result.isSuccess = true;
+        } else {
+            resultres.message = "更新失败,请联系商家";
+        }
+        this.ctx.body = result;
+    }
+
     async basic() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
