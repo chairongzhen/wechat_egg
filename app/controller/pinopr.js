@@ -268,6 +268,7 @@ class PinoprController extends Controller {
 
     }
 
+
     async repeatdetail() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
