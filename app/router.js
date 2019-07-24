@@ -65,6 +65,7 @@ module.exports = app => {
   router.post("/bindmid",controller.account.bindmid);
   router.post("/updatefix",controller.pinopr.updatefix);
   router.post("/getfix",controller.pinopr.getfix);
+  router.post("/getrepeats",controller.pinopr.getrepeats);
   // for ios app end
 
   router.get("/gettest",controller.account.test);

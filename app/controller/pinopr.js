@@ -214,6 +214,19 @@ class PinoprController extends Controller {
         await this.ctx.render('home/repeattest.html', result);
     }
     
+    async getrepeats() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        const repeatdata = await this.service.pinopr.getmodifystamp(openid);
+        console.log(repeatdata);
+        let result = {
+            isSuccess: true,
+            message: "",
+            content: repeatdata
+        }
+        this.ctx.body = result;
+    }
+
     async repeat() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
