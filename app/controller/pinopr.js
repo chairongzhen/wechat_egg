@@ -102,6 +102,18 @@ class PinoprController extends Controller {
         this.ctx.body = result;
     }
 
+    async updatetags() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let lights = ctx.request.body.lights;
+        let resultres = await this.service.pinopr.updatelightdetail(openid, lights);
+        let result = {
+            isSuccess: true,
+            message: ""
+        }
+        ctx.body = result
+    }
+
     async updatelightdetail() {
         let result = false;
         // let lightinfo = {
@@ -116,7 +128,7 @@ class PinoprController extends Controller {
         // }
         const ctx = this.ctx;
         let lightinfo = ctx.request.body;
-        console.log('the result is: ',lightinfo);
+        //console.log('the result is: ',lightinfo);
         result = await this.service.pinopr.updatelightdetail(lightinfo.openid, lightinfo.lights);
         this.ctx.body = result;
     }
