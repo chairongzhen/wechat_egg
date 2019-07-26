@@ -405,6 +405,20 @@ class PinoprController extends Controller {
         ctx.status = 201;
     }
 
+
+
+
+    async emptytagsios() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        await this.service.pinopr.emptytags(openid);
+        let result = {
+            isSuccess: true,
+            message: ""
+        }
+        ctx.body = result;
+    }                                                                   
+
     async emptytags() {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
