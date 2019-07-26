@@ -268,6 +268,18 @@ class PinoprController extends Controller {
     }
 
 
+    async getrepeatdetail() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        const tagres = await ctx.service.pinopr.getrepeatdata(userinfo.openid);
+        let result = {
+            isSuccess: false,
+            message: "",
+            content: tagres
+        }
+        ctx.body = result;
+    }
+
     async repeatdetail() {
         const ctx = this.ctx;
         let url = ctx.request.protocol + "://" + ctx.request.host + ctx.request.originalUrl;
@@ -328,6 +340,36 @@ class PinoprController extends Controller {
 
     }
 
+    async gettagvalueios() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let tag = ctx.request.body.tag;
+        const tagres = await ctx.service.pinopr.getrepeatdata(openid);
+        let l1 = tagres.t1[tag];
+        let l2 = tagres.t2[tag];
+        let l3 = tagres.t3[tag];
+        let l4 = tagres.t4[tag];
+        let l5 = tagres.t5[tag];
+        let l6 = tagres.t6[tag];
+        let l7 = tagres.t7[tag];
+        let l8 = tagres.t8[tag];
+        let resresult = {        
+            l1: l1,
+            l2: l2,
+            l3: l3,
+            l4: l4,
+            l5: l5,
+            l6: l6,
+            l7: l7,
+            l8: l8
+        }
+        let result = {
+            isSuccess: true,
+            message: "",
+            content: resresult
+        }
+        ctx.body = result ;
+    }
 
     async gettagvalue() {
         const ctx = this.ctx;
@@ -341,6 +383,7 @@ class PinoprController extends Controller {
         let l5 = tagres.t5.split(',')[tag];
         let l6 = tagres.t6.split(',')[tag];
         let l7 = tagres.t7.split(',')[tag];
+        let l8 = tagres.t8.split(',')[tag];
         let result = {
             l1: l1,
             l2: l2,
@@ -348,7 +391,8 @@ class PinoprController extends Controller {
             l4: l4,
             l5: l5,
             l6: l6,
-            l7: l7
+            l7: l7,
+            l8: l8
         }
         ctx.body = { result };
         ctx.status = 201;

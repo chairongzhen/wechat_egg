@@ -68,6 +68,7 @@ module.exports = app => {
   router.post("/getrepeats",controller.pinopr.getrepeats);
   router.post("/deltag",controller.pinopr.deltag);
   router.post("/emptytagsios",controller.pinopr.emptytagsios);
+  router.post("/gettagvalueios",controller.pinopr.gettagvalueios);
   // for ios app end
 
   router.get("/gettest",controller.account.test);
