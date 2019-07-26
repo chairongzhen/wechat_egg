@@ -218,7 +218,6 @@ class PinoprController extends Controller {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
         const repeatdata = await this.service.pinopr.getmodifystamp(openid);
-        console.log(repeatdata);
         let result = {
             isSuccess: true,
             message: "",
@@ -363,6 +362,18 @@ class PinoprController extends Controller {
         const result = await this.service.pinopr.candelete(openid,tag);
         ctx.body = result;
         ctx.status = 201;
+    }
+
+    async deltag() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let tag = ctx.request.body.tag;
+        await this.service.pinopr.deletetag(openid,tag);
+        let result = {
+            isSuccess: true,
+            message: ""
+        }
+        ctx.body = result
     }
 
     async deletetag() {
