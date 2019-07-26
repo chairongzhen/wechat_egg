@@ -101,15 +101,20 @@ class PinoprController extends Controller {
         }
         this.ctx.body = result;
     }
-
     async updatetags() {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
-        let lights = ctx.request.body.lights;
-        let resultres = await this.service.pinopr.updatelightdetail(openid, lights);
+        let tag = ctx.request.body.tag;
+        let values = ctx.request.body.values;
+        let resultres = await this.service.pinopr.updatetagvals(openid,tag,values);
         let result = {
-            isSuccess: true,
+            isSuccess: false,
             message: ""
+        }
+        if(resultres) {
+            result.isSuccess = true
+        } else {
+            result.message = "数据异常,请联系商家"
         }
         ctx.body = result
     }

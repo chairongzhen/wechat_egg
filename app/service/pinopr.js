@@ -283,6 +283,52 @@ class PinoprSerive extends Service {
     }
 
 
+    async updatetagvals(openid,tag,values) {
+        let result = false;
+        let valarr = values.split(",");
+        let tagresult = false;
+        for (let i=0;i<valarr.length;i++) {
+            let checksql = `SELECT
+                                count(*) existcount
+                            FROM
+                                userlightdetails
+                            WHERE
+                                openid = '${openid}'
+                            AND tag = ${tag} and lid = ${i+1}`;
+            const checkres = await this.app.mysql.query(checksql);
+            
+            if (checkres[0].existcount == 0) {
+                let newsql = `INSERT INTO userlightdetails (
+                    openid,
+                    lid,
+                    tag,
+                    tagvalue,
+                    createdate
+                )
+                VALUES
+                    (
+                        '${openid}',
+                        ${i+1},
+                        '${tag}',
+                        '${valarr[i]}',
+                        now()
+                    )`;
+                tagresult = await this.app.mysql.query(newsql).affectedRows == 0 ? false : true;
+            } else {
+                let updsql = `UPDATE userlightdetails
+                SET tag = ${tag}, tagvalue = ${valarr[i]}
+                WHERE
+                    openid = '${openid}' and tag = ${tag} and lid = ${i+1}`;
+                tagresult = await this.app.mysql.query(updsql) == 0 ? false : true;
+            }
+        }
+
+        if(tagresult) {
+            await this.updaterepeatdata(openid);
+        }
+        return tagresult;
+    }
+
     async updatelightdetail(openid, tagvalues) {
         let result = false;
         for (let i = 0; i < tagvalues.length; i++) {
