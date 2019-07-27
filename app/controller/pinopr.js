@@ -111,6 +111,7 @@ class PinoprController extends Controller {
             isSuccess: false,
             message: ""
         }
+        console.log("here it is");
         if(resultres) {
             result.isSuccess = true
         } else {
