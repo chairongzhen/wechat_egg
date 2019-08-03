@@ -108,6 +108,9 @@ class AccountSerive extends Service {
                     now()
                 )`;
             const insertres = await this.app.mysql.query(insertsql);
+
+            const ipsql = `update usermachines set ip = '${ip}' where mid = '${mid}'`;
+            await this.app.mysql.query(ipsql);
             return true
         } else {
             return false
