@@ -109,7 +109,10 @@ class AccountSerive extends Service {
                 )`;
             const insertres = await this.app.mysql.query(insertsql);
 
-            const ipsql = `update usermachines set ip = '${ip}' where mid = '${mid}'`;
+            const ipsql = `UPDATE usermachines 
+                            SET ip = ( SELECT ip FROM machinelog WHERE mid = '${mid}' ORDER BY updatetime DESC LIMIT 1 ) 
+                            WHERE
+                                mid = '${mid}'`;
             await this.app.mysql.query(ipsql);
             return true
         } else {
