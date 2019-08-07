@@ -165,18 +165,28 @@ class AccountController extends Controller {
 
     async bindmid() {
         const ctx = this.ctx;
-        let openid = ctx.request.body.openid;
-        let mid = ctx.request.body.mid;
-        const resultres = await this.service.account.bindmid(openid,mid);
+
         let result = {
             isSuccess: false,
             message: ""
         }
-        if(resultres) {
-            result.isSuccess = true;
-        } else {
-            result.message = "操作失败,设备已被绑定";
+
+        let openid = ctx.request.body.openid;
+        let mid = ctx.request.body.mid;
+        var reg = /^esp_[A-Z,a-z,0-9]{8}$/;
+        if(reg.test(mid)) {
+            const resultres = await this.service.account.bindmid(openid,mid);
+            if(resultres) {
+                result.isSuccess = true;
+            } else {
+                result.message = "操作失败,设备已被绑定";
+            }
+        }  else {
+            result.message = "设备编号有误,请检查二维码";
         }
+
+
+
         this.ctx.body = result;
     }
 }
