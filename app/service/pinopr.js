@@ -529,8 +529,9 @@ class PinoprSerive extends Service {
             }
             index += 1;
         }
-        console.log("update conetnt is:",content);
+        
         let content = JSON.stringify(lightjson);
+        console.log("update conetnt is:",content);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         let onlinemac = await this.getbindmachine(openid);
