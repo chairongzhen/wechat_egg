@@ -156,6 +156,7 @@ class PinoprSerive extends Service {
     async getoriginlight(openid) {
         let getoriginfix = `select t lvs from userlight where openid = '${openid}'`;
         let originfixres = await this.app.mysql.query(getoriginfix);
+        console.log(originfixres);
         return originfixres[0].lvs;
     }
 
@@ -512,7 +513,6 @@ class PinoprSerive extends Service {
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
-        console.log('the originlight is:',originlight);
         let lightjson = JSON.parse(originlight);
         let index = 0;
         for (let key in lightjson) {
