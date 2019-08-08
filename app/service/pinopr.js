@@ -509,9 +509,11 @@ class PinoprSerive extends Service {
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
-            console.log(tagsres.length);
+            let j = 1;
             while(tagsres.length == 0) {
                 tagsres = await this.app.mysql.query(tagssql);
+                console.log("retry get sql times : ", j);
+                j = j + 1;
             }
             lvs["l" + i] = await generateLightData(tagsres);
         }
@@ -535,7 +537,7 @@ class PinoprSerive extends Service {
         }
         
         let content = JSON.stringify(lightjson);
-        console.log("update conetnt is:",content);
+        //console.log("update conetnt is:",content);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         let onlinemac = await this.getbindmachine(openid);
