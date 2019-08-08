@@ -512,6 +512,7 @@ class PinoprSerive extends Service {
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
+        console.log('the originlight is:',originlight);
         let lightjson = JSON.parse(originlight);
         let index = 0;
         for (let key in lightjson) {
