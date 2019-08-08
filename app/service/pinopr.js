@@ -287,7 +287,7 @@ class PinoprSerive extends Service {
 
 
     async updatetagvals(openid,tag,values) {
-        console.log('the vals is :',values);
+        //console.log('the vals is :',values);
         let result = false;
         let valarr = values.split(",");
         let tagresult = false;
@@ -512,7 +512,7 @@ class PinoprSerive extends Service {
             let j = 1;
             while(tagsres.length == 0) {
                 tagsres = await this.app.mysql.query(tagssql);
-                console.log("retry get sql times : ", j);
+                console.log("the sql index is", i," ; try times of ",j);
                 j = j + 1;
             }
             lvs["l" + i] = await generateLightData(tagsres);
