@@ -156,7 +156,6 @@ class PinoprSerive extends Service {
     async getoriginlight(openid) {
         let getoriginfix = `select t lvs from userlight where openid = '${openid}'`;
         let originfixres = await this.app.mysql.query(getoriginfix);
-        console.log(originfixres);
         return originfixres[0].lvs;
     }
 
@@ -526,6 +525,7 @@ class PinoprSerive extends Service {
                 let l7val = tohex(lvs.l7[index]);
                 let l8val = tohex(lvs.l8[index]);
                 lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val + l8val;
+                console.log("the update json is:",lightjson[key]);
             }
             index += 1;
         }
