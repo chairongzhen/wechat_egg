@@ -46,7 +46,7 @@ module.exports = app => {
   router.get("/dislog",controller.account.dislog);
   router.get("/checkonline",controller.account.checkonline);
   router.post("/emptytags",controller.pinopr.emptytags);
-  router.get("/version",controller.setup.checkversion);
+  //router.get("/version",controller.setup.checkversion);
 
 
   router.get("/login",controller.login.Login);
@@ -70,6 +70,7 @@ module.exports = app => {
   router.post("/emptytagsios",controller.pinopr.emptytagsios);
   router.post("/gettagvalueios",controller.pinopr.gettagvalueios);
   router.post("/updatetags",controller.pinopr.updatetags);
+  router.get("/version",controller.setup.checkVersion);
   // for ios app end
 
   router.get("/gettest",controller.account.test);

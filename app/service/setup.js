@@ -8,10 +8,16 @@ class SetupSerive extends Service {
         return timestamp.toString();
     }
 
-    async checkversion() {
-        let checksql = 'select version from binversion order by version DESC limit 1';
-        const result = await this.app.mysql.query(checksql);
-        return result;
+    // async checkversion() {
+    //     let checksql = 'select version from binversion order by version DESC limit 1';
+    //     const result = await this.app.mysql.query(checksql);
+    //     return result;
+    // }
+
+    async checkVersion(type) {
+        let checkSql = `select ${type} version from espversion where id = 1`;
+        const result = await this.app.mysql.query(checkSql);
+        return result[0]["version"];
     }
 }
 

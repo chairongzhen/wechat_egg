@@ -80,7 +80,8 @@ class PinoprController extends Controller {
         let openid = ctx.request.body.openid;
         let showtype = ctx.request.body.showtype;
         let testmode = ctx.request.body.testmode;
-        const result = await this.service.pinopr.updatebasicinfo(openid, showtype, testmode);
+        let autoupdate = ctx.request.body.autoupdate;
+        const result = await this.service.pinopr.updatebasicinfo(openid, showtype, testmode,autoupdate);
         this.ctx.body = result;
     }
 
