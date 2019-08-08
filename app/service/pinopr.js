@@ -509,6 +509,7 @@ class PinoprSerive extends Service {
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
+            console.log(tagsres);
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
@@ -525,13 +526,13 @@ class PinoprSerive extends Service {
                 let l7val = tohex(lvs.l7[index]);
                 let l8val = tohex(lvs.l8[index]);
                 lightjson[key] = l1val + l2val + l3val + l4val + l5val + l6val + l7val + l8val;
-                console.log("the update json is:",lightjson[key]);
+                //console.log("the update json is:",lightjson[key]);
             }
             index += 1;
         }
         
         let content = JSON.stringify(lightjson);
-        console.log("update conetnt is:",content);
+        //console.log("update conetnt is:",content);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         let onlinemac = await this.getbindmachine(openid);
