@@ -510,6 +510,7 @@ class PinoprSerive extends Service {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
             let j = 1;
+            // find bug for sometimes the result will get empty arrary. looks like the sql problem.
             while(tagsres.length == 0) {
                 tagsres = await this.app.mysql.query(tagssql);
                 console.log("the sql index is", i," ; try times of ",j);
