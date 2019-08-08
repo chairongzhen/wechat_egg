@@ -509,8 +509,10 @@ class PinoprSerive extends Service {
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
-            console.log(tagssql);
-            console.log(tagsres);
+            console.log(tagsres.length);
+            while(tagsres.length == 0) {
+                tagsres = await this.app.mysql.query(tagssql);
+            }
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
