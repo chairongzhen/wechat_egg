@@ -377,6 +377,7 @@ class PinoprSerive extends Service {
         return true;
     }
 
+
     async updatefixlight(openid, tagvalue) {
         let fixres = await this.getoriginlight(openid);
         let fixresarr = JSON.parse(fixres);

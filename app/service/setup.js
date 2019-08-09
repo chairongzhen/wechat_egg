@@ -19,6 +19,14 @@ class SetupSerive extends Service {
         const result = await this.app.mysql.query(checkSql);
         return result[0]["version"];
     }
+
+
+    async espNew() {
+        let version = await this.checkVersion("hardware");
+        let topic = "esp32/checkversion"
+        await this.ctx.app.mqttclient.publish(topic, version, { qos: 2 });
+        return version;
+    }
 }
 
 module.exports = SetupSerive;

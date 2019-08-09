@@ -128,11 +128,16 @@ class SetupController extends Controller {
         this.ctx.body = result;
     }
 
-    // async checkversion() {
-    //     const ctx = this.ctx;
-    //     let res = await ctx.service.setup.checkversion();
-    //     ctx.body = "version:" + res[0]["version"];
-    // }
+    async espNew() {
+        const resultres = await this.service.setup.espNew();
+        let result = {
+            isSuccess: true,
+            message: "",
+            content: resultres
+        }
+        this.ctx.body = result;
+    }
+
 }
 
 module.exports = SetupController;
