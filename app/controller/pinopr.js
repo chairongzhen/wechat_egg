@@ -90,11 +90,12 @@ class PinoprController extends Controller {
         let openid = ctx.request.body.openid;
         let showtype = ctx.request.body.repeatmode;
         let testmode = ctx.request.body.productionmode;
+        let updatemode = ctx.request.body.updatemode;
         let result = {
             isSuccess: false,
             message: ""
         }
-        const resultres = await this.service.pinopr.updatebasicinfo(openid, showtype, testmode);
+        const resultres = await this.service.pinopr.updatebasicinfo(openid, showtype, testmode,updatemode);
         if(resultres) {
             result.isSuccess = true
         } else {

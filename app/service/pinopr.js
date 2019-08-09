@@ -264,11 +264,12 @@ class PinoprSerive extends Service {
         return res;
     }
 
-    async updatebasicinfo(openid, showtype, testmode,autoupdate) {
+    async updatebasicinfo(openid, showtype, testmode,autoupdate="none") {
         let updsql = `UPDATE userlight
                         SET showtype = '${showtype}',
                         testmode = '${testmode}',
-                        updatetime = now()
+                        updatetime = now(),
+                        autoupdate = '${autoupdate}'
                         WHERE
                             openid = '${openid}'`;
         let result = await this.app.mysql.query(updsql);
@@ -284,6 +285,8 @@ class PinoprSerive extends Service {
         }
         return result.affectedRows == 0 ? false : true;
     }
+
+    
 
 
     async updatetagvals(openid,tag,values) {
