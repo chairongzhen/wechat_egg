@@ -189,6 +189,18 @@ class AccountController extends Controller {
 
         this.ctx.body = result;
     }
+
+    async wxlogin() {
+        const ctx = this.ctx;
+        let openid = ctx.request.body.openid;
+        let nickname = ctx.request.body.nickname;
+        await this.service.account.wxlogin(openid,nickname);
+        let result = {
+            isSuccess: true,
+            message: ""
+        }
+        this.ctx.body = result;
+    }
 }
 
 module.exports = AccountController;

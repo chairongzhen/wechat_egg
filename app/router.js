@@ -72,6 +72,7 @@ module.exports = app => {
   router.post("/updatetags",controller.pinopr.updatetags);
   router.get("/version",controller.setup.checkVersion);
   router.get("/espnew",controller.setup.espNew);
+  router.post("/wxlogin",controller.account.wxlogin);
   // for ios app end
 
   router.get("/gettest",controller.account.test);
