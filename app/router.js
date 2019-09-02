@@ -77,5 +77,5 @@ module.exports = app => {
 
   router.get("/gettest",controller.account.test);
   router.post("/posttest",controller.account.test);
-  router.get("/NIXjTcrlqy.txt",controller.home.h5Auth)
+  router.get("/NIXjTcrlqy.txt", controller.home.sercert);
 };
