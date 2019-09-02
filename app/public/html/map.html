@@ -51,22 +51,20 @@
     }
 
     function zoomChanged() {    
-        
-        let currentSize = map.getZoom();
-        console.log("here am i",currentSize);
-        cScale = currentSize;
-        if(currentSize <= 13) {
-            map.clearOverlays();
-            _drawDistCircle("上海市");
-        } else if(currentSize >=15 && currentSize <16) {
-            if(cPoint) {
-                _gotoBlockMap(cPoint,cShowname)
-            }
-        } else if(currentSize >=17) {
-            if(cPoint) {
-                _gotoDetailMap(cPoint,cShowname)
-            }
-        } 
+        // let currentSize = map.getZoom();
+        // cScale = currentSize;
+        // if(currentSize <= 13) {
+        //     map.clearOverlays();
+        //     _drawDistCircle("上海市");
+        // } else if(currentSize >=15 && currentSize <16) {
+        //     if(cPoint) {
+        //         _gotoBlockMap(cPoint,cShowname)
+        //     }
+        // } else if(currentSize >=17) {
+        //     if(cPoint) {
+        //         _gotoDetailMap(cPoint,cShowname)
+        //     }
+        // } 
     }
 
     function _drawDistCircle(city) {
@@ -130,6 +128,7 @@
         cPoint = point;
         cShowname = showname;
         for(let corp of demoData) {
+            console.log(point,corp);
             var corpPoint = new BMap.Point(corp.location.lng,corp.location.lat);
             var labelOpts = {
                 position: corpPoint,
