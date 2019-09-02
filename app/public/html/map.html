@@ -10,34 +10,66 @@
     <!-- 将百度地图API引入，设置好自己的key -->
     <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=IUH39YOMVwr2K1mPnH8KQjaZ23XxnDNX"></script>
     <script src="../js/block.js" ></script>
+    <script src="../js/demoCorp.js"></script>
 </head>
 <body>
     <div id="allmap"></div>
 </body>
 </html>
 <script type="text/javascript">
-    var map = new BMap.Map("allmap"); 
-    map.centerAndZoom(new BMap.Point(121.487899486, 31.24916171), 12);  // 初始化地图,设置中心点坐标和地图级别
+    
+
+    let city = "上海市";
+    let cLocation = {
+        lng: 121.487899486,
+        lat: 31.24916171
+    };
+    let cPoint = null;
+    let cDistict = "浦东新区";
+    let cblock = "陆家嘴";
+    let cScale = 12;
+
+    var map = new BMap.Map("allmap",{enableMapClick:false}); 
+    map.centerAndZoom(new BMap.Point(cLocation.lng, cLocation.lat), cScale);  // 初始化地图,设置中心点坐标和地图级别
 	//添加地图类型控件
 	map.addControl(new BMap.MapTypeControl({
 		mapTypes:[
             BMAP_NORMAL_MAP
         ]}));	  
-	map.setCurrentCity("上海");          // 设置地图显示的城市 此项是必须设置的
+	map.setCurrentCity(city);          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
     map.disableDoubleClickZoom();
+    map.addEventListener("zoomend",zoomChanged);
     addMapControl();
-    console.log(block);
 
     function addMapControl() {
         var top_right_conntrol = new BMap.ScaleControl({ anchor: window.BMAP_ANCHOR_TOP_RIGHT });
         var top_right_navigation = new BMap.NavigationControl({ anchor: window.BMAP_ANCHOR_TOP_RIGHT });
         map.addControl(top_right_conntrol);
         map.addControl(top_right_navigation);
-        drawDistCircle("上海市");
+        _drawDistCircle(city);
     }
 
-    function drawDistCircle(city) {
+    function zoomChanged() {    
+        
+        let currentSize = map.getZoom();
+        console.log("here am i",currentSize);
+        cScale = currentSize;
+        if(currentSize <= 13) {
+            map.clearOverlays();
+            _drawDistCircle("上海市");
+        } else if(currentSize >=15 && currentSize <16) {
+            if(cPoint) {
+                _gotoBlockMap(cPoint,cShowname)
+            }
+        } else if(currentSize >=17) {
+            if(cPoint) {
+                _gotoDetailMap(cPoint,cShowname)
+            }
+        } 
+    }
+
+    function _drawDistCircle(city) {
         for(let c of block) {
             if(c.city === city) {
                 for(let dis of c.distict) {
@@ -46,13 +78,72 @@
             }
         }
     }
-
     function _addDistrictCircle(lng,lat,showname,num) {
         let point = new BMap.Point(lng,lat);
         let circle = new BMap.Circle(point, 2000, { fillColor: "green", strokeWeight: 1 });
+        circle.addEventListener("click",e=>{
+            _gotoBlockMap(point,showname);
+        });
         map.addOverlay(circle);
         _setLabels("distict",point, -15, -20,showname, showname);
         _setLabels("distict",point, -15, 0, showname,num + "家");
+    }
+    function _gotoBlockMap(point,showname) {
+        cPoint = point;
+        cShowname = showname;
+        cScale = 15;
+        map.centerAndZoom(point, cScale);
+        district = showname;
+        map.clearOverlays();
+        _drawBlockCircle(showname);
+    }
+    function _drawBlockCircle(distict) {
+        let currentBlock = [];
+        for(let d in block) {
+            if(block[d].city === city) {
+                for(let b in block[d].distict) {
+                    if(block[d].distict[b].name === district) {
+                        currentBlock = block[d].distict[b].blocks;
+                    }
+                }
+            }
+        }
+        for(let b of currentBlock) {
+            _addBlockCircle(b.location.lng,b.location.lat,b.boundary,b.blockName,Math.ceil(Math.random()*1000));
+        }
+    }
+    function _addBlockCircle(lng,lat,boundary,showname,num) {
+        let point = new BMap.Point(lng, lat);
+        let circle = new BMap.Circle(point, 300, { fillColor: "green", strokeWeight: 1 });
+        circle.addEventListener("click",e=>{
+            _gotoDetailMap(point,showname);
+        });
+        _setLabels("block",point, -15, -20, showname,showname);
+        _setLabels("block",point, -15, 0, showname,num + "家");
+        map.addOverlay(circle);
+    }
+    function _gotoDetailMap(point,showname) {
+        cScale = 17;
+        map.centerAndZoom(point, cScale);
+        cBlock = showname;
+        map.clearOverlays();
+        cPoint = point;
+        cShowname = showname;
+        for(let corp of demoData) {
+            var corpPoint = new BMap.Point(corp.location.lng,corp.location.lat);
+            var labelOpts = {
+                position: corpPoint,
+                offset: new BMap.Size(0,0)
+            }
+            let label  = new BMap.Label(corp.name,labelOpts);
+            label.setStyle({
+                color : "green",
+                fontSize : "14px",
+                height : "20px",
+                lineHeight : "20px"
+            });
+            map.addOverlay(label);
+        }
     }
     function _setLabels(type,point, offsetx, offsety, showname,content) {
         var opts = {
@@ -66,6 +157,13 @@
             border: "0px",
             fontSize: "13px",
             cursor: "pointer"
+        });
+        label.addEventListener("click",e=>{
+            if(type === "distict") {
+                _gotoBlockMap(point,showname);
+            } else if(type === "block"){
+                _gotoDetailMap(point,showname)
+            }
         });
         map.addOverlay(label);
 
