@@ -6,13 +6,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=3DSBZ-EGPC4-75IUL-DALSG-SNR2J-QUFUS"></script>
+    <script src="../js/block.js" ></script>
     <script>
         window.onload = function() {
+            console.log("here it is",blockJsonData);
             function init() {
                 let map = new qq.maps.Map(document.getElementById("container"),{
                     center: new qq.maps.LatLng(31.24916171,121.487899486),zoom: 12
                 });
+                var circle = new qq.maps.Circle({
+                center: new qq.maps.LatLng(31.24916171,121.487899486),
+                radius: 2000,
+                map: map
+                })
             }
+            
             init();
         }
     </script>
@@ -45,4 +53,7 @@
 <body>
     <div id="container"></div>
 </body>
+<scirpt>
+
+</scirpt>
 </html>
