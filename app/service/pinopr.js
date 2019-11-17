@@ -389,7 +389,7 @@ class PinoprSerive extends Service {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            await this.ctx.app.mqttclient.publish(sender,"{144:[100,100,100,100,100,100,100,100]}",{ qos : 2});
+            await this.ctx.app.mqttclient.publish(sender,"{tag: 144,data:[100,100,100,100,100,100,100,100]}",{ qos : 2});
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         return result;
@@ -550,9 +550,8 @@ class PinoprSerive extends Service {
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            await this.ctx.app.mqttclient.publish(sender,"[{1: [10,10,10,10,10,10,10,10]}]",{ qos: 2})
+            await this.ctx.app.mqttclient.publish(sender,"{tag:1,data: [10,10,10,10,10,10,10,10]}",{ qos: 2})
         }
-        console.log("here we go test setp");
         return true;
     }
 
