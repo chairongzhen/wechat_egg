@@ -389,7 +389,7 @@ class PinoprSerive extends Service {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            await this.ctx.app.mqttclient.publish(sender,JSON.stringify({"showtype":"fix","testmode":"production","sysdate":"1573965063","status":"stop","conmode": "none"}),{ qos : 2});
+            await this.ctx.app.mqttclient.publish(sender,"144,0,0,0,0,0,0,0,0",{ qos : 2});
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         return result;
