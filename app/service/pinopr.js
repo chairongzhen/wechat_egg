@@ -548,7 +548,8 @@ class PinoprSerive extends Service {
         let onlinemac = await this.getbindmachine(openid);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
-            await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
+            //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
+            await this.ctx.app.mqttclient.publish(sender,"[{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]}]",{ qos: 2})
         }
         return true;
     }
