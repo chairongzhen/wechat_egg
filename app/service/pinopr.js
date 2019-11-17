@@ -551,6 +551,7 @@ class PinoprSerive extends Service {
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
             await this.ctx.app.mqttclient.publish(sender,"[{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]},{1: [10,10,10,10,10,10,10,10]}]",{ qos: 2})
         }
+        console.log("here we go test setp");
         return true;
     }
 
