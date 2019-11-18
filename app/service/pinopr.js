@@ -564,7 +564,7 @@ class PinoprSerive extends Service {
             mqtttags.add(m.tag)
         }
         for(let tag of mqtttags) {
-            mqttStr += "|"
+
             mqttStr += tag;
             mqttStr += ":";
             let index = 0;
@@ -573,6 +573,8 @@ class PinoprSerive extends Service {
                     mqttStr += m.tagvalue;
                     if(index !== 7) {
                         mqttStr += ",";
+                    } else {
+                        mqttStr += "|";
                     }
                 }
                 
@@ -581,7 +583,7 @@ class PinoprSerive extends Service {
             
         }
        
-        mqttStr = mqttStr.substr(0,mqttStr.length -1);
+        //mqttStr = mqttStr.substr(0,mqttStr.length -1);
         console.log("here we go:",mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
