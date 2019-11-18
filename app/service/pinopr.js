@@ -584,6 +584,7 @@ class PinoprSerive extends Service {
         }
        
         mqttStr = mqttStr.substr(0,mqttStr.length -1);
+        console.log("the mqtt str is:",mqttStr, " and the length is: ",mqttStr.length);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
