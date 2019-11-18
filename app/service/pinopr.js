@@ -567,12 +567,13 @@ class PinoprSerive extends Service {
         let tagindex = 1;
         for(let tag of mqtttags) {
             mqttStr += tag;
-            if(tagindex == mqtttags.length) {
+            if(tagindex === mqtttags.length) {
                 mqttStr += "|";
             } else {
                 mqttStr += ",";
             }            
             tagindex ++;
+            console.log("the tagindex is: ",tagindex);
         }
 
         for(let tag of mqtttags) {
