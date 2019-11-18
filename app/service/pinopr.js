@@ -563,8 +563,21 @@ class PinoprSerive extends Service {
         for(let m of mqttres) {
             mqtttags.add(m.tag)
         }
+        for(let tag of mqtttags) {
+            mqttStr += tag;
+            mqttStr += ":";
+            for(let m of mqttres) {
+                if(m.tag === tag) {
+                    mqttStr += m.tagvalue;
+                    mqttStr += ",";
+                    mqttStr = mqttStr.substr(0,mqttStr.length -1);
+                }
+            }
+        }
 
-        console.log("here we go:",mqtttags);
+        
+
+        console.log("here we go:",mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
