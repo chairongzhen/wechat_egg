@@ -379,6 +379,7 @@ class PinoprSerive extends Service {
 
 
     async updatefixlight(openid, tagvalue) {
+        console.log("the tag value is: ",tagvalue);
         let fixres = await this.getoriginlight(openid);
         let fixresarr = JSON.parse(fixres);
         fixresarr.tfix = tagvalue;
@@ -389,6 +390,8 @@ class PinoprSerive extends Service {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
+            
+            //let fixcontent = `144${fixdata}`;
             await this.ctx.app.mqttclient.publish(sender,"144,100,90,80,70,60,50,40,30",{ qos : 2});
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
