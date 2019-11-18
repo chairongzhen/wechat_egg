@@ -154,6 +154,7 @@ class PinoprController extends Controller {
         let l8 = ctx.request. body.l8;
         let tagvalue = tohex(l1) + tohex(l2) + tohex(l3) + tohex(l4) + tohex(l5) + tohex(l6) + tohex(l7) + tohex(l8);
         let result = false;
+        console.log("here we go: ",l1,l2,l3,l4,l5,l6,l7,l8);
         result = await this.service.pinopr.updatefixlight(openid, tagvalue,l1,l2,l3,l4,l5,l6,l7,l8);
         this.ctx.body = result;
     }
