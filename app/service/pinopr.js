@@ -579,6 +579,7 @@ class PinoprSerive extends Service {
                 }
                 
                 index ++;
+                console.log("the index is: ",index);
             }
             
         }
