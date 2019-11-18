@@ -579,13 +579,11 @@ class PinoprSerive extends Service {
                         index = 0;
                     }
                 }
-                               
-                console.log("the index is: ",index);
             }
             
         }
        
-        //mqttStr = mqttStr.substr(0,mqttStr.length -1);
+        mqttStr = mqttStr.substr(0,mqttStr.length -1);
         console.log("here we go:",mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
