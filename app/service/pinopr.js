@@ -518,6 +518,7 @@ class PinoprSerive extends Service {
 
     async updaterepeatdata(openid) {
         let lvs = {};
+        
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
@@ -527,11 +528,6 @@ class PinoprSerive extends Service {
                 tagsres = await this.app.mysql.query(tagssql);
                 console.log("the sql index is", i," ; try times of ",j);
                 j = j + 1;
-            }
-            console.log(tagsres);
-            
-            for(let tag of tagsres) {
-
             }
             lvs["l" + i] = await generateLightData(tagsres);
         }
@@ -559,10 +555,20 @@ class PinoprSerive extends Service {
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         let onlinemac = await this.getbindmachine(openid);
+        
+        let mqttsql = `select tag,tagvalue from userlightdetails where openid = '${openid}' order by tag,lid`;
+        let mqttres = await this.app.mysql.query(tagssql);
+        let mqttStr = "0,"
+        let mqtttags = new Set();
+        for(let m of mqttres) {
+            mqtttags.add(m.tag)
+        }
+
+        console.log("here we go:",mqtttags);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            await this.ctx.app.mqttclient.publish(sender,JSON.stringify("{tag:1,data:\"10,10,10,10,10,10,10,10\"})",{ qos: 2}));
+            await this.ctx.app.mqttclient.publish(sender,"hello",{ qos: 2});
         }
         return true;
     }
