@@ -572,10 +572,10 @@ class PinoprSerive extends Service {
                     mqttStr += ",";
                 }
             }
+            
         }
-
-        
-        
+       
+        mqttStr = mqttStr.substr(0,mqttStr.length -1);
         console.log("here we go:",mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
