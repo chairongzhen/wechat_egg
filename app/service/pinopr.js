@@ -563,10 +563,19 @@ class PinoprSerive extends Service {
         for(let m of mqttres) {
             mqtttags.add(m.tag)
         }
-        for(let tag of mqtttags) {
 
+        let tagindex = 1;
+        for(let tag of mqtttags) {
             mqttStr += tag;
-            mqttStr += ":";
+            if(tagindex == mqtttags.length) {
+                mqttStr += "|";
+            } else {
+                mqttStr += ",";
+            }            
+            tagindex ++;
+        }
+
+        for(let tag of mqtttags) {
             let index = 0;
             for(let m of mqttres) {
                 if(m.tag === tag) {
@@ -584,7 +593,7 @@ class PinoprSerive extends Service {
         }
        
         mqttStr = mqttStr.substr(0,mqttStr.length -1);
-        console.log("the mqtt str is:",mqttStr, " and the length is: ",mqttStr.length);
+        console.log("the mqttstr is: ",mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
