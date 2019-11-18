@@ -518,7 +518,6 @@ class PinoprSerive extends Service {
 
     async updaterepeatdata(openid) {
         let lvs = {};
-        let mqttstr = "";
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
@@ -530,6 +529,10 @@ class PinoprSerive extends Service {
                 j = j + 1;
             }
             console.log(tagsres);
+            
+            for(let tag of tagsres) {
+
+            }
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
@@ -559,7 +562,7 @@ class PinoprSerive extends Service {
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            await this.ctx.app.mqttclient.publish(sender,"{tag:1,data: [10,10,10,10,10,10,10,10]}",{ qos: 2})
+            await this.ctx.app.mqttclient.publish(sender,JSON.stringify("{tag:1,data:\"10,10,10,10,10,10,10,10\"})",{ qos: 2}));
         }
         return true;
     }

@@ -108,7 +108,6 @@ class PinoprController extends Controller {
         let openid = ctx.request.body.openid;
         let tag = ctx.request.body.tag;
         let values = ctx.request.body.lights;
-        console.log(tag,values);
         let resultres = await this.service.pinopr.updatetagvals(openid,tag,values);
         let result = {
             isSuccess: false,
