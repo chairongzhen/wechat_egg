@@ -573,12 +573,13 @@ class PinoprSerive extends Service {
                     mqttStr += m.tagvalue;
                     if(index !== 7) {
                         mqttStr += ",";
+                        index ++;
                     } else {
                         mqttStr += "|";
+                        index = 0;
                     }
                 }
-                
-                index ++;
+                               
                 console.log("the index is: ",index);
             }
             
