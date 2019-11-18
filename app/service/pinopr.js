@@ -570,9 +570,9 @@ class PinoprSerive extends Service {
                 if(m.tag === tag) {
                     mqttStr += m.tagvalue;
                     mqttStr += ",";
-                    mqttStr = mqttStr.substr(0,mqttStr.length -1);
                 }
             }
+            mqttStr = mqttStr.substr(0,mqttStr.length -1);
         }
 
         
