@@ -379,20 +379,19 @@ class PinoprSerive extends Service {
 
 
     async updatefixlight(openid, tagvalue,l1,l2,l3,l4,l5,l6,l7,l8) {
-        
         let fixres = await this.getoriginlight(openid);
         let fixresarr = JSON.parse(fixres);
         fixresarr.tfix = tagvalue;
         let content = JSON.stringify(fixresarr);
         let updstr = `update userlight set t = '${content}' where openid = '${openid}'`;
         let onlinemac = await this.getbindmachine(openid);
+
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
-            
             let fixcontent = `144,${l1},${l2},${l3},${l4},${l5},${l6},${l7},${l8}`;
-            console.log("the tag value is: ",fixcontent);
+            console.log("the tag value is: ",tagvalue,fixcontent);
             await this.ctx.app.mqttclient.publish(sender,fixcontent,{ qos : 2});
         }
         let result = this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
