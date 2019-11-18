@@ -330,6 +330,7 @@ class PinoprSerive extends Service {
             }
         }
 
+
         if(tagresult) {
             await this.updaterepeatdata(openid);
         }
@@ -512,8 +513,12 @@ class PinoprSerive extends Service {
         return true;
     }
 
+
+
+
     async updaterepeatdata(openid) {
         let lvs = {};
+        let mqttstr = "";
         for (let i = 1; i <= 8; i++) {
             let tagssql = `select tag,tagvalue from userlightdetails where openid= '${openid}' and lid = ${i} order by tag`;
             let tagsres = await this.app.mysql.query(tagssql);
@@ -524,6 +529,7 @@ class PinoprSerive extends Service {
                 console.log("the sql index is", i," ; try times of ",j);
                 j = j + 1;
             }
+            console.log(tagsres);
             lvs["l" + i] = await generateLightData(tagsres);
         }
         let originlight = await this.getoriginlight(openid);
