@@ -557,7 +557,7 @@ class PinoprSerive extends Service {
         let onlinemac = await this.getbindmachine(openid);
         
         let mqttsql = `select tag,tagvalue from userlightdetails where openid = '${openid}' order by tag,lid`;
-        let mqttres = await this.app.mysql.query(tagssql);
+        let mqttres = await this.app.mysql.query(mqttsql);
         let mqttStr = "0,"
         let mqtttags = new Set();
         for(let m of mqttres) {
