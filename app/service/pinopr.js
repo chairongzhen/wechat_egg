@@ -564,6 +564,7 @@ class PinoprSerive extends Service {
             mqtttags.add(m.tag)
         }
         for(let tag of mqtttags) {
+            mqttStr += "|"
             mqttStr += tag;
             mqttStr += ":";
             for(let m of mqttres) {
