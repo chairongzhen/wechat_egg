@@ -571,8 +571,7 @@ class PinoprSerive extends Service {
                 mqttStr += "|";
             } else {
                 mqttStr += ",";
-            }
-            console.log("the tagindex is: ",tagindex,mqtttags.length);            
+            }        
             tagindex ++;
             
         }
