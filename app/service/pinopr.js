@@ -556,14 +556,15 @@ class PinoprSerive extends Service {
         this.app.mysql.query(updstr).affectedRows == 0 ? false : true;
         let onlinemac = await this.getbindmachine(openid);
         
-        let mqttsql = `select tag,tagvalue from userlightdetails where openid = '${openid}' order by tag,lid`;
+        let mqttsql = `select tag,tagvalue from userlightdetails where openid = '${openid}' order by lid,tag`;
         let mqttres = await this.app.mysql.query(mqttsql);
-        let mqttStr = "0,"
+        //console.log(mqttres);
+        
         let mqtttags = new Set();
         for(let m of mqttres) {
             mqtttags.add(m.tag)
         }
-
+        let mqttStr = `${mqtttags.size},`;
         let tagindex = 1;
         for(let tag of mqtttags) {
             mqttStr += tag;
@@ -576,25 +577,20 @@ class PinoprSerive extends Service {
             
         }
 
-        for(let tag of mqtttags) {
-            let index = 0;
-            for(let m of mqttres) {
-                if(m.tag === tag) {
-                    mqttStr += m.tagvalue;
-                    if(index !== 7) {
-                        mqttStr += ",";
-                        index ++;
-                    } else {
-                        mqttStr += "|";
-                        index = 0;
-                    }
-                }
+        let tindex = 1;
+        for(let tag of mqttres) {
+            mqttStr += tag.tagvalue;
+            if(tindex !== mqtttags.size) {
+                mqttStr += ",";
+                tindex ++;
+            } else {
+                mqttStr += "|";
+                tindex = 1;
             }
-            
         }
        
         mqttStr = mqttStr.substr(0,mqttStr.length -1);
-        console.log("the mqttstr is: ",mqttStr);
+        console.log(mqttStr);
         for (let ta of onlinemac) {
             let sender = ta + "/setp";
             //await this.ctx.app.mqttclient.publish(sender, content, { qos: 2 });
