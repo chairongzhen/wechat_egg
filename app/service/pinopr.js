@@ -276,7 +276,7 @@ class PinoprSerive extends Service {
         //{"showtype":"repeat","testmode":"test","sysdate":"1525046400","status":"stop","conmode": "local"}
         let timestamp = Date.now() / 1000 | 0;
         let timestampstr = timestamp.toString();
-        let tpl_basic = `{\"showtype\":\"${showtype}\","testmode":\"${testmode}\","sysdate":\"${timestampstr}\",\"status\":\"stop\",\"conmode\": \"${autoupdate}\"}`;
+        let tpl_basic = `{\"showtype\":\"${showtype}\","testmode":\"${testmode}\","sysdate":\"${timestampstr}\",\"status\":\"stop\",\"autoupdate\": \"${autoupdate}\"}`;
 
         let onlinemac = await this.getbindmachine(openid);
         for (let ta of onlinemac) {
