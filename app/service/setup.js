@@ -17,9 +17,16 @@ class SetupSerive extends Service {
     async checkVersion(type) {
         let checkSql = `select ${type} version from espversion where id = 1`;
         const result = await this.app.mysql.query(checkSql);
+        //await this.ctx.app.mqttclient.publish("esp32/checkversion",result[0]["version"]);
         return result[0]["version"];
     }
 
+    async checkEsp() {
+        let checkSql = `select hardware version from espversion where id = 1`;
+        const result = await this.app.mysql.query(checkSql);
+        await this.ctx.app.mqttclient.publish("esp32/checkversion",result[0]["version"]);
+        return result[0]["version"];
+    }
 
     async espNew() {
         let version = await this.checkVersion("hardware");

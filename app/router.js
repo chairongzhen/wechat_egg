@@ -71,6 +71,7 @@ module.exports = app => {
   router.post("/gettagvalueios",controller.pinopr.gettagvalueios);
   router.post("/updatetags",controller.pinopr.updatetags);
   router.get("/version",controller.setup.checkVersion);
+  router.get("/checkesp",controller.setup.checkEsp);
   router.get("/espnew",controller.setup.espNew);
   router.post("/wxlogin",controller.account.wxlogin);
   // for ios app end

@@ -128,6 +128,18 @@ class SetupController extends Controller {
         this.ctx.body = result;
     }
 
+    async checkEsp() {
+        const ctx = this.ctx;
+        let type = ctx.request.query.type;
+        const resultres = await this.service.setup.checkEsp();
+        let result = {
+            isSuccess: true,
+            message: "",
+            content: resultres
+        } 
+        this.ctx.body = result;
+    }
+
     async espNew() {
         const resultres = await this.service.setup.espNew();
         let result = {
