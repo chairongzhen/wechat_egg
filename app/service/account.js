@@ -344,7 +344,7 @@ class AccountSerive extends Service {
     async wxlogin(openid,nickname) {
         let checkSql = `select count(id) existcount from users where openid = '${openid}'`
         let existres = await this.app.mysql.query(checkSql);
-        console.log("here it is",checkSql);
+        //console.log("here it is",checkSql);
         if(existres[0].existcount == 0) {
             let addsql = `INSERT INTO users (
                 openid,
@@ -369,7 +369,7 @@ class AccountSerive extends Service {
                     now(),
                     now()
                 );`;
-            console.log(addsql);
+            //console.log(addsql);
             await this.app.mysql.query(addsql);
             
             let newsql = `INSERT INTO userlight (
@@ -400,6 +400,7 @@ class AccountSerive extends Service {
         return true;
     }
     
+
 }
 
 module.exports = AccountSerive;
