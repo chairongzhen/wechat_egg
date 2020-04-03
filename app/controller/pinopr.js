@@ -30,6 +30,7 @@ class PinoprController extends Controller {
 
     async getbinds() {
         const ctx = this.ctx;
+        console.log("here am i");
         let openid = ctx.request.body.openid;
         let result = {
             isSuccess: false,
