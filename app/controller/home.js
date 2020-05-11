@@ -14,11 +14,16 @@ class HomeController extends Controller {
   }
 
   async sercert() {
+    
     await this.ctx.render('/home/MP_verify_JLi94vO16rP0kiBE.txt')
   }
 
   async h5Auth() {
     await this.ctx.render('/home/NIXjTcrlqy.txt');
+  }
+
+  async ulink() {
+      await this.ctx.render('/home/apple-app-site-association.json');
   }
   
 }

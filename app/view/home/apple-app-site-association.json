@@ -1,0 +1,11 @@
+{
+    "applinks": {
+            "apps": ["pplight"],
+            "details": [
+                {
+                    "appID": "com.polypite.pplight",
+                    "paths": ["/deaplink","/pplight","*"]
+                }
+            ]
+        }
+    }
