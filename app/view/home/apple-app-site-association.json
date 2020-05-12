@@ -1,9 +1,9 @@
 {
     "applinks": {
-            "apps": ["pplight"],
+            "apps": [],
             "details": [
                 {
-                    "appID": "com.polypite.pplight",
+                    "appID": ["GZ95Z737LD.com.polypite.pplight"],
                     "paths": ["/deaplink","/pplight","*"]
                 }
             ]
