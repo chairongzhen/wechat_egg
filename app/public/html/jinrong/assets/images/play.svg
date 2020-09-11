@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>播放</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-868.000000, -653.000000)">
+            <g id="播放" transform="translate(869.000000, 654.000000)">
+                <g id="播放备份" transform="translate(15.600000, 10.800000)" fill="#3DC1D4">
+                    <path d="M19.9731282,12.0889672 L3.03560339,1.83733411 C2.09064343,1.26538615 0.860946606,1.56777212 0.288998648,2.51273208 C0.099944587,2.82508308 1.28755467e-15,3.18322646 0,3.54833546 L0,24.051655 C-2.0851753e-15,25.1562245 0.8954305,26.051655 2,26.051655 C2.36511057,26.051655 2.72325543,25.9517095 3.03560733,25.7626539 L19.9731321,15.5109675 C20.9180908,14.9390174 21.2204739,13.7093199 20.6485238,12.7643612 C20.4812437,12.4879862 20.2495036,12.2562466 19.9731282,12.0889672 Z" id="Fill-3"></path>
+                </g>
+                <circle id="椭圆形备份" stroke="#3DC1D4" stroke-width="2" cx="24" cy="24" r="24"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

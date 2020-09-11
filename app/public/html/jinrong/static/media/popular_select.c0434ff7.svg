@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="354px" height="110px" viewBox="0 0 354 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>热门备份</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#1F78AB" offset="0%"></stop>
+            <stop stop-color="#1755A6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="上海金融指数1备份-5" transform="translate(-5913.000000, -208.000000)" fill="url(#linearGradient-1)">
+            <polygon id="热门备份" points="5947.08889 208 6267 208 6232.91111 318 5913 318"></polygon>
+        </g>
+    </g>
+</svg>

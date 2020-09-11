@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3012px" height="1936px" viewBox="0 0 3012 1936" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>编组 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="72.7018694%" y1="43.6133803%" x2="57.4931685%" y2="58.1699163%" id="linearGradient-1">
+            <stop stop-color="#2867F9" offset="0%"></stop>
+            <stop stop-color="#1D82A4" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="85.1365861%" cy="-7.41487426%" fx="85.1365861%" fy="-7.41487426%" r="142.804738%" gradientTransform="translate(0.851366,-0.074149),scale(0.357397,1.000000),rotate(139.424519),translate(-0.851366,0.074149)" id="radialGradient-2">
+            <stop stop-color="#86A9FF" offset="0%"></stop>
+            <stop stop-color="#2D41C8" stop-opacity="0.698972902" offset="100%"></stop>
+        </radialGradient>
+        <rect id="path-3" x="0" y="0" width="670" height="239.455782" rx="119.727891"></rect>
+        <linearGradient x1="54.1172203%" y1="42.1178134%" x2="65.6863259%" y2="59.9334306%" id="linearGradient-5">
+            <stop stop-color="#2867F9" offset="0%"></stop>
+            <stop stop-color="#2232A5" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-6" x="0" y="0" width="670" height="239.455782" rx="119.727891"></rect>
+        <linearGradient x1="83.0907737%" y1="46.3413503%" x2="112.53814%" y2="58.5478594%" id="linearGradient-8">
+            <stop stop-color="#2867F9" offset="0%"></stop>
+            <stop stop-color="#931AFF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-9" x="0" y="0" width="670" height="239.455782" rx="119.727891"></rect>
+        <linearGradient x1="50%" y1="0.287690034%" x2="50%" y2="100%" id="linearGradient-11">
+            <stop stop-color="#5AB4F7" stop-opacity="0.0463559878" offset="0%"></stop>
+            <stop stop-color="#3200A5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-12">
+            <stop stop-color="#031C62" offset="0%"></stop>
+            <stop stop-color="#BFFFF9" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-13">
+            <stop stop-color="#740DA4" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#4978FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="53.295097%" y1="57.1738128%" x2="50%" y2="39.4864742%" id="linearGradient-14">
+            <stop stop-color="#03B4F0" offset="0%"></stop>
+            <stop stop-color="#083DAC" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="78.9892208%" y1="23.7100306%" x2="26.2256164%" y2="75.513325%" id="linearGradient-15">
+            <stop stop-color="#8DE5F8" offset="0%"></stop>
+            <stop stop-color="#0B5ED6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="77.9409658%" y1="15.075492%" x2="15.8222256%" y2="89.7180002%" id="linearGradient-16">
+            <stop stop-color="#02B9F1" offset="0%"></stop>
+            <stop stop-color="#0976DD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-17">
+            <stop stop-color="#056382" offset="0%"></stop>
+            <stop stop-color="#03B7F1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0.287690034%" x2="50%" y2="100%" id="linearGradient-18">
+            <stop stop-color="#77BBED" stop-opacity="0.0463559878" offset="0%"></stop>
+            <stop stop-color="#005CA0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-19">
+            <stop stop-color="#6A85E3" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#4572F1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-20">
+            <stop stop-color="#6A85E3" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#4572F1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="上海金融指数1备份-3" transform="translate(-2333.000000, -460.000000)">
+            <g id="编组-8" transform="translate(2331.000000, 461.000000)">
+                <g id="编组-3">
+                    <g id="椭圆形" transform="translate(1268.000000, 8.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="蒙版" stroke="url(#radialGradient-2)" fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
+                        <ellipse id="椭圆形备份-5" fill="#0FB8FF" opacity="0.102841332" mask="url(#mask-4)" cx="68.6761661" cy="109.081633" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse id="椭圆形备份-4" fill="#0F20FF" opacity="0.102841332" mask="url(#mask-4)" cx="73.6761661" cy="60.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse fill="#4132FF" opacity="0.102841332" mask="url(#mask-4)" cx="37.6761661" cy="31.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                    </g>
+                    <g id="编组-6" transform="translate(1529.000000, 150.000000)">
+                        <text id="去年同期-80" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">去年同期</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#C12827" id="2_1_3">80</tspan>
+                        </text>
+                        <text id="+10" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#DC3023">
+                            <tspan x="217" y="30" id="2_1_4">+10</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543797 335.952008,19.8543797 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543797 C319.985783,19.8543797 319.806697,19.6752936 319.806697,19.4543797 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="2_1_5" fill="#C12827"></path>
+                    </g>
+                    <g id="编组-7" transform="translate(1529.000000, 193.000000)">
+                        <text id="-2" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#5FF678">
+                            <tspan x="217" y="30" id="2_1_7">-2</tspan>
+                        </text>
+                        <text id="上期指数-92" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">上期指数</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#5FF678" id="2_1_6">92</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543798 335.952008,19.8543798 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543798 C319.985783,19.8543798 319.806697,19.6752936 319.806697,19.4543798 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="2_1_8" fill="#5FF678" transform="translate(328.079365, 20.237762) scale(1, -1) translate(-328.079365, -20.237762) "></path>
+                    </g>
+                    <text id="稳健" font-family="PingFangSC-Semibold, PingFang SC" font-size="52" font-weight="500" fill="#41FDFF">
+                        <tspan x="1646" y="116" id="1_1_2">稳健</tspan>
+                    </text>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="100" font-weight="500" letter-spacing="8.19347826" fill="#41FDFF">
+                        <tspan x="1299" y="164" id='1_1_1'>91</tspan>
+                        <tspan x="1427.08507" y="164" font-family="PingFangSC-Regular, PingFang SC" font-size="50" font-weight="normal" letter-spacing="-2.425">分</tspan>
+                    </text>
+                    <rect id="矩形" stroke="#3475FF" x="1259" y="0" width="688" height="256" rx="128"></rect>
+                    <g id="椭圆形" transform="translate(2151.000000, 326.000000)">
+                        <mask id="mask-7" fill="white">
+                            <use xlink:href="#path-6"></use>
+                        </mask>
+                        <use id="蒙版" stroke="url(#radialGradient-2)" fill="url(#linearGradient-5)" xlink:href="#path-6"></use>
+                        <ellipse id="椭圆形备份-5" fill="#0FFFB1" opacity="0.102841332" mask="url(#mask-7)" cx="68.6761661" cy="109.081633" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse id="椭圆形备份-4" fill="#0FFFB1" opacity="0.102841332" mask="url(#mask-7)" cx="73.6761661" cy="60.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse fill="#07D6B7" opacity="0.102841332" mask="url(#mask-7)" cx="37.6761661" cy="31.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                    </g>
+                    <text id="综合指数" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997" fill="#FFFFFF">
+                        <tspan x="2525" y="367">综合指数</tspan>
+                    </text>
+                    <g id="编组-6" transform="translate(2412.000000, 468.000000)">
+                        <text id="去年同期-80" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">去年同期</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#C12827" id="1_1_3">80</tspan>
+                        </text>
+                        <text id="+10" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#DC3023">
+                            <tspan x="217" y="30" id="1_1_4">+10</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543797 335.952008,19.8543797 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543797 C319.985783,19.8543797 319.806697,19.6752936 319.806697,19.4543797 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="1_1_5" fill="#C12827"></path>
+                    </g>
+                    <g id="编组-7" transform="translate(2412.000000, 511.000000)">
+                        <text id="-2" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#5FF678">
+                            <tspan x="217" y="30" id="1_1_7">-2</tspan>
+                        </text>
+                        <text id="上期指数-92" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">上期指数</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#5FF678" id="1_1_6">92</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543798 335.952008,19.8543798 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543798 C319.985783,19.8543798 319.806697,19.6752936 319.806697,19.4543798 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="1_1_8" fill="#5FF678" transform="translate(328.079365, 20.237762) scale(1, -1) translate(-328.079365, -20.237762) "></path>
+                    </g>
+                    <text id="平淡" font-family="PingFangSC-Semibold, PingFang SC" font-size="52" font-weight="500" fill="#FFF603">
+                        <tspan x="2529" y="434" id="2_2_2">平淡</tspan>
+                    </text>
+                    <text id="75分" font-family="PingFangSC-Semibold, PingFang SC" font-size="100" font-weight="500" letter-spacing="8.19347826" fill="#FFF603">
+                        <tspan x="2182" y="482" id="2_2_1">75</tspan>
+                        <tspan x="2313.68696" y="482" font-family="PingFangSC-Regular, PingFang SC" font-size="50" font-weight="normal" letter-spacing="-2.425">分</tspan>
+                    </text>
+                    <rect id="矩形" stroke="#3475FF" x="2142" y="318" width="688" height="256" rx="128"></rect>
+                    <g id="椭圆形" transform="translate(384.000000, 326.000000)">
+                        <mask id="mask-10" fill="white">
+                            <use xlink:href="#path-9"></use>
+                        </mask>
+                        <use id="蒙版" stroke="url(#radialGradient-2)" fill="url(#linearGradient-8)" xlink:href="#path-9"></use>
+                        <ellipse id="椭圆形备份-5" fill="#0FFFB1" opacity="0.102841332" mask="url(#mask-10)" cx="68.6761661" cy="109.081633" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse id="椭圆形备份-4" fill="#0FFFB1" opacity="0.102841332" mask="url(#mask-10)" cx="73.6761661" cy="60.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                        <ellipse fill="#07D6B7" opacity="0.102841332" mask="url(#mask-10)" cx="37.6761661" cy="31.0816327" rx="171.676166" ry="184.081633"></ellipse>
+                    </g>
+                    <text id="综合指数" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997" fill="#FFFFFF">
+                        <tspan x="758" y="367">综合指数</tspan>
+                    </text>
+                    <g id="编组-6" transform="translate(645.000000, 468.000000)">
+                        <text id="去年同期-80" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">去年同期</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#C12827" id="2_2_3">80</tspan>
+                        </text>
+                        <text id="+10" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#DC3023">
+                            <tspan x="217" y="30" id="2_2_4">+10</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543797 335.952008,19.8543797 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543797 C319.985783,19.8543797 319.806697,19.6752936 319.806697,19.4543797 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="2_2_5" fill="#C12827"></path>
+                    </g>
+                    <g id="编组-7" transform="translate(645.000000, 511.000000)">
+                        <text id="-2" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996" fill="#5FF678">
+                            <tspan x="217" y="30" id="2_2_7">-2</tspan>
+                        </text>
+                        <text id="上期指数-92" font-family="PingFangSC-Medium, PingFang SC" font-size="28" font-weight="400" letter-spacing="4.24199996">
+                            <tspan x="0" y="30" fill="#FFFFFF">上期指数</tspan>
+                            <tspan x="128.968" y="30" fill="#5CB8F1"> </tspan>
+                            <tspan x="142.534" y="30" fill="#5FF678" id="2_2_6">92</tspan>
+                        </text>
+                        <path d="M328.079352,6 L336.291951,19.2435745 C336.408375,19.4313198 336.350558,19.6778981 336.162813,19.7943226 C336.099508,19.8335797 336.026498,19.8543798 335.952008,19.8543798 L329.536,19.854 L329.536139,34.0755242 C329.536139,34.2964381 329.357053,34.4755242 329.136139,34.4755242 L326.464701,34.4755242 C326.243787,34.4755242 326.064701,34.2964381 326.064701,34.0755242 L326.064,19.854 L320.206697,19.8543798 C319.985783,19.8543798 319.806697,19.6752936 319.806697,19.4543798 C319.806697,19.37989 319.827497,19.3068802 319.866754,19.2435745 L328.079352,6 Z" id="2_2_8" fill="#5FF678" transform="translate(328.079365, 20.237762) scale(1, -1) translate(-328.079365, -20.237762) "></path>
+                    </g>
+                    <text id="危险" font-family="PingFangSC-Semibold, PingFang SC" font-size="52" font-weight="500" fill="#FF4F58">
+                        <tspan x="762" y="434" id="2_1_2">危险</tspan>
+                    </text>
+                    <text id="30分" font-family="PingFangSC-Semibold, PingFang SC" font-size="100" font-weight="500" letter-spacing="8.19347826" fill="#FF4F58">
+                        <tspan x="415" y="482" id="2_1_1">30</tspan>
+                        <tspan x="551.386957" y="482" font-family="PingFangSC-Regular, PingFang SC" font-size="50" font-weight="normal" letter-spacing="-2.425">分</tspan>
+                    </text>
+                    <rect id="矩形" stroke="#3475FF" x="375" y="318" width="688" height="256" rx="128"></rect>
+                    <g id="编组-18" transform="translate(1078.000000, 438.000000)">
+                        <circle id="椭圆形" fill="#0DD3B4" transform="translate(1042.000000, 8.000000) scale(-1, 1) translate(-1042.000000, -8.000000) " cx="1042" cy="8" r="8"></circle>
+                        <circle id="椭圆形备份" fill="#0DD3B4" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) " cx="8" cy="8" r="8"></circle>
+                        <line x1="17" y1="7" x2="1036" y2="8" id="直线" stroke="#39B5BC" stroke-linecap="square" transform="translate(526.000000, 8.000000) scale(-1, 1) translate(-526.000000, -8.000000) "></line>
+                    </g>
+                    <g id="编组-19" transform="translate(1595.000000, 267.000000)">
+                        <g id="编组-4备份-5" transform="translate(8.000000, 150.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -150.000000) translate(0.000000, 142.000000)" fill="#0DD3B4">
+                            <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                        </g>
+                        <line x1="9" y1="1" x2="9" y2="147" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                    </g>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="513 1111.19149 647 1038.76537 647 1187.99019 513 1258"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="519.726083 982 647 1038.76537 513 1111.19149 379 1040.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(446.000000, 1149.361702) scale(1, -1) translate(-446.000000, -1149.361702) " points="379 1109.91002 513 1040.7234 513 1187.99019 379 1258"></polygon>
+                    <g id="编组-11" transform="translate(449.000000, 1113.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="458" y="1093" id="3_2">90</tspan>
+                        <tspan x="539.832174" y="1093" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="基金市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="374" y="928">基金市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="167 1111.19149 301 1038.76537 301 1187.99019 167 1258"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="173.726083 982 301 1038.76537 167 1111.19149 33 1040.7234"></polygon>
+                    <g id="编组-11" transform="translate(103.000000, 1113.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="112" y="1093" id="3_1">90</tspan>
+                        <tspan x="193.832174" y="1093" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="股票市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="28" y="928">股票市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="859 1111.19149 993 1038.76537 993 1187.99019 859 1258"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="865.726083 982 993 1038.76537 859 1111.19149 725 1040.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(792.000000, 1149.361702) scale(1, -1) translate(-792.000000, -1149.361702) " points="725 1109.91002 859 1040.7234 859 1187.99019 725 1258"></polygon>
+                    <g id="编组-11" transform="translate(795.000000, 1113.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="804" y="1093" id="3_3">90</tspan>
+                        <tspan x="885.832174" y="1093" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="债券市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="720" y="928">债券市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="1205 1111.19149 1339 1038.76537 1339 1187.99019 1205 1258"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="1211.72608 982 1339 1038.76537 1205 1111.19149 1071 1040.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(1138.000000, 1149.361702) scale(1, -1) translate(-1138.000000, -1149.361702) " points="1071 1109.91002 1205 1040.7234 1205 1187.99019 1071 1258"></polygon>
+                    <g id="编组-11" transform="translate(1141.000000, 1113.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="1150" y="1093" id="3_4">90</tspan>
+                        <tspan x="1231.83217" y="1093" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="期货市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="1066" y="928">期货市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="139 1788.19149 273 1715.76537 273 1864.99019 139 1935"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="145.726083 1659 273 1715.76537 139 1788.19149 5 1717.7234"></polygon>
+                    <text id="货币市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="0" y="1605">货币市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="477.333333 1788.19149 611.333333 1715.76537 611.333333 1864.99019 477.333333 1935"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="484.059417 1659 611.333333 1715.76537 477.333333 1788.19149 343.333333 1717.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(410.333333, 1826.361702) scale(1, -1) translate(-410.333333, -1826.361702) " points="343.333333 1786.91002 477.333333 1717.7234 477.333333 1864.99019 343.333333 1935"></polygon>
+                    <g id="编组-11" transform="translate(413.333333, 1790.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="422.333333" y="1770" id="4_2">90</tspan>
+                        <tspan x="504.165507" y="1770" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="外汇市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="339.333333" y="1605">外汇市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="816.666667 1788.19149 950.666667 1715.76537 950.666667 1864.99019 816.666667 1935"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="823.39275 1659 950.666667 1715.76537 816.666667 1788.19149 682.666667 1717.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(749.666667, 1826.361702) scale(1, -1) translate(-749.666667, -1826.361702) " points="682.666667 1786.91002 816.666667 1717.7234 816.666667 1864.99019 682.666667 1935"></polygon>
+                    <g id="编组-11" transform="translate(752.666667, 1790.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="761.666667" y="1770" id="4_3">90</tspan>
+                        <tspan x="843.498841" y="1770" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="黄金市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="678.666667" y="1605">黄金市场指数</tspan>
+                    </text>
+                    <polygon id="矩形" fill="url(#linearGradient-11)" opacity="0.788876488" points="1180 1788.19149 1314 1715.76537 1314 1864.99019 1180 1935"></polygon>
+                    <polygon id="矩形复制-21" fill="url(#linearGradient-12)" opacity="0.433523996" points="1186.72608 1659 1314 1715.76537 1180 1788.19149 1046 1717.7234"></polygon>
+                    <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(1113.000000, 1826.361702) scale(1, -1) translate(-1113.000000, -1826.361702) " points="1046 1786.91002 1180 1717.7234 1180 1864.99019 1046 1935"></polygon>
+                    <g id="编组-11" transform="translate(1116.000000, 1790.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="1125" y="1770" id="4_4">90</tspan>
+                        <tspan x="1206.83217" y="1770" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="衍生品市场指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="1018" y="1605">衍生品市场指数</tspan>
+                    </text>
+                    <g id="编组-20" transform="translate(158.000000, 742.000000)">
+                        <g id="编组-18备份">
+                            <circle id="椭圆形" fill="#0DD3B4" transform="translate(1042.000000, 8.000000) scale(-1, 1) translate(-1042.000000, -8.000000) " cx="1042" cy="8" r="8"></circle>
+                            <circle id="椭圆形备份" fill="#0DD3B4" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) " cx="8" cy="8" r="8"></circle>
+                            <line x1="17" y1="7" x2="1036" y2="8" id="直线" stroke="#39B5BC" stroke-linecap="square" transform="translate(526.000000, 8.000000) scale(-1, 1) translate(-526.000000, -8.000000) "></line>
+                        </g>
+                        <g id="编组-19备份-2" transform="translate(344.666667, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-3" transform="translate(0.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-4" transform="translate(689.333333, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-5" transform="translate(1034.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                    </g>
+                    <g id="编组-20备份" transform="translate(130.000000, 1419.000000)">
+                        <g id="编组-18备份">
+                            <circle id="椭圆形" fill="#0DD3B4" transform="translate(1042.000000, 8.000000) scale(-1, 1) translate(-1042.000000, -8.000000) " cx="1042" cy="8" r="8"></circle>
+                            <circle id="椭圆形备份" fill="#0DD3B4" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) " cx="8" cy="8" r="8"></circle>
+                            <line x1="17" y1="7" x2="1036" y2="8" id="直线" stroke="#39B5BC" stroke-linecap="square" transform="translate(526.000000, 8.000000) scale(-1, 1) translate(-526.000000, -8.000000) "></line>
+                        </g>
+                        <g id="编组-19备份-2" transform="translate(344.666667, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-3" transform="translate(0.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-4" transform="translate(689.333333, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-5" transform="translate(1034.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                    </g>
+                    <g id="编组-19备份" transform="translate(714.000000, 590.000000)">
+                        <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                            <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                        </g>
+                        <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                    </g>
+                    <g id="编组-4备份-5" transform="translate(712.000000, 1402.000000) scale(1, -1) rotate(90.000000) translate(-712.000000, -1402.000000) translate(704.000000, 1394.000000)" fill="#0DD3B4">
+                        <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                    </g>
+                    <polyline id="直线-2" stroke="#0DD3B4" stroke-linecap="square" points="724.985197 632 1422 632 1420 1346 710 1346 710 1390.40139"></polyline>
+                    <text id="机构舆情指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="1947" y="906">机构舆情指数</tspan>
+                    </text>
+                    <g id="编组-17复制-2" transform="translate(1952.000000, 960.000000)">
+                        <g id="编组-16复制">
+                            <polygon id="矩形" fill="url(#linearGradient-18)" opacity="0.788876488" points="134 129.191489 268 56.7653662 268 205.990186 134 276"></polygon>
+                            <polygon id="矩形复制-21" fill="url(#linearGradient-19)" opacity="0.433523996" points="140.726083 0 268 56.7653662 134 129.191489 0 58.7234043"></polygon>
+                            <polygon id="矩形复制-20" fill="url(#linearGradient-20)" opacity="0.433523996" transform="translate(67.000000, 167.361702) scale(1, -1) translate(-67.000000, -167.361702) " points="0 127.910019 134 58.7234043 134 205.990186 0 276"></polygon>
+                        </g>
+                    </g>
+                    <g id="编组-11" transform="translate(2022.000000, 1091.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="2031" y="1071" id="3_5">90</tspan>
+                        <tspan x="2112.83217" y="1071" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="银行机构指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="2344" y="910">银行机构指数</tspan>
+                    </text>
+                    <g id="编组-17复制-2" transform="translate(2348.000000, 964.000000)">
+                        <g id="编组-16复制">
+                            <polygon id="矩形" fill="url(#linearGradient-18)" opacity="0.788876488" points="134 129.191489 268 56.7653662 268 205.990186 134 276"></polygon>
+                            <polygon id="矩形复制-21" fill="url(#linearGradient-19)" opacity="0.433523996" points="140.726083 0 268 56.7653662 134 129.191489 0 58.7234043"></polygon>
+                            <polygon id="矩形复制-20" fill="url(#linearGradient-20)" opacity="0.433523996" transform="translate(67.000000, 167.361702) scale(1, -1) translate(-67.000000, -167.361702) " points="0 127.910019 134 58.7234043 134 205.990186 0 276"></polygon>
+                        </g>
+                    </g>
+                    <g id="编组-11" transform="translate(2418.000000, 1095.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="2427" y="1075" id="3_6">90</tspan>
+                        <tspan x="2508.83217" y="1075" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="保险机构指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="2741" y="910">保险机构指数</tspan>
+                    </text>
+                    <g id="编组-17复制-2" transform="translate(2746.000000, 964.000000)">
+                        <g id="编组-16复制">
+                            <polygon id="矩形" fill="url(#linearGradient-18)" opacity="0.788876488" points="134 129.191489 268 56.7653662 268 205.990186 134 276"></polygon>
+                            <polygon id="矩形复制-21" fill="url(#linearGradient-19)" opacity="0.433523996" points="140.726083 0 268 56.7653662 134 129.191489 0 58.7234043"></polygon>
+                            <polygon id="矩形复制-20" fill="url(#linearGradient-20)" opacity="0.433523996" transform="translate(67.000000, 167.361702) scale(1, -1) translate(-67.000000, -167.361702) " points="0 127.910019 134 58.7234043 134 205.990186 0 276"></polygon>
+                        </g>
+                    </g>
+                    <g id="编组-11" transform="translate(2816.000000, 1095.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="2825" y="1075" id="3_7">90</tspan>
+                        <tspan x="2906.83217" y="1075" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <g id="编组-21" transform="translate(2155.000000, 724.000000)">
+                        <g id="编组-18备份" transform="translate(2.000000, 0.000000)">
+                            <circle id="椭圆形" fill="#0DD3B4" transform="translate(658.000000, 8.000000) scale(-1, 1) translate(-658.000000, -8.000000) " cx="658" cy="8" r="8"></circle>
+                            <circle id="椭圆形备份" fill="#0DD3B4" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) " cx="8" cy="8" r="8"></circle>
+                            <line x1="655" y1="9" x2="11.5039216" y2="9.25" id="直线" stroke="#39B5BC" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-2" transform="translate(326.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-3" transform="translate(0.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-4" transform="translate(652.000000, 10.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                    </g>
+                    <text id="证券机构指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="2154" y="1603">证券机构指数</tspan>
+                    </text>
+                    <g id="编组-17复制-2" transform="translate(2159.000000, 1657.000000)">
+                        <g id="编组-16复制">
+                            <polygon id="矩形" fill="url(#linearGradient-18)" opacity="0.788876488" points="134 129.191489 268 56.7653662 268 205.990186 134 276"></polygon>
+                            <polygon id="矩形复制-21" fill="url(#linearGradient-19)" opacity="0.433523996" points="140.726083 0 268 56.7653662 134 129.191489 0 58.7234043"></polygon>
+                            <polygon id="矩形复制-20" fill="url(#linearGradient-20)" opacity="0.433523996" transform="translate(67.000000, 167.361702) scale(1, -1) translate(-67.000000, -167.361702) " points="0 127.910019 134 58.7234043 134 205.990186 0 276"></polygon>
+                        </g>
+                    </g>
+                    <g id="编组-11" transform="translate(2229.000000, 1788.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="2238" y="1768" id="4_5">90</tspan>
+                        <tspan x="2319.83217" y="1768" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <text id="基金机构指数" font-family="PingFangSC-Regular, PingFang SC" font-size="40" font-weight="normal" letter-spacing="6.05999994" fill="#41FDFF">
+                        <tspan x="2556" y="1603">基金机构指数</tspan>
+                    </text>
+                    <g id="编组-16复制" transform="translate(2560.000000, 1657.000000)">
+                        <polygon id="矩形" fill="url(#linearGradient-18)" opacity="0.788876488" points="134 129.191489 268 56.7653662 268 205.990186 134 276"></polygon>
+                        <polygon id="矩形复制-21" fill="url(#linearGradient-19)" opacity="0.433523996" points="140.726083 0 268 56.7653662 134 129.191489 0 58.7234043"></polygon>
+                        <polygon id="矩形复制-20" fill="url(#linearGradient-20)" opacity="0.433523996" transform="translate(67.000000, 167.361702) scale(1, -1) translate(-67.000000, -167.361702) " points="0 127.910019 134 58.7234043 134 205.990186 0 276"></polygon>
+                    </g>
+                    <g id="编组-11" transform="translate(2630.000000, 1788.000000)">
+                        <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                        <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                        <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                        <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                    </g>
+                    <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                        <tspan x="2639" y="1768" id="4_6">90</tspan>
+                        <tspan x="2720.83217" y="1768" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                    </text>
+                    <g id="编组-53" transform="translate(2285.000000, 1418.000000)">
+                        <g id="编组-18备份">
+                            <circle id="椭圆形" fill="#0DD3B4" transform="translate(406.000000, 8.000000) scale(-1, 1) translate(-406.000000, -8.000000) " cx="406" cy="8" r="8"></circle>
+                            <circle id="椭圆形备份" fill="#0DD3B4" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) " cx="8" cy="8" r="8"></circle>
+                            <line x1="402.5" y1="9.5" x2="5" y2="9" id="直线" stroke="#39B5BC" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-2" transform="translate(0.000000, 9.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                        <g id="编组-19备份-4" transform="translate(397.000000, 9.000000)">
+                            <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                                <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                            </g>
+                            <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                        </g>
+                    </g>
+                    <g id="编组-4备份-5" transform="translate(2498.000000, 1404.000000) scale(-1, -1) rotate(90.000000) translate(-2498.000000, -1404.000000) translate(2490.000000, 1396.000000)" fill="#0DD3B4">
+                        <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                    </g>
+                    <polyline id="直线-2" stroke="#0DD3B4" stroke-linecap="square" transform="translate(2196.500000, 1011.000000) scale(-1, 1) translate(-2196.500000, -1011.000000) " points="1907.63138 631 2498 631 2498 1347.72524 1895 1347.72524 1895 1391"></polyline>
+                    <g id="编组-19备份-8" transform="translate(2479.000000, 612.000000)">
+                        <g id="编组-4备份-5" transform="translate(8.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-8.000000, -86.000000) translate(0.000000, 78.000000)" fill="#0DD3B4">
+                            <circle id="椭圆形" cx="8" cy="8" r="8"></circle>
+                        </g>
+                        <line x1="9" y1="1" x2="9" y2="83" id="直线-2" stroke="#0DD3B4" stroke-linecap="square"></line>
+                    </g>
+                </g>
+                <text id="综合指数" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997" fill="#FFFFFF">
+                    <tspan x="1642" y="49">综合指数</tspan>
+                </text>
+                <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(100.000000, 1149.361702) scale(1, -1) translate(-100.000000, -1149.361702) " points="33 1109.91002 167 1040.7234 167 1187.99019 33 1258"></polygon>
+                <polygon id="矩形复制-20" fill="url(#linearGradient-13)" opacity="0.433523996" transform="translate(72.000000, 1826.361702) scale(1, -1) translate(-72.000000, -1826.361702) " points="5 1786.91002 139 1717.7234 139 1864.99019 5 1935"></polygon>
+                <g id="编组-11" transform="translate(75.000000, 1790.000000)">
+                    <polygon id="矩形复制-25" fill="url(#linearGradient-14)" points="60.8198912 -0.196304283 128 24.6153053 76.7067474 52.2740638 65.1636364 58.4984326 0 24.6153053"></polygon>
+                    <polygon id="矩形复制-22" fill="url(#linearGradient-15)" transform="translate(33.280000, 60.702592) scale(1, -1) translate(-33.280000, -60.702592) " points="1.70666667 58.313313 64.8533333 24.1684211 64.8533333 63.3595726 1.70666667 97.2367634"></polygon>
+                    <polygon id="矩形复制-23" fill="url(#linearGradient-16)" transform="translate(96.426667, 60.702592) scale(-1, -1) translate(-96.426667, -60.702592) " points="64.8533333 60.7025922 128 24.1684211 128 63.5913501 64.8533333 97.2367634"></polygon>
+                    <ellipse id="椭圆形" fill="url(#linearGradient-17)" cx="63.1466667" cy="23.9721168" rx="27.3066667" ry="12.0842105"></ellipse>
+                </g>
+                <text id="90分" font-family="PingFangSC-Semibold, PingFang SC" font-size="60" font-weight="500" letter-spacing="4.91608696" fill="#41FDFF">
+                    <tspan x="84" y="1770" id="4_1">90</tspan>
+                    <tspan x="165.832174" y="1770" font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" letter-spacing="3.63599997">分</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

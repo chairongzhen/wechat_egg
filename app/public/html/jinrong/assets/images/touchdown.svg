@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="46px" viewBox="0 0 21 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>下滑</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="97.405511%" id="linearGradient-1">
+            <stop stop-color="#F4F4F4" offset="0%"></stop>
+            <stop stop-color="#F4F4F4" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-1394.000000, -600.000000)">
+            <g id="下滑" transform="translate(1405.000000, 622.000000) scale(1, -1) translate(-1405.000000, -622.000000) translate(1395.000000, 599.000000)">
+                <path d="M7.88197326,1.03425067 L7.91740321,0.989222168 C8.44790382,0.307138585 9.06682121,-0.0826234622 9.86257213,0.0148170496 C10.6877953,0.0148170496 11.281956,0.3543431 11.9325986,1.11261794 L12.0729914,1.2815437 C12.7803255,2.15850831 19.1463329,10.3435113 19.2347497,10.4409518 C19.4115832,10.5383923 19.5,10.8307139 19.5,11.0255949 C19.5,11.5684777 19.1950524,11.9433254 18.7267399,11.9941053 L18.6158323,12 C18.1737485,12 0.932478424,12 0.932478424,12 C0.755644885,12 0.490394577,11.9025595 0.313561038,11.7076785 C-0.0129008797,11.3478981 -0.113350701,10.8220653 0.151295943,10.4367384 L7.88197326,1.03425067 L7.88197326,1.03425067 Z" id="Path" stroke="#FFFFFF" fill-rule="nonzero"></path>
+                <line x1="9.5" y1="13.5" x2="10" y2="46" id="直线" stroke="url(#linearGradient-1)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1,4"></line>
+            </g>
+        </g>
+    </g>
+</svg>
