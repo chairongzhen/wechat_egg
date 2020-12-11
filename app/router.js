@@ -76,6 +76,10 @@ module.exports = app => {
   router.post("/wxlogin",controller.account.wxlogin);
   // for ios app end
 
+  // for wechat mini
+  router.get("/minilogin",controller.login.LoginMini);
+  // for wechat mini
+
   router.get("/gettest",controller.account.test);
   router.post("/posttest",controller.account.test);
   router.get("/NIXjTcrlqy.txt", controller.home.h5Auth);

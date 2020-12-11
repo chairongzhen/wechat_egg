@@ -18,6 +18,14 @@ class LoginController extends Controller {
         await ctx.redirect(wechatloginurl);
     }
 
+    async LoginMini() {
+        const ctx = this.ctx;
+        let js_code = ctx.request.query.code.replace(/\"/g,"");
+        let url = `https://api.weixin.qq.com/sns/jscode2session?appid=wxd0318f0677af5a14&secret=2c4b71944744280d619fd2786979db64&js_code=${js_code}&grant_type=authorization_code`;
+        let data = await ctx.curl(url,{dataType: 'json'});
+        ctx.body = data;
+    }
+
     async Index() {
         const ctx = this.ctx;
         let code = ctx.query.code;
