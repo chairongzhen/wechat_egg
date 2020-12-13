@@ -31,6 +31,13 @@ class LoginController extends Controller {
         let code = ctx.query.code;
         await ctx.render('main/index.html');
     }
+
+    async wxh5login()  {
+        const ctx = this.ctx;
+        let code = ctx.request.query.code.replace(/\"/g,"");
+        const userinfores = await ctx.service.verify.getwechatuserh5(code);
+        ctx.body = userinfores;
+    }
 }
 
 module.exports = LoginController;

@@ -201,6 +201,8 @@ class AccountController extends Controller {
         }
         this.ctx.body = result;
     }
+
+
 }
 
 module.exports = AccountController;

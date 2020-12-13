@@ -80,6 +80,10 @@ module.exports = app => {
   router.get("/minilogin",controller.login.LoginMini);
   // for wechat mini
 
+  // for h5 pplight
+  router.get("/wxh5login",controller.login.wxh5login);
+  // for h5 pplight
+
   router.get("/gettest",controller.account.test);
   router.post("/posttest",controller.account.test);
   router.get("/NIXjTcrlqy.txt", controller.home.h5Auth);

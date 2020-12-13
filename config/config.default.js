@@ -37,7 +37,9 @@ module.exports = appInfo => {
     loginUrl: 'https://open.weixin.qq.com/connect/qrconnect',
     serviceUrl: 'http://www.polypite.com',
     cache_duration: 1000*60*60*24,
-    domain: 'www.polypite.com'
+    domain: 'www.polypite.com',
+    appid_h5: 'wx824ffce0d4f15829',
+    secret_h5: '503427dc2866a5c48ee1ddbb982e42c8'
   }
    
   config.view = {

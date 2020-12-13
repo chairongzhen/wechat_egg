@@ -44,6 +44,17 @@ class VerifySerive extends Service {
         userinfores.openid = userinfores.unionid;
         return userinfores;
     }
+
+    async getwechatuserh5(code) {
+        let authurl = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${this.config.wechat.appid_h5}&secret=${this.config.wechat.secret_h5}&code=${code}&grant_type=authorization_code`;
+        const authres = await getUrlcontent(authurl);
+        let reauthurl = `https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=${this.config.wechat.appid_h5}&grant_type=refresh_token&refresh_token=${authres.refresh_token}`;
+        const reauthres = await getUrlcontent(reauthurl);
+        let userinfourl = `https://api.weixin.qq.com/sns/userinfo?access_token=${reauthres.access_token}&openid=${reauthres.openid}&lang=zh_CN`;
+        const userinfores = await getUrlcontent(userinfourl);
+        userinfores.openid = userinfores.unionid;
+        return userinfores;
+    }
 }
 
 module.exports = VerifySerive;
