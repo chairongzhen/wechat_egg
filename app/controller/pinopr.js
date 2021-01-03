@@ -30,7 +30,6 @@ class PinoprController extends Controller {
 
     async getbinds() {
         const ctx = this.ctx;
-        console.log("here am i");
         let openid = ctx.request.body.openid;
         let result = {
             isSuccess: false,
@@ -44,7 +43,8 @@ class PinoprController extends Controller {
                 mid: ta.mid,
                 mname: ta.mname,
                 ip: ta.ip == null?"":ta.ip,
-                online: ta.online ==0?"offline":"online" 
+                online: ta.online ==0?"offline":"online",
+                version: ta.version 
             }
             res.push(bindma);
         }

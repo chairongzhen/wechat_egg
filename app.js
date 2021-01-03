@@ -1,4 +1,5 @@
-const mqtt = require("mqtt")
+const mqtt = require("mqtt");
+const { version } = require("uuid");
 
 function numToIp(number) {
     var ip = number % 256;
@@ -36,15 +37,20 @@ module.exports = app =>{
                 let machineinfo = {};
                 let ta = tempmessage.split(',');
                 let ip = "";
+                version = "1.04";
                 if(ta.length >0) {                    
                     try {
                         ip = numToIp(ta[2].split(":")[1]);
+                        if(ta.length === 3) {
+                            version = ta[3].split(":")[1]
+                        }
                         let machineinfo = {
                             mid: ta[0].replace("mid:",""),
-                            ip: ip
+                            ip: ip,
+                            version: version
                         }
                         console.log("mqtt online notify",machineinfo);
-                        ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip);
+                        ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip,machineinfo.version);
                         
                         let timestamp = Date.now()/1000|0;
                         // app.mqttclient.publish("esp32/checktime",timestamp.toString(),{

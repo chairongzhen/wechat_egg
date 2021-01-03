@@ -180,17 +180,17 @@ class AccountSerive extends Service {
         return result.affectedRows==0?false:true;
     }
 
-    async updatemlog(mid,ip) {
+    async updatemlog(mid,ip,version) {
         let checksql = `select count(*) existcount from machinelog where mid = '${mid}'`;
         const existres = await this.app.mysql.query(checksql);
-        const ipsql = `update usermachines set ip = '${ip}' where mid = '${mid}'`;
+        const ipsql = `update usermachines set ip = '${ip}',espversion='${version}' where mid = '${mid}'`;
         await this.app.mysql.query(ipsql);
         let result = null;
         if(existres[0].existcount == 0) {
-            let addsql = `insert into machinelog (mid,ip,updatetime) values ('${mid}','${ip}',now())`;
+            let addsql = `insert into machinelog (mid,ip,updatetime,espversion) values ('${mid}','${ip}',now(),'${version}')`;
             result = await this.app.mysql.query(addsql).affectedRows ==0?false:true;
         } else {
-            let updsql = `update machinelog set ip = '${ip}',updatetime = now() where mid = '${mid}'`;
+            let updsql = `update machinelog set ip = '${ip}',updatetime = now(),espversion = '${version}' where mid = '${mid}'`;
             result = await this.app.mysql.query(updsql).affectedRows ==0?false:true;
         }
         return result;
@@ -230,7 +230,7 @@ class AccountSerive extends Service {
     }
 
     async getusermachine(openid) {
-        let getsql = `select usermachines.mid,machines.mname,ip,online from usermachines LEFT OUTER JOIN machines ON machines.mid = usermachines.mid where openid = '${openid}'`;
+        let getsql = `select usermachines.mid,machines.mname,ip,online,usermachines.espversion version from usermachines LEFT OUTER JOIN machines ON machines.mid = usermachines.mid where openid = '${openid}'`;
         const result = await this.app.mysql.query(getsql);
         return result;
     }
@@ -400,7 +400,7 @@ class AccountSerive extends Service {
         return true;
     }
     
-
+    
 }
 
 module.exports = AccountSerive;
