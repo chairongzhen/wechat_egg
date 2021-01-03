@@ -193,6 +193,8 @@ class AccountSerive extends Service {
             let updsql = `update machinelog set ip = '${ip}',updatetime = now(),espversion = '${version}' where mid = '${mid}'`;
             result = await this.app.mysql.query(updsql).affectedRows ==0?false:true;
         }
+        const updateUserMachine = `update usermachines SET espversion = '${version}' where mid = '${mid}'`;
+        await this.app.mysql.query(updateUserMachine);
         return result;
     }
  

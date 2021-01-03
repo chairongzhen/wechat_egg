@@ -37,17 +37,17 @@ module.exports = app =>{
                 let machineinfo = {};
                 let ta = tempmessage.split(',');
                 let ip = "";
-                version = "1.04";
+                let espversion = "1.04";
                 if(ta.length >0) {                    
                     try {
                         ip = numToIp(ta[2].split(":")[1]);
                         if(ta.length === 3) {
-                            version = ta[3].split(":")[1]
+                            espversion = ta[3].split(":")[1]
                         }
                         let machineinfo = {
                             mid: ta[0].replace("mid:",""),
                             ip: ip,
-                            version: version
+                            version: espversion
                         }
                         console.log("mqtt online notify",machineinfo);
                         ctx.service.account.updatemlog(machineinfo.mid,machineinfo.ip,machineinfo.version);
