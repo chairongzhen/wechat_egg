@@ -42,7 +42,9 @@ module.exports = app =>{
                     try {
                         ip = numToIp(ta[2].split(":")[1]);
                         if(ta.length === 3) {
-                            espversion = ta[3].split(":")[1]
+                            if(ta[3]) {
+                                espversion = ta[3].split(":")[1]
+                            }
                         }
                         let machineinfo = {
                             mid: ta[0].replace("mid:",""),
