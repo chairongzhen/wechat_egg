@@ -140,7 +140,7 @@ class AccountController extends Controller {
         const result = await this.service.account.login(username,pwd);
         this.ctx.cookies.set("username",'hellocookie',{
             maxAge: 1000 * 3600 * 24,
-            sameSite: 'none',
+            sameSite: false,
             secure: false,
         })
         this.ctx.body = result;
