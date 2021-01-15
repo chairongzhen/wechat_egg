@@ -495,6 +495,7 @@ class PinoprController extends Controller {
     async getsetting() {
         const ctx = this.ctx;
         let openid = ctx.request.body.openid;
+        console.log('the cookie is:',ctx.cookies.get('username'));
         const result = await this.service.pinopr.getsetting(openid);
         ctx.body = result;
     }
