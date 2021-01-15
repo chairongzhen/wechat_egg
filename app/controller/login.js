@@ -36,7 +36,6 @@ class LoginController extends Controller {
         const ctx = this.ctx;
         let code = ctx.request.query.code.replace(/\"/g,"");
         const userinfores = await ctx.service.verify.getwechatuserh5(code);
-        ctx.cookies.set("username",'hellocookie')
         ctx.body = userinfores;
     }
 }
