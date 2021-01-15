@@ -142,7 +142,6 @@ class AccountController extends Controller {
             maxAge: 1000 * 3600 * 24,
             sameSite: false,
             secure: true,
-            httpOnly: false
         })
         this.ctx.body = result;
     }
