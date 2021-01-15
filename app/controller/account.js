@@ -141,7 +141,8 @@ class AccountController extends Controller {
         this.ctx.cookies.set("username",'hellocookie',{
             maxAge: 1000 * 3600 * 24,
             sameSite: false,
-            secure: true
+            secure: true,
+            httpOnly: false
         })
         this.ctx.body = result;
     }
