@@ -32,6 +32,7 @@
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-wechat",
+    "https": "egg-scripts start --daemon --port=444 --https.key='2_www.polypite.com.key' --https.cert='1_www.polypite.com_bundle.crt' ",
     "stop": "egg-scripts stop --title=egg-server-wechat",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
