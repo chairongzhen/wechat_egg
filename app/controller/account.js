@@ -138,11 +138,6 @@ class AccountController extends Controller {
         let username = ctx.request.body.username;
         let pwd = ctx.request.body.pwd;
         const result = await this.service.account.login(username,pwd);
-        this.ctx.cookies.set("username",'hellocookie',{
-            maxAge: 1000 * 3600 * 24,
-            sameSite: false,
-            secure: true,
-        })
         this.ctx.body = result;
     }
 
