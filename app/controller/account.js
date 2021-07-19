@@ -173,8 +173,8 @@ class AccountController extends Controller {
 
         let openid = ctx.request.body.openid;
         let mid = ctx.request.body.mid;
-        var reg = /^esp_[A-Z,a-z,0-9]{12}$/;
-        //if(reg.test(mid)) {
+        var reg = /^esp|eqs120_[A-Z,a-z,0-9]{12}$/;
+        if(reg.test(mid)) {
         if(true){
             const resultres = await this.service.account.bindmid(openid,mid);
             if(resultres) {
